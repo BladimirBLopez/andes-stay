@@ -5,9 +5,15 @@ import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { ArrowLeft, MessageCircle, Star } from "lucide-react";
+import { ArrowLeft, MessageCircle, Star, Wifi, Home } from "lucide-react";
 import ShareButton from "../../ShareButton";
 import TrustStats from "../../TrustStats";
+import Amenidades from "../../Amenidades";
+
+const amenidades = [
+  { icon: Wifi, label: "Wifi" },
+  { icon: Home, label: "Servicios básicos incluidos" },
+];
 
 const WHATSAPP_NUMBER = "59176570041";
 const CLOUD_NAME = "dkq95jus0";
@@ -148,6 +154,8 @@ export default function GarzonierPremium() {
             supermercado Hipermaxi.
           </p>
         </div>
+
+        <Amenidades items={amenidades} />
 
         <Ambiente
           titulo="Sala"
