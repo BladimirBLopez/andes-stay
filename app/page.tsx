@@ -196,6 +196,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SOBRE NOSOTROS */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        variants={fadeUp}
+        className="max-w-5xl mx-auto px-6 py-20"
+      >
+        <h2 className="font-display text-3xl md:text-4xl mb-12">Sobre nosotros</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          <div>
+            <h3 className="font-display text-xl mb-3 text-terracota">Misión</h3>
+            <p className="text-noche/70 leading-relaxed">
+              Ofrecer alojamientos temporales confortables y seguros en las
+              mejores zonas de La Paz, brindando a cada huésped una
+              experiencia de atención personalizada, cercana y confiable.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl mb-3 text-terracota">Visión</h3>
+            <p className="text-noche/70 leading-relaxed">
+              Ser la opción de referencia en alojamiento temporal en La Paz,
+              reconocidos por la calidad de nuestros espacios y el trato
+              cercano con cada huésped.
+            </p>
+          </div>
+        </div>
+
+        <h3 className="font-display text-2xl mb-6">Lo que dicen nuestros huéspedes</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { nombre: "Gustavo", ciudad: "Santa Cruz de la Sierra", texto: "Cómodo Dpto" },
+            { nombre: "Cesar Andrés", ciudad: "La Paz", texto: "Totalmente recomendable." },
+            { nombre: "Daniel", ciudad: "Huésped Airbnb", texto: "Excelente host y buen lugar" },
+          ].map((r) => (
+            <div key={r.nombre} className="bg-hueso border border-noche/10 rounded-2xl p-6">
+              <div className="flex items-center gap-1 text-oro mb-3">
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+              </div>
+              <p className="text-noche/80 mb-4">&ldquo;{r.texto}&rdquo;</p>
+              <p className="text-sm text-noche/50">{r.nombre} · {r.ciudad}</p>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
       {/* CONTACTO */}
       <motion.section
         initial="hidden"
