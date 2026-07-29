@@ -129,8 +129,20 @@ export default function Home() {
                 variants={fadeUp}
                 className="bg-hueso rounded-2xl overflow-hidden border border-noche/10"
               >
-                <div className="aspect-[4/3] bg-noche/10 flex items-center justify-center text-noche/40 text-sm">
-                  [Foto pendiente]
+                <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
+                  {apto.foto ? (
+                    <CldImage
+                      src={apto.foto}
+                      alt={apto.nombre}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-noche/40 text-sm">
+                      [Foto pendiente]
+                    </div>
+                  )}
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>
