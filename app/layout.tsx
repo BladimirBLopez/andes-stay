@@ -17,9 +17,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Andes Stay | Administración de apartamentos Airbnb en La Paz",
+  title: "VIP Estadías | Alojamientos que te hacen sentir en casa",
   description:
-    "Administro su apartamento en modalidad Airbnb: gestión de huéspedes, mantenimiento y máxima ocupación, sin que usted tenga que estar presente.",
+    "Apartamentos amoblados y equipados en La Paz para tu estadía temporal. Ubicaciones exclusivas, wifi de alta velocidad y todo lo que necesitas para sentirte como en casa.",
 };
 
 export default function RootLayout({

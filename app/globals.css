@@ -4,13 +4,13 @@
   --font-display: "Fraunces", serif;
   --font-body: "Manrope", sans-serif;
 
-  --color-noche: #16212f;
-  --color-noche-light: #263c53;
-  --color-terracota: #b8552f;
-  --color-terracota-light: #d97a4f;
-  --color-hueso: #f5eee2;
+  --color-noche: #121212;
+  --color-noche-light: #1f1f1f;
+  --color-terracota: #c9a227;
+  --color-terracota-light: #e0c568;
+  --color-hueso: #f7f4ec;
   --color-salvia: #6b7f5e;
-  --color-oro: #c99b3f;
+  --color-oro: #c9a227;
 }
 
 html {

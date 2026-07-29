@@ -13,7 +13,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1b2a3a",
+          background: "#121212",
           borderRadius: 12,
         }}
       >
@@ -21,11 +21,11 @@ export default function Icon() {
           style={{
             fontSize: 34,
             fontWeight: 700,
-            color: "#b85c38",
+            color: "#c9a227",
             fontFamily: "serif",
           }}
         >
-          A
+          V
         </span>
       </div>
     ),

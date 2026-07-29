@@ -101,7 +101,7 @@ export default function GarzonierPremium() {
         <div className="absolute top-4 right-4">
           <ShareButton
             title={NOMBRE}
-            text="Mira este apartamento en La Paz Suite Apartamentos"
+            text="Mira este apartamento en VIP Estadías"
           />
         </div>
       </div>
