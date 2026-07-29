@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Fraunces", serif;
+  --font-display: "Cormorant Garamond", serif;
   --font-body: "Manrope", sans-serif;
 
   --color-noche: #121212;
