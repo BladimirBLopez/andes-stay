@@ -122,13 +122,15 @@ export default function GarzonierPremium() {
           ¿Le interesa este apartamento?
         </h2>
         <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            "Hola, me interesa reservar el Garzonier Premium con Sol y Vista Espectacular. ¿Está disponible?"
+          )}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-hueso px-8 py-4 rounded-full font-medium"
         >
           <MessageCircle size={18} />
-          Consultar por WhatsApp
+          Reservar ahora
         </a>
       </div>
     </main>
