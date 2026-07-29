@@ -129,7 +129,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 variants={fadeUp}
-                className="bg-hueso rounded-2xl overflow-hidden border border-noche/10"
+                className="bg-hueso rounded-2xl overflow-hidden border border-noche/10 card-hover"
               >
                 {(() => {
                   const CardContent = (
@@ -143,7 +143,7 @@ export default function Home() {
                           <MapPin size={12} /> {apto.detalle} · {apto.zona}
                         </p>
                         <p className="text-xs text-terracota flex items-center gap-1">
-                          <Star size={12} fill="currentColor" /> {apto.rating}
+                          <Star size={12} className="text-oro" fill="currentColor" /> {apto.rating}
                         </p>
                       </div>
                     </>
