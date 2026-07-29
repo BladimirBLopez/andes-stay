@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "59170000000"; // TODO: reemplazar con el número real del cliente
+const WHATSAPP_NUMBER = "59176570041";
 
 const apartamentos = [
   { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas" },
