@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
+import Tilt from "react-parallax-tilt";
 import CardCarousel from "./CardCarousel";
 import { MessageCircle, Star, MapPin } from "lucide-react";
 
@@ -21,6 +23,13 @@ const fadeUp = {
 };
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
     <main>
       {/* NAV */}
@@ -37,8 +46,8 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-[90svh] flex items-end text-hueso overflow-hidden">
-        <div className="absolute inset-0">
+      <section ref={heroRef} className="relative min-h-[90svh] flex items-end text-hueso overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <CldImage
             src="premium-sala-6"
             alt="VIP Estadías La Paz"
@@ -47,7 +56,7 @@ export default function Home() {
             className="object-cover"
             sizes="100vw"
           />
-        </div>
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/80 to-noche/50" />
         <motion.div
           initial="hidden"
@@ -148,8 +157,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 variants={fadeUp}
-                className="bg-hueso rounded-2xl overflow-hidden border border-noche/10 card-hover"
               >
+                <Tilt
+                  tiltMaxAngleX={6}
+                  tiltMaxAngleY={6}
+                  glareEnable={false}
+                  className="bg-hueso rounded-2xl overflow-hidden border border-noche/10 card-hover"
+                >
                 {(() => {
                   const CardContent = (
                     <>
@@ -175,6 +189,7 @@ export default function Home() {
                     CardContent
                   );
                 })()}
+                </Tilt>
               </motion.div>
             ))}
           </div>
