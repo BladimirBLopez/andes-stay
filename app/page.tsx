@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
 import Link from "next/link";
+import CardCarousel from "./CardCarousel";
 import { MessageCircle, Star, MapPin } from "lucide-react";
 
 const WHATSAPP_NUMBER = "59176570041";
 
 const apartamentos = [
-  { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas", foto: null, slug: null },
-  { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", foto: null, slug: null },
-  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", foto: "premium-sala-1", slug: "garzonier-premium" },
-  { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", foto: null, slug: null },
+  { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas", fotos: [], slug: null },
+  { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", fotos: [], slug: null },
+  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", fotos: ["premium-sala-1", "premium-sala-2", "premium-sala-3"], slug: "garzonier-premium" },
+  { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", fotos: [], slug: null },
 ];
 
 const fadeUp = {
@@ -135,19 +135,7 @@ export default function Home() {
                   const CardContent = (
                     <>
                       <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
-                        {apto.foto ? (
-                          <CldImage
-                            src={apto.foto}
-                            alt={apto.nombre}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 100vw, 50vw"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-noche/40 text-sm">
-                            [Foto pendiente]
-                          </div>
-                        )}
+                        <CardCarousel fotos={apto.fotos} alt={apto.nombre} />
                       </div>
                       <div className="p-5">
                         <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>

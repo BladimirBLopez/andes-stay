@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "sonner";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -27,6 +29,8 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
         {children}
+        <Toaster position="bottom-center" />
+        <Analytics />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Share2, Check } from "lucide-react";
+import { toast } from "sonner";
+import { Share2 } from "lucide-react";
 
 export default function ShareButton({
   title,
@@ -10,8 +10,6 @@ export default function ShareButton({
   title: string;
   text?: string;
 }) {
-  const [copiado, setCopiado] = useState(false);
-
   const handleShare = async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
 
@@ -26,10 +24,9 @@ export default function ShareButton({
 
     try {
       await navigator.clipboard.writeText(url);
-      setCopiado(true);
-      setTimeout(() => setCopiado(false), 2000);
+      toast.success("Enlace copiado al portapapeles");
     } catch {
-      // clipboard no disponible, silenciosamente ignoramos
+      toast.error("No se pudo copiar el enlace");
     }
   };
 
@@ -38,8 +35,8 @@ export default function ShareButton({
       onClick={handleShare}
       className="inline-flex items-center gap-2 text-sm text-noche/70 hover:text-noche border border-noche/20 hover:border-noche/40 rounded-full px-4 py-2 transition-colors"
     >
-      {copiado ? <Check size={16} /> : <Share2 size={16} />}
-      {copiado ? "¡Enlace copiado!" : "Compartir"}
+      <Share2 size={16} />
+      Compartir
     </button>
   );
 }
