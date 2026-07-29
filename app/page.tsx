@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion";
 import { CldImage } from "next-cloudinary";
+import Link from "next/link";
 import { MessageCircle, Star, MapPin } from "lucide-react";
 
 const WHATSAPP_NUMBER = "59176570041";
 
 const apartamentos = [
-  { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas", foto: null },
-  { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", foto: null },
-  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", foto: "sala-principal" },
-  { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", foto: null },
+  { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas", foto: null, slug: null },
+  { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", foto: null, slug: null },
+  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", foto: "premium-sala-1", slug: "garzonier-premium" },
+  { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", foto: null, slug: null },
 ];
 
 const fadeUp = {
@@ -130,30 +131,43 @@ export default function Home() {
                 variants={fadeUp}
                 className="bg-hueso rounded-2xl overflow-hidden border border-noche/10"
               >
-                <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
-                  {apto.foto ? (
-                    <CldImage
-                      src={apto.foto}
-                      alt={apto.nombre}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
+                {(() => {
+                  const CardContent = (
+                    <>
+                      <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
+                        {apto.foto ? (
+                          <CldImage
+                            src={apto.foto}
+                            alt={apto.nombre}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-noche/40 text-sm">
+                            [Foto pendiente]
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>
+                        <p className="text-sm text-noche/60 mb-1 flex items-center gap-1">
+                          <MapPin size={12} /> {apto.detalle} · {apto.zona}
+                        </p>
+                        <p className="text-xs text-terracota flex items-center gap-1">
+                          <Star size={12} fill="currentColor" /> {apto.rating}
+                        </p>
+                      </div>
+                    </>
+                  );
+                  return apto.slug ? (
+                    <Link href={`/apartamentos/${apto.slug}`} className="block">
+                      {CardContent}
+                    </Link>
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-noche/40 text-sm">
-                      [Foto pendiente]
-                    </div>
-                  )}
-                </div>
-                <div className="p-5">
-                  <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>
-                  <p className="text-sm text-noche/60 mb-1 flex items-center gap-1">
-                    <MapPin size={12} /> {apto.detalle} · {apto.zona}
-                  </p>
-                  <p className="text-xs text-terracota flex items-center gap-1">
-                    <Star size={12} fill="currentColor" /> {apto.rating}
-                  </p>
-                </div>
+                    CardContent
+                  );
+                })()}
               </motion.div>
             ))}
           </div>
