@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import { ArrowLeft, MessageCircle } from "lucide-react";
+import ShareButton from "../../ShareButton";
+import TrustStats from "../../TrustStats";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -67,9 +69,19 @@ export default function GarzonierPremium() {
       <h1 className="font-display text-4xl md:text-5xl mb-3">
         Garzonier Premium con Sol y Vista Espectacular
       </h1>
-      <p className="text-noche/70 mb-10">
-        2 huéspedes · 1 habitación · 1 cama · 1 baño
-      </p>
+      <div className="flex items-center justify-between flex-wrap gap-4 mb-10">
+        <p className="text-noche/70">
+          2 huéspedes · 1 habitación · 1 cama · 1 baño
+        </p>
+        <ShareButton
+          title="Garzonier Premium con Sol y Vista Espectacular"
+          text="Mira este apartamento administrado por Andes Stay en La Paz"
+        />
+      </div>
+
+      <TrustStats />
+
+      <div className="h-12" />
 
       <Ambiente titulo="Sala" fotos={salaFotos} />
 
