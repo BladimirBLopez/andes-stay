@@ -9,7 +9,7 @@ const WHATSAPP_NUMBER = "59176570041";
 const apartamentos = [
   { id: 1, nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica", zona: "La Paz", rating: "4.67 · 3 reseñas", foto: null },
   { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", foto: null },
-  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", foto: "andes-stay/garzonier-premium/1349d90f-a260-42bc-a36d-25f9a8f1673e_zhtgs6" },
+  { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", foto: "garzonier-premium/sala-principal" },
   { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", foto: null },
 ];
 
