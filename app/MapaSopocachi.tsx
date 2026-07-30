@@ -38,6 +38,9 @@ export default function MapaSopocachi() {
       center={SOPOCACHI}
       zoom={15}
       scrollWheelZoom={false}
+      dragging={false}
+      touchZoom={false}
+      doubleClickZoom={false}
       style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
