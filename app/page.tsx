@@ -49,12 +49,20 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Lista de idiomas disponibles. Para sumar un idioma nuevo: agregar aquí
+// { code: "pt", label: "PT" } y crear las traducciones correspondientes
+// en translations.ts. El dropdown se arma solo a partir de esta lista.
+const LANGUAGES: { code: "es" | "en"; label: string }[] = [
+  { code: "es", label: "ES" },
+  { code: "en", label: "EN" },
+];
+
 function LangSwitcher({ light = false }: { light?: boolean }) {
   const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
   const textColor = light ? "text-hueso" : "text-noche";
-  const otherLang = lang === "es" ? "en" : "es";
-  const otherLabel = lang === "es" ? "EN" : "ES";
+  const currentLabel = LANGUAGES.find((l) => l.code === lang)?.label ?? lang.toUpperCase();
+  const otherLanguages = LANGUAGES.filter((l) => l.code !== lang);
 
   return (
     <div className="relative">
@@ -62,20 +70,23 @@ function LangSwitcher({ light = false }: { light?: boolean }) {
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1 text-sm font-medium ${textColor}`}
       >
-        {lang.toUpperCase()}
+        {currentLabel}
         <ChevronDown size={14} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
       </button>
       {open && (
-        <div className="absolute top-full right-0 mt-2 bg-hueso rounded-lg shadow-lg overflow-hidden z-50 min-w-[3rem]">
-          <button
-            onClick={() => {
-              setLang(otherLang);
-              setOpen(false);
-            }}
-            className="block w-full px-4 py-2 text-sm text-noche hover:bg-noche/5 text-left"
-          >
-            {otherLabel}
-          </button>
+        <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl overflow-hidden z-50 min-w-[6rem]">
+          {otherLanguages.map((l) => (
+            <button
+              key={l.code}
+              onClick={() => {
+                setLang(l.code);
+                setOpen(false);
+              }}
+              className="block w-full px-5 py-3 text-base font-medium text-noche hover:bg-noche/5 text-left"
+            >
+              {l.label}
+            </button>
+          ))}
         </div>
       )}
     </div>
