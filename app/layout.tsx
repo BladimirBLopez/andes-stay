@@ -17,6 +17,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andes-stay.vercel.app"),
   title: "VIP Estadías | Alojamientos que te hacen sentir en casa",
   description:
     "Apartamentos amoblados y equipados en La Paz para tu estadía temporal. Ubicaciones exclusivas, wifi de alta velocidad y todo lo que necesitas para sentirte como en casa.",
