@@ -74,7 +74,7 @@ function LangSwitcher({ light = false }: { light?: boolean }) {
         <ChevronDown size={14} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
       </button>
       {open && (
-        <div className="absolute top-full right-0 mt-3 bg-white shadow-lg overflow-hidden z-50 min-w-[7rem]">
+        <div className="absolute top-full right-0 mt-3 bg-white shadow-lg overflow-hidden z-50 w-16">
           {otherLanguages.map((l) => (
             <button
               key={l.code}
@@ -82,7 +82,7 @@ function LangSwitcher({ light = false }: { light?: boolean }) {
                 setLang(l.code);
                 setOpen(false);
               }}
-              className="block w-full px-6 py-4 text-xl font-medium text-noche hover:bg-noche/5 text-left"
+              className="block w-full px-3 py-2 text-sm font-medium text-noche hover:bg-noche/5 text-left"
             >
               {l.label}
             </button>
