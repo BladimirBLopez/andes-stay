@@ -57,7 +57,7 @@ function Ambiente({
           >
             <CldImage
               src={id}
-              alt={titulo}
+              alt={`${titulo} - foto ${i + 1}`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 50vw, 33vw"
@@ -131,6 +131,10 @@ export default function GarzonierPremium() {
         </div>
 
         <TrustStats />
+        <p className="text-xs text-noche/40 text-center -mt-4 mb-4">
+          Trayectoria de Wilmer como anfitrión en Airbnb. Este apartamento es
+          nuevo, por eso aún no tiene reseñas propias.
+        </p>
 
         <div className="h-12" />
 
