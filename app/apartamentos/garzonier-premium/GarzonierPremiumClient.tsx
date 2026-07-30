@@ -142,13 +142,7 @@ export default function GarzonierPremium() {
           </div>
         </div>
 
-        <TrustStats />
-        <p className="text-xs text-noche/40 text-center -mt-4 mb-4">
-          Trayectoria de VIP Estadías en Airbnb. Este apartamento es nuevo,
-          por eso aún no tiene reseñas propias.
-        </p>
-
-        <div className="h-12" />
+        <div className="h-6" />
 
         <div className="mb-16 max-w-3xl">
           <h2 className="font-display text-2xl mb-4">Descripción</h2>
