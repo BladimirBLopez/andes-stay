@@ -28,6 +28,29 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${cormorant.variable} ${manrope.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LodgingBusiness",
+              name: "VIP Estadías",
+              description:
+                "Apartamentos amoblados y equipados en Sopocachi, La Paz, Bolivia, para estadías temporales.",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Sopocachi, La Paz",
+                addressCountry: "BO",
+              },
+              telephone: "+59176570041",
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.69",
+                reviewCount: "160",
+              },
+            }),
+          }}
+        />
         {children}
         <Toaster position="bottom-center" />
         <Analytics />
