@@ -123,7 +123,7 @@ export default function GarzonierPremium() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-6 bg-hueso rounded-t-3xl shadow-[0_-8px_20px_rgba(0,0,0,0.08)] pt-2">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-6 bg-white rounded-t-3xl shadow-[0_-8px_20px_rgba(0,0,0,0.08)] pt-2">
         <div className="pt-8 pb-6">
           <p className="uppercase tracking-[0.2em] text-sm text-terracota mb-2">
             La Paz, Bolivia
@@ -193,7 +193,7 @@ export default function GarzonierPremium() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa el ${a.nombre}. ¿Está disponible?`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-noche/10 rounded-xl p-5 hover:border-terracota transition-colors"
+                className="block bg-hueso border border-noche/10 rounded-xl p-5 hover:border-terracota transition-colors"
               >
                 <h3 className="font-display text-lg mb-1">{a.nombre}</h3>
                 <p className="text-sm text-noche/60">{a.detalle}</p>
