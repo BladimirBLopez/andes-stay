@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 import HeroCarousel from "./HeroCarousel";
 import dynamic from "next/dynamic";
@@ -119,7 +120,10 @@ export default function Home() {
         }`}
       >
         <div className="px-6 py-5 max-w-5xl mx-auto flex items-center justify-between">
-          <span className="font-display text-2xl text-noche">VIP Estadías</span>
+          <span className="flex items-center gap-2">
+            <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={40} height={26} className="h-8 w-auto" priority />
+            <span className="font-display text-2xl text-noche">VIP Estadías</span>
+          </span>
           <div className="hidden md:flex items-center gap-8 text-sm text-noche/80">
             <a href="#apartamentos" className="hover:text-terracota transition-colors">{t("nav_apartamentos")}</a>
             <Link href="/sobre-nosotros" className="hover:text-terracota transition-colors">{t("nav_nosotros")}</Link>
