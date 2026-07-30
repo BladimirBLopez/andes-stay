@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: "VIP Estadías | Alojamientos que te hacen sentir en casa",
   description:
     "Apartamentos amoblados y equipados en La Paz para tu estadía temporal. Ubicaciones exclusivas, wifi de alta velocidad y todo lo que necesitas para sentirte como en casa.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
