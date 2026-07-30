@@ -95,7 +95,7 @@ export default function GarzonierPremium() {
 
   return (
     <main className="pb-28">
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10 rounded-b-3xl overflow-hidden">
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
         <button
           onClick={() => openGallery(categorias[0].fotos, 0)}
           className="absolute inset-0 w-full h-full"
@@ -124,7 +124,7 @@ export default function GarzonierPremium() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-6 bg-hueso rounded-t-3xl shadow-[0_-8px_20px_rgba(0,0,0,0.08)] pt-2">
         <div className="pt-8 pb-6">
           <p className="uppercase tracking-[0.2em] text-sm text-terracota mb-2">
             La Paz, Bolivia
