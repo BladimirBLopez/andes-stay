@@ -51,8 +51,13 @@ export default function Home() {
           scrolled ? "bg-noche/95 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
       >
-        <div className="px-6 py-5 max-w-5xl mx-auto">
+        <div className="px-6 py-5 max-w-5xl mx-auto flex items-center justify-between">
           <span className="font-display text-2xl text-hueso">VIP Estadías</span>
+          <div className="hidden md:flex items-center gap-8 text-sm text-hueso/80">
+            <a href="#apartamentos" className="hover:text-terracota-light transition-colors">Apartamentos</a>
+            <a href="#ubicacion" className="hover:text-terracota-light transition-colors">Ubicación</a>
+            <a href="#faq" className="hover:text-terracota-light transition-colors">Preguntas</a>
+          </div>
         </div>
       </nav>
 
@@ -265,6 +270,7 @@ export default function Home() {
 
       {/* UBICACIÓN */}
       <motion.section
+        id="ubicacion"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -287,6 +293,7 @@ export default function Home() {
 
       {/* FAQ */}
       <motion.section
+        id="faq"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
