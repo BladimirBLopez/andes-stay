@@ -93,10 +93,15 @@ export default function Home() {
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowGreeting(true), 2500);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -443,6 +448,18 @@ export default function Home() {
       <Footer />
 
       {/* BOTÓN FLOTANTE WHATSAPP */}
+      {showGreeting && (
+        <div className="fixed bottom-24 right-6 z-[1002] bg-hueso border border-terracota/30 rounded-2xl shadow-lg px-4 py-3 max-w-[240px] flex items-start gap-2">
+          <p className="text-sm text-noche flex-1">¡Hola! ¿En qué podemos ayudarle hoy?</p>
+          <button
+            onClick={() => setShowGreeting(false)}
+            aria-label="Cerrar"
+            className="text-noche/40 hover:text-noche transition-colors shrink-0"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`}
         target="_blank"
