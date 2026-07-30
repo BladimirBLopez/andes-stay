@@ -184,7 +184,7 @@ export default function GarzonierPremium() {
           slides={slides}
         />
 
-        <div className="mb-16 border-t border-noche/10 pt-16">
+        <div className="pb-16 border-t border-noche/10 pt-16">
           <h2 className="font-display text-2xl mb-6">Otros apartamentos</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {otrosApartamentos.map((a) => (
