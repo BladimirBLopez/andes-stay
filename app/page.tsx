@@ -236,6 +236,34 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* UBICACIÓN */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        variants={fadeUp}
+        className="max-w-5xl mx-auto px-6 py-20"
+      >
+        <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestra ubicación</h2>
+        <p className="text-noche/60 mb-8">
+          Apartamentos en las zonas más exclusivas de La Paz: Sopocachi y San Jorge
+        </p>
+        <div className="rounded-2xl overflow-hidden border border-noche/10 aspect-[16/9]">
+          <iframe
+            src="https://maps.google.com/maps?q=Sopocachi,+La+Paz,+Bolivia&z=14&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            title="Ubicación VIP Estadías - Sopocachi, La Paz"
+          />
+        </div>
+        <p className="text-sm text-noche/50 mt-3">
+          La ubicación exacta de cada apartamento se comparte al confirmar la reserva.
+        </p>
+      </motion.section>
+
       {/* CONTACTO */}
       <motion.section
         initial="hidden"
