@@ -93,7 +93,7 @@ export default function GarzonierPremium() {
   )}`;
 
   return (
-    <main className="pb-28 md:pb-0">
+    <main>
       <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
         <button
           onClick={() => openGallery(categorias[0].fotos, 0)}
@@ -223,6 +223,7 @@ export default function GarzonierPremium() {
       </div>
 
       <Footer />
+      <div className="h-20 bg-noche md:hidden" />
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-hueso border-t border-noche/10 px-6 py-4 flex items-center justify-between z-40">
         <div>
