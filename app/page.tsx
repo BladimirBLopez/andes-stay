@@ -50,23 +50,33 @@ const fadeUp = {
 
 function LangSwitcher({ light = false }: { light?: boolean }) {
   const { lang, setLang } = useLanguage();
-  const base = light ? "text-hueso/70" : "text-noche/60";
-  const active = light ? "text-hueso" : "text-noche";
+  const [open, setOpen] = useState(false);
+  const textColor = light ? "text-hueso" : "text-noche";
+  const otherLang = lang === "es" ? "en" : "es";
+  const otherLabel = lang === "es" ? "EN" : "ES";
+
   return (
-    <div className={`flex items-center gap-1 text-sm font-medium ${base}`}>
+    <div className="relative">
       <button
-        onClick={() => setLang("es")}
-        className={lang === "es" ? active : ""}
+        onClick={() => setOpen(!open)}
+        className={`flex items-center gap-1 text-sm font-medium ${textColor}`}
       >
-        ES
+        {lang.toUpperCase()}
+        <ChevronDown size={14} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
       </button>
-      <span>/</span>
-      <button
-        onClick={() => setLang("en")}
-        className={lang === "en" ? active : ""}
-      >
-        EN
-      </button>
+      {open && (
+        <div className="absolute top-full right-0 mt-2 bg-hueso rounded-lg shadow-lg overflow-hidden z-50 min-w-[3rem]">
+          <button
+            onClick={() => {
+              setLang(otherLang);
+              setOpen(false);
+            }}
+            className="block w-full px-4 py-2 text-sm text-noche hover:bg-noche/5 text-left"
+          >
+            {otherLabel}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
