@@ -36,9 +36,7 @@ export default function Home() {
       <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
         <span className="font-display text-2xl text-hueso">VIP Estadías</span>
         <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#apartamentos"
           className="bg-terracota hover:bg-terracota-light transition-colors text-noche px-5 py-2.5 rounded-full text-sm font-medium"
         >
           Reservar
@@ -84,13 +82,10 @@ export default function Home() {
             <span className="text-sm text-hueso/90">4.69 · 160 reseñas · 4 años de anfitrión</span>
           </div>
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#apartamentos"
             className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
           >
-            <MessageCircle size={18} />
-            Reservar por WhatsApp
+            Reservar ahora
           </a>
         </motion.div>
       </section>
@@ -136,7 +131,7 @@ export default function Home() {
       </motion.section>
 
       {/* APARTAMENTOS */}
-      <section className="bg-noche/5 py-20">
+      <section id="apartamentos" className="bg-noche/5 py-20">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             initial="hidden"
