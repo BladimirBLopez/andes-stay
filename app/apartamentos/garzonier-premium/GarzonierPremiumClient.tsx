@@ -95,7 +95,7 @@ export default function GarzonierPremium() {
 
   return (
     <main className="pb-28">
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10 rounded-b-3xl overflow-hidden">
         <button
           onClick={() => openGallery(categorias[0].fotos, 0)}
           className="absolute inset-0 w-full h-full"
