@@ -33,14 +33,8 @@ export default function Home() {
   return (
     <main>
       {/* NAV */}
-      <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
+      <nav className="absolute top-0 left-0 right-0 z-20 px-6 py-5 max-w-5xl mx-auto">
         <span className="font-display text-2xl text-hueso">VIP Estadías</span>
-        <a
-          href="#apartamentos"
-          className="bg-terracota hover:bg-terracota-light transition-colors text-noche px-5 py-2.5 rounded-full text-sm font-medium"
-        >
-          Reservar
-        </a>
       </nav>
 
       {/* HERO */}
