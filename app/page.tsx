@@ -12,7 +12,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
   loading: () => <div className="w-full h-full bg-noche/10 animate-pulse" />,
 });
 import CardCarousel from "./CardCarousel";
-import { MessageCircle, Star, MapPin } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X } from "lucide-react";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -37,6 +37,7 @@ export default function Home() {
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll);
@@ -58,7 +59,21 @@ export default function Home() {
             <a href="#ubicacion" className="hover:text-terracota-light transition-colors">Ubicación</a>
             <a href="#faq" className="hover:text-terracota-light transition-colors">Preguntas</a>
           </div>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-hueso"
+            aria-label="Abrir menú"
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-noche/98 backdrop-blur-sm flex flex-col items-center gap-6 py-8 text-hueso">
+            <a href="#apartamentos" onClick={() => setMenuOpen(false)}>Apartamentos</a>
+            <a href="#ubicacion" onClick={() => setMenuOpen(false)}>Ubicación</a>
+            <a href="#faq" onClick={() => setMenuOpen(false)}>Preguntas</a>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
