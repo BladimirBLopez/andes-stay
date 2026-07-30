@@ -68,15 +68,69 @@ export default function Home() {
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-        {menuOpen && (
-          <div className="md:hidden bg-noche/98 backdrop-blur-sm flex flex-col items-center gap-6 py-8 text-hueso">
-            <a href="#apartamentos" onClick={() => setMenuOpen(false)}>Apartamentos</a>
-            <Link href="/sobre-nosotros" onClick={() => setMenuOpen(false)}>Nosotros</Link>
-            <a href="#ubicacion" onClick={() => setMenuOpen(false)}>Ubicación</a>
-            <a href="#faq" onClick={() => setMenuOpen(false)}>Preguntas</a>
-          </div>
-        )}
       </nav>
+
+      {menuOpen && (
+        <div className="md:hidden fixed inset-0 z-[1005] bg-hueso flex flex-col items-center justify-center gap-8 px-6">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-6 right-6 text-noche"
+            aria-label="Cerrar menú"
+          >
+            <X size={30} />
+          </button>
+
+          <span className="font-script text-6xl text-terracota mb-4">Menú</span>
+
+          <a
+            href="#apartamentos"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-3xl text-noche hover:text-terracota transition-colors"
+          >
+            Apartamentos
+          </a>
+          <Link
+            href="/sobre-nosotros"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-3xl text-noche hover:text-terracota transition-colors"
+          >
+            Nosotros
+          </Link>
+          <a
+            href="#ubicacion"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-3xl text-noche hover:text-terracota transition-colors"
+          >
+            Ubicación
+          </a>
+          <a
+            href="#faq"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-3xl text-noche hover:text-terracota transition-colors"
+          >
+            Preguntas
+          </a>
+
+          <div className="flex items-center gap-6 mt-8">
+            <a
+              href="https://www.facebook.com/share/1ERTfyCjX2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-noche/60 hover:text-terracota transition-colors"
+            >
+              <Facebook size={22} />
+            </a>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-noche/60 hover:text-terracota transition-colors"
+            >
+              <MessageCircle size={22} />
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[90svh] flex items-end text-hueso overflow-hidden">
