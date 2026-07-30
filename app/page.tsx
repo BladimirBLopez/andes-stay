@@ -250,7 +250,7 @@ export default function Home() {
       >
         <div className="max-w-5xl mx-auto px-6">
           <span className="font-script text-5xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
-          <h2 className="font-display text-4xl md:text-5xl mb-4 text-noche">
+          <h2 className="font-display text-2xl md:text-3xl mb-4 text-noche">
             {t("servicio_titulo")}
           </h2>
           <p className="text-lg text-noche/70 max-w-2xl mb-12">
@@ -295,7 +295,7 @@ export default function Home() {
             variants={fadeUp}
           >
             <span className="font-script text-5xl text-terracota block mb-1">{t("apartamentos_eyebrow")}</span>
-            <h2 className="font-display text-4xl md:text-5xl mb-2">{t("apartamentos_titulo")}</h2>
+            <h2 className="font-display text-2xl md:text-3xl mb-2">{t("apartamentos_titulo")}</h2>
             <p className="text-noche/60 mb-12">{t("apartamentos_sub")}</p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -363,7 +363,7 @@ export default function Home() {
       >
         <div className="max-w-5xl mx-auto px-6">
         <span className="font-script text-5xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
-        <h2 className="font-display text-4xl md:text-5xl mb-2">{t("ubicacion_titulo")}</h2>
+        <h2 className="font-display text-2xl md:text-3xl mb-2">{t("ubicacion_titulo")}</h2>
         <p className="text-noche/60 mb-8">
           {t("ubicacion_sub")}
         </p>
@@ -388,7 +388,7 @@ export default function Home() {
       >
         <div className="max-w-3xl mx-auto px-6">
         <span className="font-script text-5xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
-        <h2 className="font-display text-4xl md:text-5xl mb-10">{t("faq_titulo")}</h2>
+        <h2 className="font-display text-2xl md:text-3xl mb-10">{t("faq_titulo")}</h2>
         <div className="space-y-4">
           {faqData[lang].map((item) => (
             <details
@@ -415,7 +415,7 @@ export default function Home() {
         variants={fadeUp}
         className="max-w-5xl mx-auto px-6 py-20 text-center"
       >
-        <h2 className="font-display text-4xl md:text-5xl mb-4">
+        <h2 className="font-display text-2xl md:text-3xl mb-4">
           {t("contacto_titulo")}
         </h2>
         <p className="text-noche/70 max-w-xl mx-auto mb-8">
