@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
+import { LanguageProvider } from "./LanguageContext";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -58,7 +59,9 @@ export default function RootLayout({
             }),
           }}
         />
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <Toaster position="bottom-center" />
         <Analytics />
       </body>

@@ -15,6 +15,7 @@ import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
 import { MessageCircle, Star, MapPin, Menu, X } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
+import { useLanguage } from "./LanguageContext";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -25,12 +26,53 @@ const apartamentos = [
   { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", fotos: [], slug: null },
 ];
 
+const faqData = {
+  es: [
+    { q: "¿Cómo reservo un apartamento?", a: "Escríbenos por WhatsApp indicando el apartamento de tu interés y las fechas. Te confirmamos disponibilidad al instante." },
+    { q: "¿A qué hora es el check-in y check-out?", a: "Check-in a partir de las 2:00 pm y check-out antes de las 11:00 am. El horario exacto se confirma al reservar." },
+    { q: "¿Los apartamentos incluyen wifi?", a: "Sí, todos nuestros apartamentos cuentan con wifi de alta velocidad." },
+    { q: "¿Dónde están ubicados los apartamentos?", a: "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz." },
+    { q: "¿Cómo se coordina el pago?", a: "El método de pago se coordina directamente por WhatsApp al confirmar tu reserva." },
+  ],
+  en: [
+    { q: "How do I book an apartment?", a: "Message us on WhatsApp with the apartment you're interested in and your dates. We'll confirm availability right away." },
+    { q: "What time is check-in and check-out?", a: "Check-in from 2:00 pm and check-out before 11:00 am. Exact times are confirmed at booking." },
+    { q: "Do the apartments include wifi?", a: "Yes, all our apartments have high-speed wifi." },
+    { q: "Where are the apartments located?", a: "All 4 apartments are located in Sopocachi, an exclusive residential area of La Paz." },
+    { q: "How is payment arranged?", a: "Payment method is arranged directly via WhatsApp when confirming your booking." },
+  ],
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
+function LangSwitcher({ light = false }: { light?: boolean }) {
+  const { lang, setLang } = useLanguage();
+  const base = light ? "text-hueso/70" : "text-noche/60";
+  const active = light ? "text-hueso" : "text-noche";
+  return (
+    <div className={`flex items-center gap-1 text-sm font-medium ${base}`}>
+      <button
+        onClick={() => setLang("es")}
+        className={lang === "es" ? active : ""}
+      >
+        ES
+      </button>
+      <span>/</span>
+      <button
+        onClick={() => setLang("en")}
+        className={lang === "en" ? active : ""}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
+
 export default function Home() {
+  const { t, lang } = useLanguage();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -53,6 +95,11 @@ export default function Home() {
     };
   }, [menuOpen]);
 
+  const whatsappMsg =
+    lang === "es"
+      ? "Hola, quisiera reservar un apartamento en La Paz"
+      : "Hi, I'd like to book an apartment in La Paz";
+
   return (
     <main>
       {/* NAV */}
@@ -64,10 +111,11 @@ export default function Home() {
         <div className="px-6 py-5 max-w-5xl mx-auto flex items-center justify-between">
           <span className="font-display text-2xl text-hueso">VIP Estadías</span>
           <div className="hidden md:flex items-center gap-8 text-sm text-hueso/80">
-            <a href="#apartamentos" className="hover:text-terracota-light transition-colors">Apartamentos</a>
-            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">Nosotros</Link>
-            <a href="#ubicacion" className="hover:text-terracota-light transition-colors">Ubicación</a>
-            <a href="#faq" className="hover:text-terracota-light transition-colors">Preguntas</a>
+            <a href="#apartamentos" className="hover:text-terracota-light transition-colors">{t("nav_apartamentos")}</a>
+            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">{t("nav_nosotros")}</Link>
+            <a href="#ubicacion" className="hover:text-terracota-light transition-colors">{t("nav_ubicacion")}</a>
+            <a href="#faq" className="hover:text-terracota-light transition-colors">{t("nav_preguntas")}</a>
+            <LangSwitcher light />
           </div>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -96,31 +144,33 @@ export default function Home() {
             onClick={() => setMenuOpen(false)}
             className="font-display text-3xl text-noche hover:text-terracota transition-colors"
           >
-            Apartamentos
+            {t("nav_apartamentos")}
           </a>
           <Link
             href="/sobre-nosotros"
             onClick={() => setMenuOpen(false)}
             className="font-display text-3xl text-noche hover:text-terracota transition-colors"
           >
-            Nosotros
+            {t("nav_nosotros")}
           </Link>
           <a
             href="#ubicacion"
             onClick={() => setMenuOpen(false)}
             className="font-display text-3xl text-noche hover:text-terracota transition-colors"
           >
-            Ubicación
+            {t("nav_ubicacion")}
           </a>
           <a
             href="#faq"
             onClick={() => setMenuOpen(false)}
             className="font-display text-3xl text-noche hover:text-terracota transition-colors"
           >
-            Preguntas
+            {t("nav_preguntas")}
           </a>
 
-          <div className="flex items-center gap-6 mt-8">
+          <LangSwitcher />
+
+          <div className="flex items-center gap-6 mt-4">
             <a
               href="https://www.facebook.com/share/1ERTfyCjX2/"
               target="_blank"
@@ -163,25 +213,23 @@ export default function Home() {
             <MapPin size={14} /> La Paz, Bolivia
           </p>
           <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-4">
-            VIP Estadías
+            {t("hero_titulo")}
           </h1>
           <p className="text-terracota-light text-lg md:text-xl mb-6">
-            Alojamientos que te hacen sentir en casa.
+            {t("hero_slogan")}
           </p>
           <p className="text-lg md:text-xl max-w-xl text-hueso/80 mb-4">
-            Apartamentos amoblados y equipados en las mejores zonas de La
-            Paz. Ubicación exclusiva, wifi de alta velocidad y todo lo que
-            necesita para su estadía temporal.
+            {t("hero_desc")}
           </p>
           <div className="flex items-center gap-2 text-terracota-light mb-8">
             <Star size={16} fill="currentColor" />
-            <span className="text-sm text-hueso/90">4.69 · 160 reseñas · 4 años de anfitrión</span>
+            <span className="text-sm text-hueso/90">{t("hero_stats")}</span>
           </div>
           <a
             href="#apartamentos"
             className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
           >
-            Reservar ahora
+            {t("hero_boton")}
           </a>
         </motion.div>
       </section>
@@ -208,18 +256,18 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-noche/85" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <span className="font-script text-4xl text-terracota-light block mb-1">Nuestra propuesta</span>
+          <span className="font-script text-4xl text-terracota-light block mb-1">{t("servicio_eyebrow")}</span>
           <h2 className="font-display text-3xl md:text-4xl mb-4">
-            Confort y ubicación en el corazón de La Paz
+            {t("servicio_titulo")}
           </h2>
           <p className="text-lg text-hueso/80 max-w-2xl mb-12">
-            4 años de experiencia, 160 reseñas, 4.69★.
+            {t("servicio_sub")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { titulo: "Ubicación exclusiva", texto: "Cerca de embajadas, malls, restaurantes y transporte público." },
-              { titulo: "Todo equipado", texto: "Wifi de alta velocidad, cocina completa y servicios básicos incluidos." },
-              { titulo: "Atención personal", texto: "Reserva y coordinación directa, sin intermediarios." },
+              { titulo: t("servicio_1_titulo"), texto: t("servicio_1_texto") },
+              { titulo: t("servicio_2_titulo"), texto: t("servicio_2_texto") },
+              { titulo: t("servicio_3_titulo"), texto: t("servicio_3_texto") },
             ].map((item, i) => (
               <motion.div
                 key={item.titulo}
@@ -247,9 +295,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             variants={fadeUp}
           >
-            <span className="font-script text-4xl text-terracota block mb-1">Alojamiento</span>
-            <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestros apartamentos</h2>
-            <p className="text-noche/60 mb-12">4 opciones en las mejores zonas de La Paz</p>
+            <span className="font-script text-4xl text-terracota block mb-1">{t("apartamentos_eyebrow")}</span>
+            <h2 className="font-display text-3xl md:text-4xl mb-2">{t("apartamentos_titulo")}</h2>
+            <p className="text-noche/60 mb-12">{t("apartamentos_sub")}</p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {apartamentos.map((apto, i) => (
@@ -284,7 +332,7 @@ export default function Home() {
                           href={`/apartamentos/${apto.slug}`}
                           className="flex-1 text-center border border-noche/20 hover:border-terracota transition-colors text-noche text-sm font-medium rounded-full py-2"
                         >
-                          Ver detalles
+                          {t("ver_detalles")}
                         </Link>
                       )}
                       <a
@@ -293,7 +341,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="flex-1 text-center bg-terracota hover:bg-terracota-light transition-colors text-noche text-sm font-medium rounded-full py-2"
                       >
-                        Reservar
+                        {t("reservar")}
                       </a>
                     </div>
                   </div>
@@ -314,17 +362,16 @@ export default function Home() {
         variants={fadeUp}
         className="max-w-5xl mx-auto px-6 py-20"
       >
-        <span className="font-script text-4xl text-terracota block mb-1">Donde estamos</span>
-        <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestra ubicación</h2>
+        <span className="font-script text-4xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
+        <h2 className="font-display text-3xl md:text-4xl mb-2">{t("ubicacion_titulo")}</h2>
         <p className="text-noche/60 mb-8">
-          Los 4 apartamentos se encuentran en Sopocachi, una zona residencial
-          y exclusiva de La Paz.
+          {t("ubicacion_sub")}
         </p>
         <div className="rounded-2xl overflow-hidden border border-noche/10 aspect-[16/9]">
           <MapaSopocachi />
         </div>
         <p className="text-sm text-noche/50 mt-3">
-          La ubicación exacta de cada apartamento se comparte al confirmar la reserva.
+          {t("ubicacion_nota")}
         </p>
       </motion.section>
 
@@ -339,31 +386,10 @@ export default function Home() {
         className="bg-hueso py-20"
       >
         <div className="max-w-3xl mx-auto px-6">
-        <span className="font-script text-4xl text-terracota block mb-1">Ayuda</span>
-        <h2 className="font-display text-3xl md:text-4xl mb-10">Preguntas frecuentes</h2>
+        <span className="font-script text-4xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
+        <h2 className="font-display text-3xl md:text-4xl mb-10">{t("faq_titulo")}</h2>
         <div className="space-y-4">
-          {[
-            {
-              q: "¿Cómo reservo un apartamento?",
-              a: "Escríbenos por WhatsApp indicando el apartamento de tu interés y las fechas. Te confirmamos disponibilidad al instante.",
-            },
-            {
-              q: "¿A qué hora es el check-in y check-out?",
-              a: "Check-in a partir de las 2:00 pm y check-out antes de las 11:00 am. El horario exacto se confirma al reservar.",
-            },
-            {
-              q: "¿Los apartamentos incluyen wifi?",
-              a: "Sí, todos nuestros apartamentos cuentan con wifi de alta velocidad.",
-            },
-            {
-              q: "¿Dónde están ubicados los apartamentos?",
-              a: "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz.",
-            },
-            {
-              q: "¿Cómo se coordina el pago?",
-              a: "El método de pago se coordina directamente por WhatsApp al confirmar tu reserva.",
-            },
-          ].map((item) => (
+          {faqData[lang].map((item) => (
             <details
               key={item.q}
               className="group border border-noche/10 rounded-xl px-5 py-4 bg-hueso"
@@ -389,20 +415,19 @@ export default function Home() {
         className="max-w-5xl mx-auto px-6 py-20 text-center"
       >
         <h2 className="font-display text-3xl md:text-4xl mb-4">
-          ¿Listo para su próxima estadía en La Paz?
+          {t("contacto_titulo")}
         </h2>
         <p className="text-noche/70 max-w-xl mx-auto mb-8">
-          Escríbanos directamente y le ayudamos a encontrar el apartamento
-          ideal para su viaje.
+          {t("contacto_sub")}
         </p>
         <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
         >
           <MessageCircle size={18} />
-          Reservar por WhatsApp
+          {t("contacto_boton")}
         </a>
       </motion.section>
 
@@ -410,7 +435,7 @@ export default function Home() {
 
       {/* BOTÓN FLOTANTE WHATSAPP */}
       <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-[1002] bg-[#25D366] hover:bg-[#20bd5a] transition-colors text-white rounded-full p-4 shadow-lg"

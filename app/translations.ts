@@ -1,0 +1,81 @@
+export const translations = {
+  es: {
+    nav_apartamentos: "Apartamentos",
+    nav_nosotros: "Nosotros",
+    nav_ubicacion: "Ubicación",
+    nav_preguntas: "Preguntas",
+    hero_titulo: "VIP Estadías",
+    hero_slogan: "Alojamientos que te hacen sentir en casa.",
+    hero_desc:
+      "Apartamentos amoblados y equipados en las mejores zonas de La Paz. Ubicación exclusiva, wifi de alta velocidad y todo lo que necesita para su estadía temporal.",
+    hero_stats: "4.69 · 160 reseñas · 4 años de anfitrión",
+    hero_boton: "Reservar ahora",
+    servicio_eyebrow: "Nuestra propuesta",
+    servicio_titulo: "Confort y ubicación en el corazón de La Paz",
+    servicio_sub: "4 años de experiencia, 160 reseñas, 4.69★.",
+    servicio_1_titulo: "Ubicación exclusiva",
+    servicio_1_texto: "Cerca de embajadas, malls, restaurantes y transporte público.",
+    servicio_2_titulo: "Todo equipado",
+    servicio_2_texto: "Wifi de alta velocidad, cocina completa y servicios básicos incluidos.",
+    servicio_3_titulo: "Atención personal",
+    servicio_3_texto: "Reserva y coordinación directa, sin intermediarios.",
+    apartamentos_eyebrow: "Alojamiento",
+    apartamentos_titulo: "Nuestros apartamentos",
+    apartamentos_sub: "4 opciones en las mejores zonas de La Paz",
+    ver_detalles: "Ver detalles",
+    reservar: "Reservar",
+    ubicacion_eyebrow: "Donde estamos",
+    ubicacion_titulo: "Nuestra ubicación",
+    ubicacion_sub:
+      "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz.",
+    ubicacion_nota:
+      "La ubicación exacta de cada apartamento se comparte al confirmar la reserva.",
+    faq_eyebrow: "Ayuda",
+    faq_titulo: "Preguntas frecuentes",
+    contacto_titulo: "¿Listo para su próxima estadía en La Paz?",
+    contacto_sub:
+      "Escríbanos directamente y le ayudamos a encontrar el apartamento ideal para su viaje.",
+    contacto_boton: "Reservar por WhatsApp",
+  },
+  en: {
+    nav_apartamentos: "Apartments",
+    nav_nosotros: "About Us",
+    nav_ubicacion: "Location",
+    nav_preguntas: "FAQ",
+    hero_titulo: "VIP Estadías",
+    hero_slogan: "Stays that feel like home.",
+    hero_desc:
+      "Furnished, fully equipped apartments in the best areas of La Paz. Prime location, high-speed wifi, and everything you need for your temporary stay.",
+    hero_stats: "4.69 · 160 reviews · 4 years hosting",
+    hero_boton: "Book now",
+    servicio_eyebrow: "Why choose us",
+    servicio_titulo: "Comfort and location in the heart of La Paz",
+    servicio_sub: "4 years of experience, 160 reviews, 4.69★.",
+    servicio_1_titulo: "Prime location",
+    servicio_1_texto: "Close to embassies, malls, restaurants, and public transport.",
+    servicio_2_titulo: "Fully equipped",
+    servicio_2_texto: "High-speed wifi, full kitchen, and basic utilities included.",
+    servicio_3_titulo: "Personal attention",
+    servicio_3_texto: "Direct booking and coordination, no middlemen.",
+    apartamentos_eyebrow: "Lodging",
+    apartamentos_titulo: "Our apartments",
+    apartamentos_sub: "4 options in the best areas of La Paz",
+    ver_detalles: "View details",
+    reservar: "Book",
+    ubicacion_eyebrow: "Where we are",
+    ubicacion_titulo: "Our location",
+    ubicacion_sub:
+      "All 4 apartments are located in Sopocachi, an exclusive residential area of La Paz.",
+    ubicacion_nota:
+      "The exact address of each apartment is shared once your booking is confirmed.",
+    faq_eyebrow: "Help",
+    faq_titulo: "Frequently asked questions",
+    contacto_titulo: "Ready for your next stay in La Paz?",
+    contacto_sub:
+      "Message us directly and we'll help you find the ideal apartment for your trip.",
+    contacto_boton: "Book via WhatsApp",
+  },
+} as const;
+
+export type Lang = keyof typeof translations;
+export type TranslationKey = keyof typeof translations.es;
