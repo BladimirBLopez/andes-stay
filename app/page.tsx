@@ -232,10 +232,6 @@ export default function Home() {
           <p className="text-lg md:text-xl max-w-xl text-hueso/80 mb-4">
             {t("hero_desc")}
           </p>
-          <div className="flex items-center gap-2 text-terracota-light mb-8">
-            <Star size={16} fill="currentColor" />
-            <span className="text-sm text-hueso/90">{t("hero_stats")}</span>
-          </div>
           <a
             href="#apartamentos"
             className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
