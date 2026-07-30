@@ -114,24 +114,24 @@ export default function Home() {
     <main>
       {/* NAV */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-[1001] transition-colors duration-300 ${
-          scrolled ? "bg-noche/95 backdrop-blur-sm shadow-md" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-[1001] bg-hueso/95 backdrop-blur-sm border-b border-noche/10 transition-shadow duration-300 ${
+          scrolled ? "shadow-md" : "shadow-sm"
         }`}
       >
         <div className="px-6 py-5 max-w-5xl mx-auto flex items-center justify-between">
-          <span className="font-display text-2xl text-hueso">VIP Estadías</span>
-          <div className="hidden md:flex items-center gap-8 text-sm text-hueso/80">
-            <a href="#apartamentos" className="hover:text-terracota-light transition-colors">{t("nav_apartamentos")}</a>
-            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">{t("nav_nosotros")}</Link>
-            <a href="#ubicacion" className="hover:text-terracota-light transition-colors">{t("nav_ubicacion")}</a>
-            <a href="#faq" className="hover:text-terracota-light transition-colors">{t("nav_preguntas")}</a>
-            <LangSwitcher light />
+          <span className="font-display text-2xl text-noche">VIP Estadías</span>
+          <div className="hidden md:flex items-center gap-8 text-sm text-noche/80">
+            <a href="#apartamentos" className="hover:text-terracota transition-colors">{t("nav_apartamentos")}</a>
+            <Link href="/sobre-nosotros" className="hover:text-terracota transition-colors">{t("nav_nosotros")}</Link>
+            <a href="#ubicacion" className="hover:text-terracota transition-colors">{t("nav_ubicacion")}</a>
+            <a href="#faq" className="hover:text-terracota transition-colors">{t("nav_preguntas")}</a>
+            <LangSwitcher />
           </div>
           <div className="flex items-center gap-4 md:hidden">
-            <LangSwitcher light />
+            <LangSwitcher />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-hueso"
+              className="text-noche"
               aria-label="Abrir menú"
             >
               {menuOpen ? <X size={26} /> : <Menu size={26} />}
