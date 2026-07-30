@@ -132,8 +132,8 @@ export default function GarzonierPremium() {
 
         <TrustStats />
         <p className="text-xs text-noche/40 text-center -mt-4 mb-4">
-          Trayectoria de Wilmer como anfitrión en Airbnb. Este apartamento es
-          nuevo, por eso aún no tiene reseñas propias.
+          Trayectoria de VIP Estadías en Airbnb. Este apartamento es nuevo,
+          por eso aún no tiene reseñas propias.
         </p>
 
         <div className="h-12" />
