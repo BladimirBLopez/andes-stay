@@ -93,7 +93,7 @@ export default function GarzonierPremium() {
   )}`;
 
   return (
-    <main className="pb-28">
+    <main className="pb-28 md:pb-0">
       <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
         <button
           onClick={() => openGallery(categorias[0].fotos, 0)}
