@@ -249,7 +249,7 @@ export default function Home() {
         className="bg-white py-24"
       >
         <div className="max-w-5xl mx-auto px-6">
-          <span className="font-script text-4xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
+          <span className="font-script text-5xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
           <h2 className="font-display text-4xl md:text-5xl mb-4 text-noche">
             {t("servicio_titulo")}
           </h2>
@@ -294,7 +294,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             variants={fadeUp}
           >
-            <span className="font-script text-4xl text-terracota block mb-1">{t("apartamentos_eyebrow")}</span>
+            <span className="font-script text-5xl text-terracota block mb-1">{t("apartamentos_eyebrow")}</span>
             <h2 className="font-display text-4xl md:text-5xl mb-2">{t("apartamentos_titulo")}</h2>
             <p className="text-noche/60 mb-12">{t("apartamentos_sub")}</p>
           </motion.div>
@@ -362,7 +362,7 @@ export default function Home() {
         className="py-20"
       >
         <div className="max-w-5xl mx-auto px-6">
-        <span className="font-script text-4xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
+        <span className="font-script text-5xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
         <h2 className="font-display text-4xl md:text-5xl mb-2">{t("ubicacion_titulo")}</h2>
         <p className="text-noche/60 mb-8">
           {t("ubicacion_sub")}
@@ -387,7 +387,7 @@ export default function Home() {
         className="bg-hueso py-20"
       >
         <div className="max-w-3xl mx-auto px-6">
-        <span className="font-script text-4xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
+        <span className="font-script text-5xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
         <h2 className="font-display text-4xl md:text-5xl mb-10">{t("faq_titulo")}</h2>
         <div className="space-y-4">
           {faqData[lang].map((item) => (
