@@ -115,11 +115,11 @@ export default function Home() {
     <main>
       {/* NAV */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-[1001] bg-hueso/95 backdrop-blur-sm border-b border-noche/10 transition-shadow duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[1001] bg-white backdrop-blur-sm border-b border-noche/10 transition-shadow duration-300 ${
           scrolled ? "shadow-md" : "shadow-sm"
         }`}
       >
-        <div className="px-6 py-5 max-w-5xl mx-auto flex items-center justify-between">
+        <div className="px-6 py-3 max-w-5xl mx-auto flex items-center justify-between">
           <span className="flex items-center gap-2">
             <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={40} height={26} className="h-8 w-auto" priority />
             <span className="font-display text-2xl text-noche">VIP Estadías</span>
