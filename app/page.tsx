@@ -56,6 +56,7 @@ export default function Home() {
           <span className="font-display text-2xl text-hueso">VIP Estadías</span>
           <div className="hidden md:flex items-center gap-8 text-sm text-hueso/80">
             <a href="#apartamentos" className="hover:text-terracota-light transition-colors">Apartamentos</a>
+            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">Nosotros</Link>
             <a href="#ubicacion" className="hover:text-terracota-light transition-colors">Ubicación</a>
             <a href="#faq" className="hover:text-terracota-light transition-colors">Preguntas</a>
           </div>
@@ -70,6 +71,7 @@ export default function Home() {
         {menuOpen && (
           <div className="md:hidden bg-noche/98 backdrop-blur-sm flex flex-col items-center gap-6 py-8 text-hueso">
             <a href="#apartamentos" onClick={() => setMenuOpen(false)}>Apartamentos</a>
+            <Link href="/sobre-nosotros" onClick={() => setMenuOpen(false)}>Nosotros</Link>
             <a href="#ubicacion" onClick={() => setMenuOpen(false)}>Ubicación</a>
             <a href="#faq" onClick={() => setMenuOpen(false)}>Preguntas</a>
           </div>
@@ -223,65 +225,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* SOBRE NOSOTROS */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        variants={fadeUp}
-        className="max-w-5xl mx-auto px-6 py-20"
-      >
-        <h2 className="font-display text-3xl md:text-4xl mb-12">Sobre nosotros</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-          <div>
-            <h3 className="font-display text-xl mb-3 text-terracota">Misión</h3>
-            <p className="text-noche/70 leading-relaxed">
-              Brindar servicios de alojamiento temporal en apartamentos
-              amoblados y totalmente equipados, ofreciendo comodidad,
-              seguridad, limpieza y atención personalizada que superen las
-              expectativas de nuestros huéspedes. Nos comprometemos a
-              proporcionar una experiencia de hospedaje confiable y de
-              calidad, contribuyendo al bienestar de viajeros nacionales e
-              internacionales mediante un servicio eficiente, cálido y
-              profesional.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-display text-xl mb-3 text-terracota">Visión</h3>
-            <p className="text-noche/70 leading-relaxed">
-              Ser la empresa líder en alojamiento temporal de alta calidad en
-              La Paz, reconocida por la excelencia en el servicio, la
-              confianza, la innovación y el confort que ofrecemos a nuestros
-              huéspedes, expandiendo nuestra presencia con apartamentos
-              cuidadosamente seleccionados y convirtiéndonos en la primera
-              opción para viajeros nacionales e internacionales.
-            </p>
-          </div>
-        </div>
-
-        <h3 className="font-display text-2xl mb-6">Lo que dicen nuestros huéspedes</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { nombre: "Gustavo", ciudad: "Santa Cruz de la Sierra", texto: "Cómodo Dpto" },
-            { nombre: "Cesar Andrés", ciudad: "La Paz", texto: "Totalmente recomendable." },
-            { nombre: "Daniel", ciudad: "Huésped Airbnb", texto: "Excelente host y buen lugar" },
-          ].map((r) => (
-            <div key={r.nombre} className="bg-hueso border border-noche/10 rounded-2xl p-6">
-              <div className="flex items-center gap-1 text-oro mb-3">
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-                <Star size={14} fill="currentColor" />
-              </div>
-              <p className="text-noche/80 mb-4">&ldquo;{r.texto}&rdquo;</p>
-              <p className="text-sm text-noche/50">{r.nombre} · {r.ciudad}</p>
-            </div>
-          ))}
-        </div>
-      </motion.section>
 
       {/* UBICACIÓN */}
       <motion.section
