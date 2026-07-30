@@ -9,6 +9,13 @@ import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat } from "lucide-reac
 import ShareButton from "../../ShareButton";
 import TrustStats from "../../TrustStats";
 import Amenidades from "../../Amenidades";
+import Footer from "../../Footer";
+
+const otrosApartamentos = [
+  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz" },
+  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi" },
+  { nombre: "Apto. VIP de Lujo", detalle: "Penthouse · Sopocachi" },
+];
 
 const amenidades = [
   { icon: Wifi, label: "Wifi" },
@@ -215,6 +222,30 @@ export default function GarzonierPremium() {
           slides={slides}
         />
 
+        <div className="mb-16 border-t border-noche/10 pt-16">
+          <h2 className="font-display text-2xl mb-6">Otros apartamentos</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {otrosApartamentos.map((a) => (
+              <a
+                key={a.nombre}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa el ${a.nombre}. ¿Está disponible?`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-noche/10 rounded-xl p-5 hover:border-terracota transition-colors"
+              >
+                <h3 className="font-display text-lg mb-1">{a.nombre}</h3>
+                <p className="text-sm text-noche/60">{a.detalle}</p>
+              </a>
+            ))}
+          </div>
+          <Link
+            href="/#apartamentos"
+            className="inline-block mt-6 text-sm text-terracota border-b border-terracota"
+          >
+            Ver todos los apartamentos
+          </Link>
+        </div>
+
         <div className="hidden md:block text-center py-12 border-t border-noche/10">
           <h2 className="font-display text-2xl mb-4">
             ¿Le interesa este apartamento?
@@ -230,6 +261,8 @@ export default function GarzonierPremium() {
           </a>
         </div>
       </div>
+
+      <Footer />
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-hueso border-t border-noche/10 px-6 py-4 flex items-center justify-between z-40">
         <div>

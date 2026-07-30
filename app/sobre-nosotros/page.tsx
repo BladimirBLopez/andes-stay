@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, MessageCircle, Star } from "lucide-react";
+import Footer from "../Footer";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -85,6 +86,8 @@ export default function SobreNosotros() {
           Reservar por WhatsApp
         </a>
       </div>
+
+      <Footer />
 
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
