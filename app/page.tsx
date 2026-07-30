@@ -146,7 +146,7 @@ export default function Home() {
             <a href="#faq" className="hover:text-terracota transition-colors">{t("nav_preguntas")}</a>
             <LangSwitcher />
           </div>
-          <div className="flex items-center gap-4 md:hidden">
+          <div className="flex items-center gap-6 md:hidden">
             <LangSwitcher />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
