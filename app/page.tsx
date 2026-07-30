@@ -177,7 +177,7 @@ export default function Home() {
       </motion.section>
 
       {/* APARTAMENTOS */}
-      <section id="apartamentos" className="bg-noche/5 py-20">
+      <section id="apartamentos" className="bg-hueso py-20">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -275,8 +275,9 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="max-w-3xl mx-auto px-6 py-20"
+        className="bg-hueso py-20"
       >
+        <div className="max-w-3xl mx-auto px-6">
         <span className="font-script text-4xl text-terracota block mb-1">Ayuda</span>
         <h2 className="font-display text-3xl md:text-4xl mb-10">Preguntas frecuentes</h2>
         <div className="space-y-4">
@@ -313,6 +314,7 @@ export default function Home() {
               <p className="text-noche/70 mt-3 leading-relaxed">{item.a}</p>
             </details>
           ))}
+        </div>
         </div>
       </motion.section>
 
