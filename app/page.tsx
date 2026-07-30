@@ -13,7 +13,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
 });
 import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
-import { MessageCircle, Star, MapPin, Menu, X } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, ChevronDown } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
