@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Tilt from "react-parallax-tilt";
@@ -36,11 +36,24 @@ export default function Home() {
   });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <main>
       {/* NAV */}
-      <nav className="absolute top-0 left-0 right-0 z-20 px-6 py-5 max-w-5xl mx-auto">
-        <span className="font-display text-2xl text-hueso">VIP Estadías</span>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-30 transition-colors duration-300 ${
+          scrolled ? "bg-noche/95 backdrop-blur-sm shadow-md" : "bg-transparent"
+        }`}
+      >
+        <div className="px-6 py-5 max-w-5xl mx-auto">
+          <span className="font-display text-2xl text-hueso">VIP Estadías</span>
+        </div>
       </nav>
 
       {/* HERO */}
@@ -272,6 +285,53 @@ export default function Home() {
         </p>
       </motion.section>
 
+      {/* FAQ */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        variants={fadeUp}
+        className="max-w-3xl mx-auto px-6 py-20"
+      >
+        <h2 className="font-display text-3xl md:text-4xl mb-10">Preguntas frecuentes</h2>
+        <div className="space-y-4">
+          {[
+            {
+              q: "¿Cómo reservo un apartamento?",
+              a: "Escríbenos por WhatsApp indicando el apartamento de tu interés y las fechas. Te confirmamos disponibilidad al instante.",
+            },
+            {
+              q: "¿A qué hora es el check-in y check-out?",
+              a: "Check-in a partir de las 2:00 pm y check-out antes de las 11:00 am. El horario exacto se confirma al reservar.",
+            },
+            {
+              q: "¿Los apartamentos incluyen wifi?",
+              a: "Sí, todos nuestros apartamentos cuentan con wifi de alta velocidad.",
+            },
+            {
+              q: "¿Dónde están ubicados los apartamentos?",
+              a: "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz.",
+            },
+            {
+              q: "¿Cómo se coordina el pago?",
+              a: "El método de pago se coordina directamente por WhatsApp al confirmar tu reserva.",
+            },
+          ].map((item) => (
+            <details
+              key={item.q}
+              className="group border border-noche/10 rounded-xl px-5 py-4 bg-hueso"
+            >
+              <summary className="cursor-pointer font-medium flex items-center justify-between list-none">
+                {item.q}
+                <span className="text-terracota text-xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="text-noche/70 mt-3 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </motion.section>
+
       {/* CONTACTO */}
       <motion.section
         initial="hidden"
@@ -302,6 +362,17 @@ export default function Home() {
       <footer className="text-center py-8 text-sm text-noche/50">
         VIP Estadías · La Paz, Bolivia
       </footer>
+
+      {/* BOTÓN FLOTANTE WHATSAPP */}
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 bg-terracota hover:bg-terracota-light transition-colors text-noche rounded-full p-4 shadow-lg"
+        aria-label="Escribir por WhatsApp"
+      >
+        <MessageCircle size={24} />
+      </a>
     </main>
   );
 }
