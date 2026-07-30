@@ -205,17 +205,25 @@ export default function Home() {
           <div>
             <h3 className="font-display text-xl mb-3 text-terracota">Misión</h3>
             <p className="text-noche/70 leading-relaxed">
-              Ofrecer alojamientos temporales confortables y seguros en las
-              mejores zonas de La Paz, brindando a cada huésped una
-              experiencia de atención personalizada, cercana y confiable.
+              Brindar servicios de alojamiento temporal en apartamentos
+              amoblados y totalmente equipados, ofreciendo comodidad,
+              seguridad, limpieza y atención personalizada que superen las
+              expectativas de nuestros huéspedes. Nos comprometemos a
+              proporcionar una experiencia de hospedaje confiable y de
+              calidad, contribuyendo al bienestar de viajeros nacionales e
+              internacionales mediante un servicio eficiente, cálido y
+              profesional.
             </p>
           </div>
           <div>
             <h3 className="font-display text-xl mb-3 text-terracota">Visión</h3>
             <p className="text-noche/70 leading-relaxed">
-              Ser la opción de referencia en alojamiento temporal en La Paz,
-              reconocidos por la calidad de nuestros espacios y el trato
-              cercano con cada huésped.
+              Ser la empresa líder en alojamiento temporal de alta calidad en
+              La Paz, reconocida por la excelencia en el servicio, la
+              confianza, la innovación y el confort que ofrecemos a nuestros
+              huéspedes, expandiendo nuestra presencia con apartamentos
+              cuidadosamente seleccionados y convirtiéndonos en la primera
+              opción para viajeros nacionales e internacionales.
             </p>
           </div>
         </div>
