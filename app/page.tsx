@@ -448,18 +448,20 @@ export default function Home() {
       <Footer />
 
       {/* BOTÓN FLOTANTE WHATSAPP */}
-      <div className="fixed bottom-6 right-6 z-[1002] flex items-center gap-3">
+      <div className="fixed bottom-6 right-6 z-[1002] flex items-center gap-2">
         {showGreeting && (
-          <div className="relative bg-white rounded-2xl shadow-xl px-5 py-4 max-w-[260px]">
+          <>
             <button
               onClick={() => setShowGreeting(false)}
               aria-label="Cerrar"
-              className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors text-gray-600 flex items-center justify-center shadow"
+              className="w-7 h-7 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors text-gray-600 flex items-center justify-center shadow shrink-0"
             >
-              <X size={12} />
+              <X size={14} />
             </button>
-            <p className="text-base text-gray-700">¡Hola! ¿Le puedo ayudar en algo?</p>
-          </div>
+            <div className="bg-white rounded-2xl shadow-xl px-5 py-4 max-w-[260px]">
+              <p className="text-base text-gray-700">¡Hola! ¿Le puedo ayudar en algo?</p>
+            </div>
+          </>
         )}
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`}
