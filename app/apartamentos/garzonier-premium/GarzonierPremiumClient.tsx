@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat } from "lucide-react";
+import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bed, Bath } from "lucide-react";
 import ShareButton from "../../ShareButton";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
@@ -129,22 +129,24 @@ export default function GarzonierPremium() {
             La Paz, Bolivia
           </p>
           <h1 className="font-display text-3xl md:text-5xl mb-3">{NOMBRE}</h1>
-          <p className="text-noche/70 mb-3">
+          <p className="text-noche/70 mb-4">
             Alojamiento entero en La Paz, Bolivia
           </p>
-          <p className="text-noche/70 mb-4">
-            2 huéspedes · 1 habitación · 1 cama · 1 baño
-          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4 text-noche/70">
+            <span className="flex items-center gap-2"><Users size={16} className="text-terracota" /> 2 huéspedes</span>
+            <span className="flex items-center gap-2"><Home size={16} className="text-terracota" /> 1 habitación</span>
+            <span className="flex items-center gap-2"><BedDouble size={16} className="text-terracota" /> 1 cama</span>
+            <span className="flex items-center gap-2"><Bath size={16} className="text-terracota" /> 1 baño</span>
+          </div>
           <div className="inline-flex items-center gap-1 bg-oro/15 text-noche px-3 py-1.5 rounded-full text-sm font-medium">
             <Star size={14} fill="currentColor" className="text-oro" />
             Novedad
           </div>
         </div>
 
-        <div className="h-6" />
+        <div className="border-t border-noche/10" />
 
-        <div className="mb-16 max-w-3xl">
-          <h2 className="font-display text-2xl mb-4">Descripción</h2>
+        <div className="mb-16 max-w-3xl pt-8">
           <p className="text-noche/70 leading-relaxed mb-4">
             Exclusivo Garzonier, ambiente moderno, soleado y confortable que
             ofrece practicidad y bienestar en un espacio funcional.
