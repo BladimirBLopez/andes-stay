@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope, Pinyon_Script } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
@@ -16,7 +16,7 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700"],
 });
 
-const pinyon = Pinyon_Script({
+const alexBrush = Alex_Brush({
   subsets: ["latin"],
   variable: "--font-script",
   weight: ["400"],
@@ -34,7 +34,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body className={`${cormorant.variable} ${manrope.variable} ${pinyon.variable} antialiased`}>
+      <body className={`${cormorant.variable} ${manrope.variable} ${alexBrush.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
