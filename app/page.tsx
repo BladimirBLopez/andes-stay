@@ -246,7 +246,7 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="bg-hueso py-24"
+        className="bg-white py-24"
       >
         <div className="max-w-5xl mx-auto px-6">
           <span className="font-script text-4xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
@@ -360,8 +360,9 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="max-w-5xl mx-auto px-6 py-20"
+        className="bg-hueso py-20"
       >
+        <div className="max-w-5xl mx-auto px-6">
         <span className="font-script text-4xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
         <h2 className="font-display text-3xl md:text-4xl mb-2">{t("ubicacion_titulo")}</h2>
         <p className="text-noche/60 mb-8">
@@ -373,6 +374,7 @@ export default function Home() {
         <p className="text-sm text-noche/50 mt-3">
           {t("ubicacion_nota")}
         </p>
+        </div>
       </motion.section>
 
       {/* FAQ */}
@@ -383,7 +385,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="bg-hueso py-20"
+        className="bg-white py-20"
       >
         <div className="max-w-3xl mx-auto px-6">
         <span className="font-script text-4xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
