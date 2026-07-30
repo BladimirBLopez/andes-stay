@@ -13,7 +13,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
 });
 import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
-import { MessageCircle, Star, MapPin, Menu, X, ChevronDown } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
@@ -243,49 +243,46 @@ export default function Home() {
 
       <div className="textil-divider" />
 
-      {/* SERVICIO */}
+      {/* SERVICIOS */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="relative py-24 text-hueso overflow-hidden"
+        className="bg-hueso py-24"
       >
-        <div className="absolute inset-0">
-          <CldImage
-            src="premium-sala-4"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-        <div className="absolute inset-0 bg-noche/85" />
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <span className="font-script text-4xl text-terracota-light block mb-1">{t("servicio_eyebrow")}</span>
-          <h2 className="font-display text-3xl md:text-4xl mb-4">
+        <div className="max-w-5xl mx-auto px-6">
+          <span className="font-script text-4xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
+          <h2 className="font-display text-3xl md:text-4xl mb-4 text-noche">
             {t("servicio_titulo")}
           </h2>
-          <p className="text-lg text-hueso/80 max-w-2xl mb-12">
+          <p className="text-lg text-noche/70 max-w-2xl mb-12">
             {t("servicio_sub")}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { titulo: t("servicio_1_titulo"), texto: t("servicio_1_texto") },
-              { titulo: t("servicio_2_titulo"), texto: t("servicio_2_texto") },
-              { titulo: t("servicio_3_titulo"), texto: t("servicio_3_texto") },
+              { icon: MapPin, titulo: t("servicio_1_titulo"), texto: t("servicio_1_texto") },
+              { icon: Wifi, titulo: t("servicio_2_titulo"), texto: t("servicio_2_texto") },
+              { icon: MessageCircle, titulo: t("servicio_3_titulo"), texto: t("servicio_3_texto") },
+              { icon: ShieldCheck, titulo: t("servicio_4_titulo"), texto: t("servicio_4_texto") },
+              { icon: Clock, titulo: t("servicio_5_titulo"), texto: t("servicio_5_texto") },
+              { icon: Users, titulo: t("servicio_6_titulo"), texto: t("servicio_6_texto") },
             ].map((item, i) => (
               <motion.div
                 key={item.titulo}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 variants={fadeUp}
+                className="bg-hueso border border-noche/10 rounded-2xl p-6 card-hover"
               >
-                <h3 className="font-display text-xl mb-2 text-terracota-light">{item.titulo}</h3>
-                <p className="text-hueso/70">{item.texto}</p>
+                <div className="w-12 h-12 rounded-full bg-terracota/10 flex items-center justify-center mb-4">
+                  <item.icon size={22} className="text-terracota" />
+                </div>
+                <h3 className="font-display text-xl mb-2 text-noche">{item.titulo}</h3>
+                <p className="text-noche/60">{item.texto}</p>
               </motion.div>
             ))}
           </div>
