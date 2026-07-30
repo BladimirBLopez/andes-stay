@@ -5,13 +5,14 @@ import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { ArrowLeft, MessageCircle, Star, Wifi, Home } from "lucide-react";
+import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat } from "lucide-react";
 import ShareButton from "../../ShareButton";
 import TrustStats from "../../TrustStats";
 import Amenidades from "../../Amenidades";
 
 const amenidades = [
   { icon: Wifi, label: "Wifi" },
+  { icon: ChefHat, label: "Cocina equipada" },
   { icon: Home, label: "Servicios básicos incluidos" },
 ];
 
@@ -21,14 +22,47 @@ const CLOUD_NAME = "dkq95jus0";
 const NOMBRE = "Garzonier Premium con Sol y Vista Espectacular";
 const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible?`;
 
-const salaFotos = [
-  "premium-sala-1",
-  "premium-sala-2",
-  "premium-sala-3",
-  "premium-sala-4",
-  "premium-sala-5",
-  "premium-sala-6",
-  "premium-sala-7",
+const categorias = [
+  {
+    titulo: "Sala",
+    fotos: [
+      "premium-sala-1",
+      "premium-sala-2",
+      "premium-sala-3",
+      "premium-sala-4",
+      "premium-sala-5",
+      "premium-sala-6",
+      "premium-sala-7",
+    ],
+  },
+  {
+    titulo: "Habitación",
+    fotos: [
+      "premium-hab-1",
+      "premium-hab-2",
+      "premium-hab-3",
+      "premium-hab-4",
+      "premium-hab-5",
+    ],
+  },
+  {
+    titulo: "Cocina",
+    fotos: [
+      "premium-cocina-1",
+      "premium-cocina-2",
+      "premium-cocina-3",
+      "premium-cocina-4",
+      "premium-cocina-5",
+    ],
+  },
+  {
+    titulo: "Baño",
+    fotos: ["premium-baño-1", "premium-baño-2"],
+  },
+  {
+    titulo: "Área de lavado",
+    fotos: ["premium-lavado-1"],
+  },
 ];
 
 function cldUrl(publicId: string) {
@@ -42,7 +76,7 @@ function Ambiente({
 }: {
   titulo: string;
   fotos: string[];
-  onFotoClick: (index: number) => void;
+  onFotoClick: (fotos: string[], index: number) => void;
 }) {
   if (fotos.length === 0) return null;
   return (
@@ -52,7 +86,7 @@ function Ambiente({
         {fotos.map((id, i) => (
           <button
             key={id}
-            onClick={() => onFotoClick(i)}
+            onClick={() => onFotoClick(fotos, i)}
             className="relative aspect-[4/3] rounded-xl overflow-hidden bg-noche/10 cursor-zoom-in"
           >
             <CldImage
@@ -72,8 +106,15 @@ function Ambiente({
 export default function GarzonierPremium() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [activeGallery, setActiveGallery] = useState<string[]>([]);
 
-  const slides = salaFotos.map((id) => ({ src: cldUrl(id) }));
+  const openGallery = (fotos: string[], index: number) => {
+    setActiveGallery(fotos);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const slides = activeGallery.map((id) => ({ src: cldUrl(id) }));
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     MENSAJE_WHATSAPP
   )}`;
@@ -82,14 +123,11 @@ export default function GarzonierPremium() {
     <main className="pb-28">
       <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
         <button
-          onClick={() => {
-            setLightboxIndex(0);
-            setLightboxOpen(true);
-          }}
+          onClick={() => openGallery(categorias[0].fotos, 0)}
           className="absolute inset-0 w-full h-full"
         >
           <CldImage
-            src={salaFotos[0]}
+            src={categorias[0].fotos[0]}
             alt={NOMBRE}
             fill
             className="object-cover"
@@ -161,14 +199,14 @@ export default function GarzonierPremium() {
 
         <Amenidades items={amenidades} />
 
-        <Ambiente
-          titulo="Sala"
-          fotos={salaFotos}
-          onFotoClick={(i) => {
-            setLightboxIndex(i);
-            setLightboxOpen(true);
-          }}
-        />
+        {categorias.map((cat) => (
+          <Ambiente
+            key={cat.titulo}
+            titulo={cat.titulo}
+            fotos={cat.fotos}
+            onFotoClick={openGallery}
+          />
+        ))}
 
         <Lightbox
           open={lightboxOpen}
