@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CldImage } from "next-cloudinary";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bed, Bath } from "lucide-react";
@@ -10,6 +9,7 @@ import ShareButton from "../../ShareButton";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
+import HeroCarousel from "../../HeroCarousel";
 
 const otrosApartamentos = [
   { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz" },
@@ -95,19 +95,11 @@ export default function GarzonierPremium() {
   return (
     <main>
       <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
-        <button
-          onClick={() => openGallery(categorias[0].fotos, 0)}
-          className="absolute inset-0 w-full h-full"
-        >
-          <CldImage
-            src={categorias[0].fotos[0]}
-            alt={NOMBRE}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-        </button>
+        <HeroCarousel
+          fotos={categorias[0].fotos}
+          alt={NOMBRE}
+          onOpenGallery={openGallery}
+        />
         <Link
           href="/"
           className="absolute top-4 left-4 inline-flex items-center gap-2 bg-hueso/90 hover:bg-hueso text-noche rounded-full px-4 py-2 text-sm font-medium transition-colors"
