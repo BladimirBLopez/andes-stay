@@ -7,7 +7,6 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat } from "lucide-react";
 import ShareButton from "../../ShareButton";
-import TrustStats from "../../TrustStats";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
