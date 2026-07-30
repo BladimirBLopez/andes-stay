@@ -117,13 +117,16 @@ export default function Home() {
             <a href="#faq" className="hover:text-terracota-light transition-colors">{t("nav_preguntas")}</a>
             <LangSwitcher light />
           </div>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-hueso"
-            aria-label="Abrir menú"
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            <LangSwitcher light />
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-hueso"
+              aria-label="Abrir menú"
+            >
+              {menuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -167,8 +170,6 @@ export default function Home() {
           >
             {t("nav_preguntas")}
           </a>
-
-          <LangSwitcher />
 
           <div className="flex items-center gap-6 mt-4">
             <a
