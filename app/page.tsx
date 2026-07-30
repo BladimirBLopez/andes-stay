@@ -5,6 +5,12 @@ import { useRef } from "react";
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import Tilt from "react-parallax-tilt";
+import dynamic from "next/dynamic";
+
+const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-noche/10 animate-pulse" />,
+});
 import CardCarousel from "./CardCarousel";
 import { MessageCircle, Star, MapPin } from "lucide-react";
 
@@ -247,17 +253,11 @@ export default function Home() {
       >
         <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestra ubicación</h2>
         <p className="text-noche/60 mb-8">
-          Apartamentos en las zonas más exclusivas de La Paz: Sopocachi y San Jorge
+          Los 4 apartamentos se encuentran en Sopocachi, una zona residencial
+          y exclusiva de La Paz.
         </p>
         <div className="rounded-2xl overflow-hidden border border-noche/10 aspect-[16/9]">
-          <iframe
-            src="https://maps.google.com/maps?q=Sopocachi,+La+Paz,+Bolivia&z=14&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            title="Ubicación VIP Estadías - Sopocachi, La Paz"
-          />
+          <MapaSopocachi />
         </div>
         <p className="text-sm text-noche/50 mt-3">
           La ubicación exacta de cada apartamento se comparte al confirmar la reserva.

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { CldImage } from "next-cloudinary";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function CardCarousel({
@@ -35,15 +35,7 @@ export default function CardCarousel({
   }
 
   if (fotos.length === 1) {
-    return (
-      <CldImage
-        src={fotos[0]}
-        alt={alt}
-        fill
-        className="object-cover"
-        sizes="(max-width: 640px) 100vw, 50vw"
-      />
-    );
+    return <ImageWithSkeleton src={fotos[0]} alt={alt} />;
   }
 
   return (
@@ -52,13 +44,7 @@ export default function CardCarousel({
         <div className="flex h-full">
           {fotos.map((id) => (
             <div key={id} className="relative flex-[0_0_100%] h-full">
-              <CldImage
-                src={id}
-                alt={alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
+              <ImageWithSkeleton src={id} alt={alt} />
             </div>
           ))}
         </div>
