@@ -134,34 +134,44 @@ export default function Home() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="max-w-5xl mx-auto px-6 py-20"
+        className="relative py-24 text-hueso overflow-hidden"
       >
-        <h2 className="font-display text-3xl md:text-4xl mb-6">
-          Por qué elegirnos
-        </h2>
-        <p className="text-lg text-noche/70 max-w-2xl mb-12">
-          Con 4 años de experiencia, más de 160 reseñas y una calificación de
-          4.69★, ofrecemos apartamentos confort en las zonas más exclusivas
-          de La Paz.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { titulo: "Ubicación exclusiva", texto: "Cerca de embajadas, malls, restaurantes y transporte público." },
-            { titulo: "Todo equipado", texto: "Wifi de alta velocidad, cocina completa y servicios básicos incluidos." },
-            { titulo: "Atención personal", texto: "Reserva y coordinación directa, sin intermediarios." },
-          ].map((item, i) => (
-            <motion.div
-              key={item.titulo}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              variants={fadeUp}
-            >
-              <h3 className="font-display text-xl mb-2 text-terracota">{item.titulo}</h3>
-              <p className="text-noche/70">{item.texto}</p>
-            </motion.div>
-          ))}
+        <div className="absolute inset-0">
+          <CldImage
+            src="premium-sala-4"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 bg-noche/85" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <h2 className="font-display text-3xl md:text-4xl mb-4">
+            Confort y ubicación en el corazón de La Paz
+          </h2>
+          <p className="text-lg text-hueso/80 max-w-2xl mb-12">
+            4 años de experiencia, 160 reseñas, 4.69★.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { titulo: "Ubicación exclusiva", texto: "Cerca de embajadas, malls, restaurantes y transporte público." },
+              { titulo: "Todo equipado", texto: "Wifi de alta velocidad, cocina completa y servicios básicos incluidos." },
+              { titulo: "Atención personal", texto: "Reserva y coordinación directa, sin intermediarios." },
+            ].map((item, i) => (
+              <motion.div
+                key={item.titulo}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={fadeUp}
+              >
+                <h3 className="font-display text-xl mb-2 text-terracota-light">{item.titulo}</h3>
+                <p className="text-hueso/70">{item.texto}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -194,31 +204,36 @@ export default function Home() {
                   glareEnable={false}
                   className="bg-hueso rounded-2xl overflow-hidden border border-noche/10 card-hover"
                 >
-                {(() => {
-                  const CardContent = (
-                    <>
-                      <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
-                        <CardCarousel fotos={apto.fotos} alt={apto.nombre} />
-                      </div>
-                      <div className="p-5">
-                        <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>
-                        <p className="text-sm text-noche/60 mb-1 flex items-center gap-1">
-                          <MapPin size={12} /> {apto.detalle} · {apto.zona}
-                        </p>
-                        <p className="text-xs text-terracota flex items-center gap-1">
-                          <Star size={12} className="text-oro" fill="currentColor" /> {apto.rating}
-                        </p>
-                      </div>
-                    </>
-                  );
-                  return apto.slug ? (
-                    <Link href={`/apartamentos/${apto.slug}`} className="block">
-                      {CardContent}
-                    </Link>
-                  ) : (
-                    CardContent
-                  );
-                })()}
+                  <div className="aspect-[4/3] bg-noche/10 relative overflow-hidden">
+                    <CardCarousel fotos={apto.fotos} alt={apto.nombre} />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-lg mb-1">{apto.nombre}</h3>
+                    <p className="text-sm text-noche/60 mb-1 flex items-center gap-1">
+                      <MapPin size={12} /> {apto.detalle} · {apto.zona}
+                    </p>
+                    <p className="text-xs text-terracota flex items-center gap-1 mb-4">
+                      <Star size={12} className="text-oro" fill="currentColor" /> {apto.rating}
+                    </p>
+                    <div className="flex gap-3">
+                      {apto.slug && (
+                        <Link
+                          href={`/apartamentos/${apto.slug}`}
+                          className="flex-1 text-center border border-noche/20 hover:border-terracota transition-colors text-noche text-sm font-medium rounded-full py-2"
+                        >
+                          Ver detalles
+                        </Link>
+                      )}
+                      <a
+                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa reservar el ${apto.nombre}. ¿Está disponible?`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center bg-terracota hover:bg-terracota-light transition-colors text-noche text-sm font-medium rounded-full py-2"
+                      >
+                        Reservar
+                      </a>
+                    </div>
+                  </div>
                 </Tilt>
               </motion.div>
             ))}
