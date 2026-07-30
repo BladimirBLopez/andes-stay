@@ -12,7 +12,8 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
   loading: () => <div className="w-full h-full bg-noche/10 animate-pulse" />,
 });
 import CardCarousel from "./CardCarousel";
-import { MessageCircle, Star, MapPin, Menu, X, Facebook } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X } from "lucide-react";
+import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -116,17 +117,15 @@ export default function Home() {
               href="https://www.facebook.com/share/1ERTfyCjX2/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-noche/60 hover:text-terracota transition-colors"
             >
-              <Facebook size={22} />
+              <FacebookIcon size={30} />
             </a>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-noche/60 hover:text-terracota transition-colors"
             >
-              <MessageCircle size={22} />
+              <WhatsappIcon size={30} />
             </a>
           </div>
         </div>
@@ -423,7 +422,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="hover:text-terracota-light transition-colors flex items-center gap-2"
               >
-                <MessageCircle size={16} /> WhatsApp
+                <WhatsappIcon size={18} /> WhatsApp
               </a>
               <a
                 href="https://www.facebook.com/share/1ERTfyCjX2/"
@@ -431,7 +430,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="hover:text-terracota-light transition-colors flex items-center gap-2"
               >
-                <Facebook size={16} /> Facebook
+                <FacebookIcon size={18} /> Facebook
               </a>
             </div>
           </div>
