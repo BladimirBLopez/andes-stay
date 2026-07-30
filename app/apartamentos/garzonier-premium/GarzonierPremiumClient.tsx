@@ -208,20 +208,6 @@ export default function GarzonierPremium() {
           </Link>
         </div>
 
-        <div className="hidden md:block text-center py-12 border-t border-noche/10">
-          <h2 className="font-display text-2xl mb-4">
-            ¿Le interesa este apartamento?
-          </h2>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-hueso px-8 py-4 rounded-full font-medium"
-          >
-            <MessageCircle size={18} />
-            Reservar ahora
-          </a>
-        </div>
       </div>
 
       <Footer />
