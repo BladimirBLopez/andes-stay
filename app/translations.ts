@@ -7,12 +7,12 @@ export const translations = {
     hero_titulo: "VIP Estadías",
     hero_slogan: "Alojamientos que te hacen sentir en casa.",
     hero_desc:
-      "Apartamentos amoblados y equipados en las mejores zonas de La Paz. Ubicación exclusiva, wifi de alta velocidad y todo lo que necesita para su estadía temporal.",
+      "Apartamentos amoblados y completamente equipados en el corazón de Sopocachi. Internet de alta velocidad, TV Android y cercanía al transporte y al teleférico, para que su estadía se sienta como en casa desde el primer día.",
     hero_stats: "4.69 · 160 reseñas · 4 años de anfitrión",
     hero_boton: "Reservar ahora",
     servicio_eyebrow: "Nuestra propuesta",
     servicio_titulo: "Confort y ubicación en el corazón de La Paz",
-    servicio_sub: "Comodidad, confianza y atención personalizada en cada estadía.",
+    servicio_sub: "Cada detalle pensado para que se sienta como en casa: confort, seguridad y atención cercana en cada estadía.",
     servicio_1_titulo: "Ubicación exclusiva",
     servicio_1_texto: "Cerca de embajadas, malls, restaurantes y transporte público.",
     servicio_2_titulo: "Todo equipado",
@@ -48,7 +48,7 @@ export const translations = {
     faq_titulo: "Preguntas frecuentes",
     contacto_titulo: "¿Listo para su próxima estadía en La Paz?",
     contacto_sub:
-      "Escríbanos directamente y le ayudamos a encontrar el apartamento ideal para su viaje.",
+      "Cuéntenos sus fechas y necesidades: le ayudamos a encontrar el apartamento ideal, con atención directa y respuesta inmediata por WhatsApp.",
     contacto_boton: "Reservar por WhatsApp",
   },
   en: {
@@ -59,12 +59,12 @@ export const translations = {
     hero_titulo: "VIP Estadías",
     hero_slogan: "Stays that feel like home.",
     hero_desc:
-      "Furnished, fully equipped apartments in the best areas of La Paz. Prime location, high-speed wifi, and everything you need for your temporary stay.",
+      "Furnished, fully equipped apartments in the heart of Sopocachi. High-speed internet, Android TV, and easy access to transit and the cable car, so your stay feels like home from day one.",
     hero_stats: "4.69 · 160 reviews · 4 years hosting",
     hero_boton: "Book now",
     servicio_eyebrow: "Why choose us",
     servicio_titulo: "Comfort and location in the heart of La Paz",
-    servicio_sub: "Comfort, trust, and personal attention in every stay.",
+    servicio_sub: "Every detail designed to make you feel at home: comfort, security, and personal attention throughout your stay.",
     servicio_1_titulo: "Prime location",
     servicio_1_texto: "Close to embassies, malls, restaurants, and public transport.",
     servicio_2_titulo: "Fully equipped",
@@ -100,7 +100,7 @@ export const translations = {
     faq_titulo: "Frequently asked questions",
     contacto_titulo: "Ready for your next stay in La Paz?",
     contacto_sub:
-      "Message us directly and we'll help you find the ideal apartment for your trip.",
+      "Tell us your dates and needs: we'll help you find the ideal apartment, with direct attention and an immediate reply on WhatsApp.",
     contacto_boton: "Book via WhatsApp",
   },
 } as const;
