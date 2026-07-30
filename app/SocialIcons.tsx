@@ -10,6 +10,27 @@ export function FacebookIcon({ size = 20 }: { size?: number }) {
   );
 }
 
+export function TiktokIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#000000" />
+      <path
+        d="M15.8 6.2c.4 1.4 1.4 2.5 2.8 2.8v2.2c-1-.1-2-.4-2.8-1v4.7c0 2.4-1.9 4.3-4.3 4.3S7.2 17.3 7.2 14.9s1.9-4.3 4.3-4.3c.2 0 .4 0 .6.1v2.2c-.2-.1-.4-.1-.6-.1-1.1 0-1.9.9-1.9 2s.9 2 1.9 2 2-.9 2-2V4.5h2.1c.1.6.1 1.1.2 1.7Z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
+export function ThreadsIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#000000" />
+      <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontFamily="Arial, sans-serif" fontWeight="bold" fill="#fff">@</text>
+    </svg>
+  );
+}
+
 export function WhatsappIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24">

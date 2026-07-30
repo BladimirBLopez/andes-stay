@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { WhatsappIcon, FacebookIcon } from "./SocialIcons";
+import { Mail } from "lucide-react";
+import { WhatsappIcon, FacebookIcon, TiktokIcon, ThreadsIcon } from "./SocialIcons";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -32,12 +33,34 @@ export default function Footer() {
               <WhatsappIcon size={18} /> WhatsApp
             </a>
             <a
-              href="https://www.facebook.com/share/1ERTfyCjX2/"
+              href="https://www.facebook.com/share/1BR7wMazM7/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-terracota-light transition-colors flex items-center gap-2"
             >
               <FacebookIcon size={18} /> Facebook
+            </a>
+            <a
+              href="https://www.tiktok.com/@wilmer.pantoja?_r=1&_t=ZS-98TOWGgyOWX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-terracota-light transition-colors flex items-center gap-2"
+            >
+              <TiktokIcon size={18} /> TikTok
+            </a>
+            <a
+              href="https://www.threads.com/@wilmer_pantoja"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-terracota-light transition-colors flex items-center gap-2"
+            >
+              <ThreadsIcon size={18} /> Threads
+            </a>
+            <a
+              href="mailto:wilmerpantoja@gmail.com"
+              className="hover:text-terracota-light transition-colors flex items-center gap-2"
+            >
+              <Mail size={18} /> Email
             </a>
           </div>
         </div>

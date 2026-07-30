@@ -187,7 +187,7 @@ export default function Home() {
 
           <div className="flex items-center gap-6 mt-4">
             <a
-              href="https://www.facebook.com/share/1ERTfyCjX2/"
+              href="https://www.facebook.com/share/1BR7wMazM7/"
               target="_blank"
               rel="noopener noreferrer"
             >
