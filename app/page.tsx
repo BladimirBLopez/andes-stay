@@ -360,7 +360,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="bg-hueso py-20"
+        className="py-20"
       >
         <div className="max-w-5xl mx-auto px-6">
         <span className="font-script text-4xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
@@ -385,7 +385,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         variants={fadeUp}
-        className="bg-white py-20"
+        className="bg-hueso py-20"
       >
         <div className="max-w-3xl mx-auto px-6">
         <span className="font-script text-4xl text-terracota block mb-1">{t("faq_eyebrow")}</span>
