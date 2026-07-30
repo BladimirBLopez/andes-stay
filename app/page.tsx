@@ -14,7 +14,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
 });
 import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
-import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users, Flame, Tv, Camera, Droplet } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
@@ -268,6 +268,10 @@ export default function Home() {
               { icon: ShieldCheck, titulo: t("servicio_4_titulo") },
               { icon: Clock, titulo: t("servicio_5_titulo") },
               { icon: Users, titulo: t("servicio_6_titulo") },
+              { icon: Flame, titulo: t("servicio_7_titulo") },
+              { icon: Tv, titulo: t("servicio_8_titulo") },
+              { icon: Camera, titulo: t("servicio_9_titulo") },
+              { icon: Droplet, titulo: t("servicio_10_titulo") },
             ].map((item, i) => (
               <motion.div
                 key={item.titulo}
