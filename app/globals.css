@@ -31,6 +31,12 @@ body {
   font-family: var(--font-script), cursive;
 }
 
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  opacity: 0.55;
+  padding: 1px 4px !important;
+}
+
 .textil-divider {
   height: 6px;
   background-image: repeating-linear-gradient(
