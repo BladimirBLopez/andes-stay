@@ -147,6 +147,7 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-noche/85" />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <span className="font-script text-4xl text-terracota-light block mb-1">Nuestra propuesta</span>
           <h2 className="font-display text-3xl md:text-4xl mb-4">
             Confort y ubicación en el corazón de La Paz
           </h2>
@@ -185,6 +186,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             variants={fadeUp}
           >
+            <span className="font-script text-4xl text-terracota block mb-1">Alojamiento</span>
             <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestros apartamentos</h2>
             <p className="text-noche/60 mb-12">4 opciones en las mejores zonas de La Paz</p>
           </motion.div>
@@ -251,6 +253,7 @@ export default function Home() {
         variants={fadeUp}
         className="max-w-5xl mx-auto px-6 py-20"
       >
+        <span className="font-script text-4xl text-terracota block mb-1">Donde estamos</span>
         <h2 className="font-display text-3xl md:text-4xl mb-2">Nuestra ubicación</h2>
         <p className="text-noche/60 mb-8">
           Los 4 apartamentos se encuentran en Sopocachi, una zona residencial
@@ -274,6 +277,7 @@ export default function Home() {
         variants={fadeUp}
         className="max-w-3xl mx-auto px-6 py-20"
       >
+        <span className="font-script text-4xl text-terracota block mb-1">Ayuda</span>
         <h2 className="font-display text-3xl md:text-4xl mb-10">Preguntas frecuentes</h2>
         <div className="space-y-4">
           {[

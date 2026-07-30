@@ -27,6 +27,10 @@ body {
   font-family: var(--font-display);
 }
 
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
 .textil-divider {
   height: 6px;
   background-image: repeating-linear-gradient(
