@@ -12,7 +12,7 @@ export default function HeroCarousel({
 }: {
   fotos: string[];
   alt: string;
-  onOpenGallery: (fotos: string[], index: number) => void;
+  onOpenGallery?: (fotos: string[], index: number) => void;
   intervalMs?: number;
 }) {
   const [index, setIndex] = useState(0);
@@ -27,32 +27,43 @@ export default function HeroCarousel({
 
   if (fotos.length === 0) return null;
 
+  const content = (
+    <AnimatePresence mode="sync">
+      <motion.div
+        key={fotos[index]}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className="absolute inset-0"
+      >
+        <CldImage
+          src={fotos[index]}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority={index === 0}
+        />
+      </motion.div>
+    </AnimatePresence>
+  );
+
+  if (!onOpenGallery) {
+    return (
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {content}
+      </div>
+    );
+  }
+
   return (
     <button
       onClick={() => onOpenGallery(fotos, index)}
       className="absolute inset-0 w-full h-full overflow-hidden"
       aria-label="Ver galería completa"
     >
-
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={fotos[index]}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <CldImage
-            src={fotos[index]}
-            alt={alt}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={index === 0}
-          />
-        </motion.div>
-      </AnimatePresence>
+      {content}
     </button>
   );
 }

@@ -3,8 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { CldImage } from "next-cloudinary";
 import Tilt from "react-parallax-tilt";
+import HeroCarousel from "./HeroCarousel";
 import dynamic from "next/dynamic";
 
 const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
@@ -203,13 +203,9 @@ export default function Home() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[90svh] flex items-end text-hueso overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <CldImage
-            src="premium-sala-6"
+          <HeroCarousel
+            fotos={["premium-sala-6", "premium-sala-1", "premium-sala-3", "vip-sala-1", "vip-sala-3", "vip-sala-5"]}
             alt="VIP Estadías La Paz"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/80 to-noche/50" />
