@@ -14,7 +14,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
 });
 import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
-import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users, Flame, Tv, Camera, Droplet } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
@@ -396,6 +396,27 @@ export default function Home() {
         <p className="text-sm text-noche/50 mt-3">
           {t("ubicacion_nota")}
         </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <a
+            href={`tel:+${WHATSAPP_NUMBER}`}
+            className="flex items-center gap-4 border border-terracota/40 rounded-xl p-4 hover:border-terracota transition-colors"
+          >
+            <div className="w-11 h-11 border border-terracota/40 rounded-lg flex items-center justify-center shrink-0">
+              <Phone size={18} className="text-terracota" />
+            </div>
+            <span className="text-noche/80">Reservas: +591 767 570 041</span>
+          </a>
+          <a
+            href="mailto:wilmerpantoja@gmail.com"
+            className="flex items-center gap-4 border border-terracota/40 rounded-xl p-4 hover:border-terracota transition-colors"
+          >
+            <div className="w-11 h-11 border border-terracota/40 rounded-lg flex items-center justify-center shrink-0">
+              <Mail size={18} className="text-terracota" />
+            </div>
+            <span className="text-noche/80">wilmerpantoja@gmail.com</span>
+          </a>
+        </div>
         </div>
       </motion.section>
 
