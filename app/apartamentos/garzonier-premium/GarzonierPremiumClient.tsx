@@ -9,6 +9,7 @@ import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat } from "lucide-reac
 import ShareButton from "../../ShareButton";
 import TrustStats from "../../TrustStats";
 import Amenidades from "../../Amenidades";
+import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
 
 const otrosApartamentos = [
@@ -74,40 +75,6 @@ const categorias = [
 
 function cldUrl(publicId: string) {
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${publicId}`;
-}
-
-function Ambiente({
-  titulo,
-  fotos,
-  onFotoClick,
-}: {
-  titulo: string;
-  fotos: string[];
-  onFotoClick: (fotos: string[], index: number) => void;
-}) {
-  if (fotos.length === 0) return null;
-  return (
-    <div className="mb-16">
-      <h2 className="font-display text-2xl mb-6">{titulo}</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {fotos.map((id, i) => (
-          <button
-            key={id}
-            onClick={() => onFotoClick(fotos, i)}
-            className="relative aspect-[4/3] rounded-xl overflow-hidden bg-noche/10 cursor-zoom-in"
-          >
-            <CldImage
-              src={id}
-              alt={`${titulo} - foto ${i + 1}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, 33vw"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
 }
 
 export default function GarzonierPremium() {
@@ -207,11 +174,11 @@ export default function GarzonierPremium() {
         <Amenidades items={amenidades} />
 
         {categorias.map((cat) => (
-          <Ambiente
+          <AmbienteCarousel
             key={cat.titulo}
             titulo={cat.titulo}
             fotos={cat.fotos}
-            onFotoClick={openGallery}
+            onOpenGallery={openGallery}
           />
         ))}
 
