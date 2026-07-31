@@ -33,7 +33,7 @@ export default function ShareButton({
   return (
     <button
       onClick={handleShare}
-      className="inline-flex items-center gap-2 text-sm text-noche/70 hover:text-noche border border-noche/20 hover:border-noche/40 rounded-full px-4 py-2 transition-colors"
+      className="inline-flex items-center gap-2 text-sm text-hueso bg-noche/60 hover:bg-noche/80 backdrop-blur-sm rounded-full px-4 py-2 transition-colors shadow-md"
     >
       <Share2 size={16} />
       Compartir
