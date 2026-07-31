@@ -30,7 +30,9 @@ const CLOUD_NAME = "dkq95jus0";
 
 const NOMBRE = "Garzonier Premium con Sol y Vista Espectacular";
 const PAGINA_URL = "https://andes-stay-o6fy.vercel.app/apartamentos/garzonier-premium";
-const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible? ${PAGINA_URL}`;
+const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible?
+
+${PAGINA_URL}`;
 
 const categorias = [
   {

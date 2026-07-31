@@ -366,7 +366,9 @@ export default function Home() {
                         </Link>
                       )}
                       <a
-                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa reservar el ${apto.nombre}. ¿Está disponible?${apto.slug ? ` https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
+                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa reservar el ${apto.nombre}. ¿Está disponible?${apto.slug ? `
+
+https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 text-center bg-terracota hover:bg-terracota-light transition-colors text-noche text-sm font-medium rounded-full py-2"
