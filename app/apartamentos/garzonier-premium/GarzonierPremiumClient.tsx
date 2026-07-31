@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
@@ -94,7 +95,12 @@ export default function GarzonierPremium() {
 
   return (
     <main>
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10">
+      <motion.div
+        initial={{ opacity: 0, scale: 1.06 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10"
+      >
         <HeroCarousel
           fotos={categorias[0].fotos}
           alt={NOMBRE}
@@ -113,7 +119,7 @@ export default function GarzonierPremium() {
             text="Mira este apartamento en VIP Estadías"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-6 bg-white rounded-t-3xl shadow-[0_-8px_20px_rgba(0,0,0,0.08)] pt-2">
         <div className="pt-8 pb-6">
