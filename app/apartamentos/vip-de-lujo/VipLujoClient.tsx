@@ -190,6 +190,8 @@ export default function VipLujoClient() {
           index={lightboxIndex}
           slides={slides}
           plugins={[Captions, Counter, Share]}
+          captions={{ position: "bottom", descriptionTextAlign: "start" }}
+          counter={{ container: { style: { top: 0, bottom: "unset" } } }}
         />
 
         <div className="pb-16 border-t border-noche/10 pt-16">
