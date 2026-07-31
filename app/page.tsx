@@ -232,13 +232,7 @@ export default function Home() {
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/80 to-noche/50" />
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          variants={fadeUp}
-          className="relative z-10 max-w-5xl mx-auto px-6 pb-16 pt-32"
-        >
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pb-16 pt-32">
           <p className="uppercase tracking-[0.2em] text-sm text-terracota-light mb-4 flex items-center gap-2">
             <MapPin size={14} /> La Paz, Bolivia
           </p>
@@ -257,7 +251,7 @@ export default function Home() {
           >
             {t("hero_boton")}
           </a>
-        </motion.div>
+        </div>
       </section>
 
       <div className="bg-hueso px-6">
