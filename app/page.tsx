@@ -461,32 +461,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* CONTACTO */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        variants={fadeUp}
-        className="max-w-5xl mx-auto px-6 py-20 text-center"
-      >
-        <h2 className="font-display text-2xl md:text-3xl mb-4">
-          {t("contacto_titulo")}
-        </h2>
-        <p className="text-noche/70 max-w-xl mx-auto mb-8">
-          {t("contacto_sub")}
-        </p>
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
-        >
-          <MessageCircle size={18} />
-          {t("contacto_boton")}
-        </a>
-      </motion.section>
-
       <Footer />
 
       {/* BOTÓN FLOTANTE WHATSAPP */}
