@@ -32,14 +32,14 @@ const apartamentos = [
 const faqData = {
   es: [
     { q: "¿Cómo reservo un apartamento?", a: "Escríbenos por WhatsApp indicando el apartamento de tu interés y las fechas. Te confirmamos disponibilidad al instante." },
-    { q: "¿A qué hora es el check-in y check-out?", a: "Check-in a partir de las 2:00 pm y check-out antes de las 11:00 am. El horario exacto se confirma al reservar." },
+    { q: "¿A qué hora es el check-in y check-out?", a: "El horario de check-in y check-out se coordina directamente por WhatsApp al momento de tu reserva, según disponibilidad del apartamento." },
     { q: "¿Los apartamentos incluyen wifi?", a: "Sí, todos nuestros apartamentos cuentan con wifi de alta velocidad." },
     { q: "¿Dónde están ubicados los apartamentos?", a: "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz." },
     { q: "¿Cómo se coordina el pago?", a: "El método de pago se coordina directamente por WhatsApp al confirmar tu reserva." },
   ],
   en: [
     { q: "How do I book an apartment?", a: "Message us on WhatsApp with the apartment you're interested in and your dates. We'll confirm availability right away." },
-    { q: "What time is check-in and check-out?", a: "Check-in from 2:00 pm and check-out before 11:00 am. Exact times are confirmed at booking." },
+    { q: "What time is check-in and check-out?", a: "Check-in and check-out times are coordinated directly via WhatsApp when you book, based on availability." },
     { q: "Do the apartments include wifi?", a: "Yes, all our apartments have high-speed wifi." },
     { q: "Where are the apartments located?", a: "All 4 apartments are located in Sopocachi, an exclusive residential area of La Paz." },
     { q: "How is payment arranged?", a: "Payment method is arranged directly via WhatsApp when confirming your booking." },
