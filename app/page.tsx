@@ -15,6 +15,7 @@ const MapaSopocachi = dynamic(() => import("./MapaSopocachi"), {
 import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
 import TrustStats from "./TrustStats";
+import QuoteBanner from "./QuoteBanner";
 import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
@@ -380,6 +381,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FRANJA DE FOTO */}
+      <QuoteBanner />
 
       {/* UBICACIÓN */}
       <motion.section
