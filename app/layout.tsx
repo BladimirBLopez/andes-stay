@@ -50,17 +50,24 @@ export default function RootLayout({
               name: "VIP Estadías",
               description:
                 "Apartamentos amoblados y equipados en Sopocachi, La Paz, Bolivia, para estadías temporales.",
+              url: "https://andes-stay-o6fy.vercel.app",
+              image: "https://res.cloudinary.com/dkq95jus0/image/upload/premium-sala-1",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Sopocachi, La Paz",
                 addressCountry: "BO",
               },
-              telephone: "+59176570041",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.69",
-                reviewCount: "160",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: -16.5075,
+                longitude: -68.1256,
               },
+              telephone: "+59176570041",
+              sameAs: [
+                "https://www.facebook.com/share/1BR7wMazM7/",
+                "https://www.tiktok.com/@wilmer.pantoja",
+                "https://www.threads.com/@wilmer_pantoja",
+              ],
             }),
           }}
         />

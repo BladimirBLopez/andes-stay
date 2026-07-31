@@ -238,6 +238,9 @@ export default function Home() {
           </p>
           <h1 className="font-display text-5xl md:text-7xl leading-[1.05] mb-4">
             {t("hero_titulo")}
+            <span className="block text-lg md:text-xl font-body font-normal text-hueso/70 mt-2">
+              {t("hero_titulo_seo")}
+            </span>
           </h1>
           <p className="text-terracota-light text-lg md:text-xl mb-6">
             {t("hero_slogan")}
