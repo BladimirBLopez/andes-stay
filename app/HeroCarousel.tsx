@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 
 export default function HeroCarousel({
   fotos,
@@ -37,11 +37,9 @@ export default function HeroCarousel({
         transition={{ duration: 1.2, ease: "easeInOut" }}
         className="absolute inset-0"
       >
-        <CldImage
+        <ImageWithSkeleton
           src={fotos[index]}
           alt={alt}
-          fill
-          className="object-cover"
           sizes="100vw"
           priority={index === 0}
         />

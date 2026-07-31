@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { CldImage } from "next-cloudinary";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 
 export default function AmbienteCarousel({
@@ -48,11 +48,9 @@ export default function AmbienteCarousel({
                 onClick={() => onOpenGallery(fotos, i)}
                 className="relative flex-[0_0_100%] h-full cursor-zoom-in"
               >
-                <CldImage
+                <ImageWithSkeleton
                   src={id}
                   alt={`${titulo} - foto ${i + 1}`}
-                  fill
-                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 700px"
                 />
               </button>
