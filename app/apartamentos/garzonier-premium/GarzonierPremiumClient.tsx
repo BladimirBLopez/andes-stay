@@ -99,7 +99,7 @@ export default function GarzonierPremium() {
     setLightboxOpen(true);
   };
 
-  const slides = activeGallery.map((id) => ({ src: cldUrl(id), title: activeTitulo }));
+  const slides = activeGallery.map((id) => ({ src: cldUrl(id), description: activeTitulo }));
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     MENSAJE_WHATSAPP
   )}`;
