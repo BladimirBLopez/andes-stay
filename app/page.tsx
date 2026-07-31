@@ -371,7 +371,7 @@ export default function Home() {
                       {apto.slug && (
                         <Link
                           href={`/apartamentos/${apto.slug}`}
-                          className="flex-1 text-center border border-noche/20 hover:border-terracota transition-colors text-noche text-sm font-medium rounded-full py-2"
+                          className="flex-1 text-center border-2 border-noche hover:bg-noche hover:text-hueso transition-colors text-noche text-xs font-semibold uppercase tracking-wide rounded-full py-2.5"
                         >
                           {t("ver_detalles")}
                         </Link>
@@ -382,7 +382,7 @@ export default function Home() {
 https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center bg-terracota hover:bg-terracota-light transition-colors text-noche text-sm font-medium rounded-full py-2"
+                        className="flex-1 text-center bg-noche hover:bg-noche/85 transition-colors text-oro text-xs font-semibold uppercase tracking-wide rounded-full py-2.5 shadow-md"
                       >
                         {t("reservar")}
                       </a>
