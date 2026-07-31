@@ -31,7 +31,8 @@ const WHATSAPP_NUMBER = "59176570041";
 const CLOUD_NAME = "dkq95jus0";
 
 const NOMBRE = "Apto. VIP de Lujo en Penthouse - Sopocachi";
-const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible?`;
+const PAGINA_URL = "https://andes-stay-o6fy.vercel.app/apartamentos/vip-de-lujo";
+const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible? ${PAGINA_URL}`;
 
 const categorias = [
   {
