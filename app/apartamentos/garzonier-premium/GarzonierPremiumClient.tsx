@@ -96,9 +96,9 @@ export default function GarzonierPremium() {
   return (
     <main>
       <motion.div
-        initial={{ opacity: 0, scale: 1.06 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative w-full aspect-[4/3] md:aspect-[16/7] bg-noche/10"
       >
         <HeroCarousel
