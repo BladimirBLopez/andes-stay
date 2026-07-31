@@ -263,9 +263,6 @@ export default function Home() {
           <p className="text-terracota-light text-lg md:text-xl mb-6">
             {t("hero_slogan")}
           </p>
-          <p className="text-lg md:text-xl max-w-xl text-hueso/80 mb-4">
-            {t("hero_desc")}
-          </p>
           <a
             href="#apartamentos"
             className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
