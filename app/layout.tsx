@@ -26,9 +26,9 @@ const alexBrush = Alex_Brush({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andes-stay-o6fy.vercel.app"),
-  title: "VIP Estadías | Alojamientos que te hacen sentir en casa",
+  title: "VIP Estadías | Departamentos Amoblados en Alquiler en La Paz",
   description:
-    "Apartamentos amoblados y equipados en La Paz para tu estadía temporal. Ubicaciones exclusivas, wifi de alta velocidad y todo lo que necesitas para sentirte como en casa.",
+    "Departamentos amoblados en alquiler en Sopocachi, La Paz, Bolivia. Wifi de alta velocidad, TV Android, gas domiciliario y atención directa por WhatsApp.",
 };
 
 export const viewport: Viewport = {
@@ -49,7 +49,7 @@ export default function RootLayout({
               "@type": "LodgingBusiness",
               name: "VIP Estadías",
               description:
-                "Apartamentos amoblados y equipados en Sopocachi, La Paz, Bolivia, para estadías temporales.",
+                "Departamentos amoblados en alquiler en Sopocachi, La Paz, Bolivia. Wifi de alta velocidad, TV Android, gas domiciliario y atención directa por WhatsApp.",
               url: "https://andes-stay-o6fy.vercel.app",
               image: "https://res.cloudinary.com/dkq95jus0/image/upload/premium-sala-1",
               address: {

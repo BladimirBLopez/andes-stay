@@ -132,6 +132,24 @@ export default function Home() {
       : "Hi, I'd like to book an apartment in La Paz";
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqData.es.map((item) => ({
+              "@type": "Question",
+              name: item.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.a,
+              },
+            })),
+          }),
+        }}
+      />
     <main>
       {/* NAV */}
       <nav
@@ -493,5 +511,6 @@ https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
         </a>
       </div>
     </main>
+    </>
   );
 }

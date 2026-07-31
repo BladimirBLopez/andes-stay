@@ -6,7 +6,7 @@ export const translations = {
     nav_preguntas: "Preguntas",
     hero_titulo: "VIP Estadías",
     hero_titulo_seo: "Apartamentos amoblados en alquiler en La Paz, Bolivia",
-    hero_slogan: "Alojamientos que te hacen sentir en casa.",
+    hero_slogan: "Departamentos que te hacen sentir en casa.",
     hero_desc:
       "Apartamentos amoblados y completamente equipados en el corazón de Sopocachi. Internet de alta velocidad, TV Android y cercanía al transporte y al teleférico, para que su estadía se sienta como en casa desde el primer día.",
     hero_stats: "4.69 · 160 reseñas · 4 años de anfitrión",
@@ -37,7 +37,7 @@ export const translations = {
     quote_eyebrow: "Su hogar en La Paz",
     quote_titulo: "Su próxima estadía en La Paz empieza aquí",
     quote_boton: "Reservar por WhatsApp",
-    apartamentos_eyebrow: "Alojamiento",
+    apartamentos_eyebrow: "Departamentos",
     apartamentos_titulo: "Nuestros apartamentos",
     apartamentos_sub: "4 opciones en las mejores zonas de La Paz",
     ver_detalles: "Ver detalles",
