@@ -192,7 +192,7 @@ export default function GarzonierPremium() {
           index={lightboxIndex}
           slides={slides}
           plugins={[Captions, Counter, Share]}
-          captions={{ position: "bottom", descriptionTextAlign: "start" }}
+          captions={{ descriptionTextAlign: "start" }}
           counter={{ container: { style: { top: 0, bottom: "unset" } } }}
         />
 
