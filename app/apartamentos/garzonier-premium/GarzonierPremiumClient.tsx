@@ -11,11 +11,12 @@ import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
 import HeroCarousel from "../../HeroCarousel";
+import ImageWithSkeleton from "../../ImageWithSkeleton";
 
 const otrosApartamentos = [
-  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz" },
-  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi" },
-  { nombre: "Apto. VIP de Lujo", detalle: "Penthouse · Sopocachi" },
+  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz", slug: null, foto: null },
+  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: null, foto: null },
+  { nombre: "Apto. VIP de Lujo", detalle: "Penthouse · Sopocachi", slug: "vip-de-lujo", foto: "vip-sala-1" },
 ];
 
 const amenidades = [
@@ -185,18 +186,44 @@ export default function GarzonierPremium() {
         <div className="pb-16 border-t border-noche/10 pt-16">
           <h2 className="font-display text-2xl mb-6">Otros apartamentos</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {otrosApartamentos.map((a) => (
-              <a
-                key={a.nombre}
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa el ${a.nombre}. ¿Está disponible?`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-hueso border border-noche/10 rounded-xl p-5 hover:border-terracota transition-colors"
-              >
-                <h3 className="font-display text-lg mb-1">{a.nombre}</h3>
-                <p className="text-sm text-noche/60">{a.detalle}</p>
-              </a>
-            ))}
+            {otrosApartamentos.map((a) => {
+              const cardContent = (
+                <>
+                  <div className="relative aspect-[4/3] bg-noche/10">
+                    {a.foto ? (
+                      <ImageWithSkeleton src={a.foto} alt={a.nombre} sizes="(max-width: 640px) 100vw, 300px" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-noche/30 text-xs">
+                        Foto pendiente
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-lg mb-1">{a.nombre}</h3>
+                    <p className="text-sm text-noche/60">{a.detalle}</p>
+                  </div>
+                </>
+              );
+              return a.slug ? (
+                <Link
+                  key={a.nombre}
+                  href={`/apartamentos/${a.slug}`}
+                  className="block bg-hueso border border-noche/10 rounded-xl overflow-hidden hover:border-terracota transition-colors"
+                >
+                  {cardContent}
+                </Link>
+              ) : (
+                <a
+                  key={a.nombre}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa el ${a.nombre}. ¿Está disponible?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block bg-hueso border border-noche/10 rounded-xl overflow-hidden hover:border-terracota transition-colors"
+                >
+                  {cardContent}
+                </a>
+              );
+            })}
           </div>
           <Link
             href="/#apartamentos"
