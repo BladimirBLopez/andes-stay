@@ -12,7 +12,7 @@ export default function AmbienteCarousel({
 }: {
   titulo: string;
   fotos: string[];
-  onOpenGallery: (fotos: string[], index: number) => void;
+  onOpenGallery: (fotos: string[], index: number, titulo?: string) => void;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [selected, setSelected] = useState(0);
@@ -45,7 +45,7 @@ export default function AmbienteCarousel({
             {fotos.map((id, i) => (
               <button
                 key={id}
-                onClick={() => onOpenGallery(fotos, i)}
+                onClick={() => onOpenGallery(fotos, i, titulo)}
                 className="relative flex-[0_0_100%] h-full cursor-zoom-in"
               >
                 <ImageWithSkeleton

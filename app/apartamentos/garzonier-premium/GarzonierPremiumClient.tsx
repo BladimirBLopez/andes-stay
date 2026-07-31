@@ -5,6 +5,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/plugins/captions.css";
+import Counter from "yet-another-react-lightbox/plugins/counter";
+import "yet-another-react-lightbox/plugins/counter.css";
+import Share from "yet-another-react-lightbox/plugins/share";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
 import ShareButton from "../../ShareButton";
 import Amenidades from "../../Amenidades";
@@ -85,14 +90,16 @@ export default function GarzonierPremium() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [activeGallery, setActiveGallery] = useState<string[]>([]);
+  const [activeTitulo, setActiveTitulo] = useState("");
 
-  const openGallery = (fotos: string[], index: number) => {
+  const openGallery = (fotos: string[], index: number, titulo?: string) => {
     setActiveGallery(fotos);
     setLightboxIndex(index);
+    setActiveTitulo(titulo ?? "");
     setLightboxOpen(true);
   };
 
-  const slides = activeGallery.map((id) => ({ src: cldUrl(id) }));
+  const slides = activeGallery.map((id) => ({ src: cldUrl(id), title: activeTitulo }));
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     MENSAJE_WHATSAPP
   )}`;
@@ -108,7 +115,7 @@ export default function GarzonierPremium() {
         <HeroCarousel
           fotos={categorias[0].fotos}
           alt={NOMBRE}
-          onOpenGallery={openGallery}
+          onOpenGallery={(fotos, index) => openGallery(fotos, index, categorias[0].titulo)}
         />
         <Link
           href="/"
@@ -184,6 +191,7 @@ export default function GarzonierPremium() {
           close={() => setLightboxOpen(false)}
           index={lightboxIndex}
           slides={slides}
+          plugins={[Captions, Counter, Share]}
         />
 
         <div className="pb-16 border-t border-noche/10 pt-16">
