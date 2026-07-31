@@ -331,7 +331,7 @@ export default function Home() {
 
       {/* APARTAMENTOS */}
       <section id="apartamentos" className="bg-hueso py-20">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -343,7 +343,7 @@ export default function Home() {
             <h2 className="font-display text-2xl md:text-3xl mb-2">{t("apartamentos_titulo")}</h2>
             <p className="text-noche/60 mb-12">{t("apartamentos_sub")}</p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {apartamentos.map((apto, i) => (
               <motion.div
                 key={apto.id}
