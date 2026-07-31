@@ -16,7 +16,7 @@ import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
 import TrustStats from "./TrustStats";
 import QuoteBanner from "./QuoteBanner";
-import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Clock, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
@@ -32,14 +32,12 @@ const apartamentos = [
 const faqData = {
   es: [
     { q: "¿Cómo reservo un apartamento?", a: "Escríbenos por WhatsApp indicando el apartamento de tu interés y las fechas. Te confirmamos disponibilidad al instante." },
-    { q: "¿A qué hora es el check-in y check-out?", a: "El horario de check-in y check-out se coordina directamente por WhatsApp al momento de tu reserva, según disponibilidad del apartamento." },
     { q: "¿Los apartamentos incluyen wifi?", a: "Sí, todos nuestros apartamentos cuentan con wifi de alta velocidad." },
     { q: "¿Dónde están ubicados los apartamentos?", a: "Los 4 apartamentos se encuentran en Sopocachi, una zona residencial y exclusiva de La Paz." },
     { q: "¿Cómo se coordina el pago?", a: "El método de pago se coordina directamente por WhatsApp al confirmar tu reserva." },
   ],
   en: [
     { q: "How do I book an apartment?", a: "Message us on WhatsApp with the apartment you're interested in and your dates. We'll confirm availability right away." },
-    { q: "What time is check-in and check-out?", a: "Check-in and check-out times are coordinated directly via WhatsApp when you book, based on availability." },
     { q: "Do the apartments include wifi?", a: "Yes, all our apartments have high-speed wifi." },
     { q: "Where are the apartments located?", a: "All 4 apartments are located in Sopocachi, an exclusive residential area of La Paz." },
     { q: "How is payment arranged?", a: "Payment method is arranged directly via WhatsApp when confirming your booking." },
@@ -303,7 +301,6 @@ export default function Home() {
               { icon: Wifi, titulo: t("servicio_2_titulo") },
               { icon: MessageCircle, titulo: t("servicio_3_titulo") },
               { icon: ShieldCheck, titulo: t("servicio_4_titulo") },
-              { icon: Clock, titulo: t("servicio_5_titulo") },
               { icon: Users, titulo: t("servicio_6_titulo") },
               { icon: Flame, titulo: t("servicio_7_titulo") },
               { icon: Tv, titulo: t("servicio_8_titulo") },
