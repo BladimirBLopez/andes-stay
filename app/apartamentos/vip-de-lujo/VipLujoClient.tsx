@@ -239,6 +239,15 @@ export default function VipLujoClient() {
       <Footer />
       <div className="h-20 bg-noche md:hidden" />
 
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:inline-flex fixed bottom-8 right-8 z-40 items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium shadow-xl"
+      >
+        Reservar ahora
+      </a>
+
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-hueso border-t border-noche/10 px-6 py-4 flex items-center justify-between z-40">
         <div>
           <div className="font-display text-lg">Apto. VIP de Lujo</div>
