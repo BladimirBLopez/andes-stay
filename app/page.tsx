@@ -157,7 +157,7 @@ export default function Home() {
           scrolled ? "shadow-md" : "shadow-sm"
         }`}
       >
-        <div className="px-6 py-3 max-w-5xl mx-auto flex items-center justify-between">
+        <div className="px-6 py-3 max-w-7xl mx-auto flex items-center justify-between">
           <span className="flex items-center">
             <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={200} height={60} className="h-14 w-auto" priority />
           </span>
@@ -250,7 +250,7 @@ export default function Home() {
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/80 to-noche/50" />
-        <div className="relative z-10 max-w-5xl mx-auto px-6 pb-16 pt-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-16 pt-32">
           <p className="uppercase tracking-[0.2em] text-sm text-terracota-light mb-4 flex items-center gap-2">
             <MapPin size={14} /> La Paz, Bolivia
           </p>
@@ -273,7 +273,7 @@ export default function Home() {
       </section>
 
       <div className="bg-hueso px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <TrustStats />
         </div>
       </div>
@@ -289,7 +289,7 @@ export default function Home() {
         variants={fadeUp}
         className="bg-white py-24"
       >
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <span className="font-script text-5xl text-terracota block mb-1">{t("servicio_eyebrow")}</span>
           <h2 className="font-display text-2xl md:text-3xl mb-4 text-noche">
             {t("servicio_titulo")}
@@ -411,7 +411,7 @@ https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
         variants={fadeUp}
         className="py-20"
       >
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
         <span className="font-script text-5xl text-terracota block mb-1">{t("ubicacion_eyebrow")}</span>
         <h2 className="font-display text-2xl md:text-3xl mb-2">{t("ubicacion_titulo")}</h2>
         <p className="text-noche/60 mb-8">
