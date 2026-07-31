@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -98,6 +98,8 @@ function LangSwitcher({ light = false }: { light?: boolean }) {
 export default function Home() {
   const { t, lang } = useLanguage();
   const heroRef = useRef(null);
+  const mapaRef = useRef(null);
+  const mapaInView = useInView(mapaRef, { once: true, margin: "300px" });
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -403,8 +405,8 @@ https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
         <p className="text-noche/60 mb-8">
           {t("ubicacion_sub")}
         </p>
-        <div className="rounded-2xl overflow-hidden border border-noche/10 aspect-[16/9]">
-          <MapaSopocachi />
+        <div ref={mapaRef} className="rounded-2xl overflow-hidden border border-noche/10 aspect-[16/9] bg-noche/5">
+          {mapaInView && <MapaSopocachi />}
         </div>
         <p className="text-sm text-noche/50 mt-3">
           {t("ubicacion_nota")}
