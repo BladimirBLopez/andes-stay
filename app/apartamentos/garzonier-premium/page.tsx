@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     title: "Garzonier Premium con Sol y Vista Espectacular | VIP Estadías",
     description:
       "Apartamento de 1 habitación en Sopocachi, La Paz. Moderno, soleado y confortable, a una cuadra de Plaza Avaroa.",
+    url: "https://andes-stay-o6fy.vercel.app/apartamentos/garzonier-premium",
+    type: "website",
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
 };
