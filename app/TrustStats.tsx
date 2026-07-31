@@ -1,36 +1,35 @@
 "use client";
 
-import CountUp from "react-countup";
-import { Home, MapPin, Clock } from "lucide-react";
+import { Building2, MapPin, CalendarDays } from "lucide-react";
 
 export default function TrustStats() {
   return (
     <div className="grid grid-cols-3 gap-4 py-8 border-y border-noche/10">
       <div className="text-center">
-        <Home size={20} className="mx-auto mb-2 text-terracota" />
-        <div className="font-display text-2xl">
-          <CountUp end={4} duration={1.5} />
+        <Building2 size={20} className="mx-auto mb-2 text-terracota" />
+        <div className="font-display text-lg md:text-xl">
+          Deptos Equipados
         </div>
         <div className="text-xs text-noche/60 uppercase tracking-wide">
-          Apartamentos disponibles
+          Amoblados y listos
         </div>
       </div>
       <div className="text-center">
         <MapPin size={20} className="mx-auto mb-2 text-terracota" />
-        <div className="font-display text-2xl">
+        <div className="font-display text-lg md:text-xl">
           Sopocachi
         </div>
         <div className="text-xs text-noche/60 uppercase tracking-wide">
-          Ubicación exclusiva
+          Ubicación céntrica
         </div>
       </div>
       <div className="text-center">
-        <Clock size={20} className="mx-auto mb-2 text-terracota" />
-        <div className="font-display text-2xl">
-          <CountUp end={4} duration={1.5} /> años
+        <CalendarDays size={20} className="mx-auto mb-2 text-terracota" />
+        <div className="font-display text-lg md:text-xl">
+          Por días o semanas
         </div>
         <div className="text-xs text-noche/60 uppercase tracking-wide">
-          Como anfitrión
+          Alquiler flexible
         </div>
       </div>
     </div>
