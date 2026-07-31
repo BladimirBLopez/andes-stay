@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { LanguageProvider } from "./LanguageContext";
+import SmoothScroll from "./SmoothScroll";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -64,7 +65,7 @@ export default function RootLayout({
           }}
         />
         <LanguageProvider>
-          {children}
+          <SmoothScroll>{children}</SmoothScroll>
         </LanguageProvider>
         <Toaster position="bottom-center" />
         <Analytics />
