@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 
 export default function SobreNosotros() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-10">
+    <main>
+    <div className="max-w-3xl mx-auto px-6 py-10">
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-noche/60 hover:text-noche mb-8"
@@ -86,6 +87,8 @@ export default function SobreNosotros() {
           Reservar por WhatsApp
         </a>
       </div>
+
+    </div>
 
       <Footer />
 
