@@ -12,6 +12,7 @@ import "yet-another-react-lightbox/plugins/counter.css";
 import Share from "yet-another-react-lightbox/plugins/share";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
 import ShareButton from "../../ShareButton";
+import DescripcionExpandible from "../../DescripcionExpandible";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
@@ -149,24 +150,15 @@ export default function EleganteApartamentoClient() {
 
         <div className="border-t border-noche/10" />
 
-        <div className="mb-16 max-w-3xl pt-8">
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Elegante apartamento con hermosa vista panorámica en Sopocachi,
-            con dos habitaciones y ambientes amplios pensados para una
-            estadía cómoda en La Paz.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Cuenta con sala y comedor independientes, cocina equipada y
-            grandes ventanales con vista a la ciudad.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Ubicado en Sopocachi, una de las zonas más exclusivas y seguras
-            de La Paz, cerca de restaurantes, cafés y servicios.
-          </p>
-          <p className="text-noche/70 leading-relaxed">
-            Anfitrionado por Wilmer, con años de experiencia recibiendo
-            huéspedes y coordinando cada detalle de tu estadía.
-          </p>
+        <div className="mb-16 pt-8">
+          <DescripcionExpandible
+            paragraphs={[
+              "Elegante apartamento con hermosa vista panorámica en Sopocachi, con dos habitaciones y ambientes amplios pensados para una estadía cómoda en La Paz.",
+              "Cuenta con sala y comedor independientes, cocina equipada y grandes ventanales con vista a la ciudad.",
+              "Ubicado en Sopocachi, una de las zonas más exclusivas y seguras de La Paz, cerca de restaurantes, cafés y servicios.",
+              "Anfitrionado por Wilmer, con años de experiencia recibiendo huéspedes y coordinando cada detalle de tu estadía.",
+            ]}
+          />
         </div>
 
         <Amenidades items={amenidades} />

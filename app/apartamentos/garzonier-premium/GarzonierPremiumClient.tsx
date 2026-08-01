@@ -12,6 +12,7 @@ import "yet-another-react-lightbox/plugins/counter.css";
 import Share from "yet-another-react-lightbox/plugins/share";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
 import ShareButton from "../../ShareButton";
+import DescripcionExpandible from "../../DescripcionExpandible";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
@@ -155,24 +156,15 @@ export default function GarzonierPremium() {
 
         <div className="border-t border-noche/10" />
 
-        <div className="mb-16 max-w-3xl pt-8">
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Exclusivo Garzonier, ambiente moderno, soleado y confortable que
-            ofrece practicidad y bienestar en un espacio funcional.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            El apartamento es nuevo y se encuentra en un estado impecable, el
-            edificio es moderno y seguro.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Su ubicación es estratégica: a una cuadra de la Plaza Avaroa,
-            donde encontrará restaurantes con comida nacional e
-            internacional, farmacias, pubs y discotecas.
-          </p>
-          <p className="text-noche/70 leading-relaxed">
-            El apartamento se encuentra a pasos de la Embajada de Japón y el
-            supermercado Hipermaxi.
-          </p>
+        <div className="mb-16 pt-8">
+          <DescripcionExpandible
+            paragraphs={[
+              "Exclusivo Garzonier, ambiente moderno, soleado y confortable que ofrece practicidad y bienestar en un espacio funcional.",
+              "El apartamento es nuevo y se encuentra en un estado impecable, el edificio es moderno y seguro.",
+              "Su ubicación es estratégica: a una cuadra de la Plaza Avaroa, donde encontrará restaurantes con comida nacional e internacional, farmacias, pubs y discotecas.",
+              "El apartamento se encuentra a pasos de la Embajada de Japón y el supermercado Hipermaxi.",
+            ]}
+          />
         </div>
 
         <Amenidades items={amenidades} />

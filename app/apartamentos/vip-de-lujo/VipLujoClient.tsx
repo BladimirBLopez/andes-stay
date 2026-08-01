@@ -12,6 +12,7 @@ import "yet-another-react-lightbox/plugins/counter.css";
 import Share from "yet-another-react-lightbox/plugins/share";
 import { ArrowLeft, MessageCircle, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
 import ShareButton from "../../ShareButton";
+import DescripcionExpandible from "../../DescripcionExpandible";
 import Amenidades from "../../Amenidades";
 import AmbienteCarousel from "../../AmbienteCarousel";
 import Footer from "../../Footer";
@@ -153,24 +154,15 @@ export default function VipLujoClient() {
 
         <div className="border-t border-noche/10" />
 
-        <div className="mb-16 max-w-3xl pt-8">
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Amplio penthouse de lujo en Sopocachi, con acabados finos, sala
-            de estar y comedor independientes, y tres habitaciones para
-            alojar cómodamente a grupos familiares o de amigos.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Cada habitación cuenta con su propio espacio, pensado para que
-            cada huésped tenga privacidad durante su estadía.
-          </p>
-          <p className="text-noche/70 leading-relaxed mb-4">
-            Ubicado en Sopocachi, una de las zonas más exclusivas y seguras
-            de La Paz, cerca de restaurantes, cafés y servicios.
-          </p>
-          <p className="text-noche/70 leading-relaxed">
-            Anfitrionado por Wilmer, con años de experiencia recibiendo
-            huéspedes y coordinando cada detalle de tu estadía.
-          </p>
+        <div className="mb-16 pt-8">
+          <DescripcionExpandible
+            paragraphs={[
+              "Amplio penthouse de lujo en Sopocachi, con acabados finos, sala de estar y comedor independientes, y tres habitaciones para alojar cómodamente a grupos familiares o de amigos.",
+              "Cada habitación cuenta con su propio espacio, pensado para que cada huésped tenga privacidad durante su estadía.",
+              "Ubicado en Sopocachi, una de las zonas más exclusivas y seguras de La Paz, cerca de restaurantes, cafés y servicios.",
+              "Anfitrionado por Wilmer, con años de experiencia recibiendo huéspedes y coordinando cada detalle de tu estadía.",
+            ]}
+          />
         </div>
 
         <Amenidades items={amenidades} />
