@@ -24,7 +24,7 @@ export default function OGImage() {
           VIP Estadías — Alojamientos que te hacen sentir en casa
         </div>
         <div style={{ fontSize: 24, color: "#f7f4ec", opacity: 0.75, marginTop: 24, display: "flex" }}>
-          ★ 4.69 · 160 reseñas
+          Apartamentos amoblados en Sopocachi
         </div>
       </div>
     ),
