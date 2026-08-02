@@ -202,10 +202,14 @@ export default function GarzonierPremium() {
                         Foto pendiente
                       </div>
                     )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-lg mb-1">{a.nombre}</h3>
-                    <p className="text-sm text-noche/60">{a.detalle}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-noche/90 via-noche/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h3 className="font-display text-lg text-hueso mb-1">{a.nombre}</h3>
+                      <p className="text-sm text-hueso/70 mb-3">{a.detalle}</p>
+                      <span className="inline-flex items-center gap-1 bg-oro text-noche text-xs font-medium px-3 py-1.5 rounded-full">
+                        Ver apartamento
+                      </span>
+                    </div>
                   </div>
                 </>
               );
