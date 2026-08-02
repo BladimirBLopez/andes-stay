@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, MessageCircle, Star } from "lucide-react";
+import { ArrowLeft, MessageCircle, Star, Target, Eye, Quote } from "lucide-react";
 import Footer from "../Footer";
+import ImageWithSkeleton from "../ImageWithSkeleton";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -14,81 +15,103 @@ export const metadata: Metadata = {
 export default function SobreNosotros() {
   return (
     <main>
-    <div className="max-w-3xl mx-auto px-6 py-10">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-noche/60 hover:text-noche mb-8"
-      >
-        <ArrowLeft size={18} />
-        Volver
-      </Link>
-
-      <p className="uppercase tracking-[0.2em] text-sm text-terracota mb-2">
-        VIP Estadías
-      </p>
-      <h1 className="font-display text-4xl md:text-5xl mb-10">Sobre nosotros</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-        <div>
-          <h2 className="font-display text-xl mb-3 text-terracota">Misión</h2>
-          <p className="text-noche/70 leading-relaxed">
-            Brindar servicios de alojamiento temporal en apartamentos
-            amoblados y totalmente equipados, ofreciendo comodidad,
-            seguridad, limpieza y atención personalizada que superen las
-            expectativas de nuestros huéspedes. Nos comprometemos a
-            proporcionar una experiencia de hospedaje confiable y de
-            calidad, contribuyendo al bienestar de viajeros nacionales e
-            internacionales mediante un servicio eficiente, cálido y
-            profesional.
-          </p>
-        </div>
-        <div>
-          <h2 className="font-display text-xl mb-3 text-terracota">Visión</h2>
-          <p className="text-noche/70 leading-relaxed">
-            Ser la empresa líder en alojamiento temporal de alta calidad en
-            La Paz, reconocida por la excelencia en el servicio, la
-            confianza, la innovación y el confort que ofrecemos a nuestros
-            huéspedes, expandiendo nuestra presencia con apartamentos
-            cuidadosamente seleccionados y convirtiéndonos en la primera
-            opción para viajeros nacionales e internacionales.
-          </p>
-        </div>
-      </div>
-
-      <h2 className="font-display text-2xl mb-6">Lo que dicen nuestros huéspedes</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        {[
-          { nombre: "Gustavo", ciudad: "Santa Cruz de la Sierra", texto: "Cómodo Dpto" },
-          { nombre: "Cesar Andrés", ciudad: "La Paz", texto: "Totalmente recomendable." },
-          { nombre: "Daniel", ciudad: "Huésped Airbnb", texto: "Excelente host y buen lugar" },
-        ].map((r) => (
-          <div key={r.nombre} className="bg-hueso border border-noche/10 rounded-2xl p-6">
-            <div className="flex items-center gap-1 text-oro mb-3">
-              <Star size={14} fill="currentColor" />
-              <Star size={14} fill="currentColor" />
-              <Star size={14} fill="currentColor" />
-              <Star size={14} fill="currentColor" />
-              <Star size={14} fill="currentColor" />
-            </div>
-            <p className="text-noche/80 mb-4">&ldquo;{r.texto}&rdquo;</p>
-            <p className="text-sm text-noche/50">{r.nombre} · {r.ciudad}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-center py-12 border-t border-noche/10">
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/6] bg-noche/10">
+        <ImageWithSkeleton
+          src="elegante-exterior-1"
+          alt="VIP Estadías - Sopocachi, La Paz"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-noche/90 via-noche/20 to-noche/10" />
+        <Link
+          href="/"
+          className="absolute top-4 left-4 inline-flex items-center gap-2 bg-noche/60 hover:bg-noche/80 backdrop-blur-sm text-hueso rounded-full px-4 py-2 text-sm font-medium transition-colors shadow-md"
         >
-          <MessageCircle size={18} />
-          Reservar por WhatsApp
-        </a>
+          <ArrowLeft size={16} />
+          Volver
+        </Link>
+        <div className="absolute bottom-0 left-0 right-0 px-6 pb-8 max-w-3xl mx-auto w-full">
+          <span className="font-script text-4xl text-oro block mb-1">VIP Estadías</span>
+          <h1 className="font-display text-3xl md:text-5xl text-hueso">Sobre nosotros</h1>
+        </div>
       </div>
 
-    </div>
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          <div className="bg-hueso border-l-4 border-terracota rounded-r-2xl p-6 shadow-sm">
+            <div className="w-11 h-11 bg-terracota/10 rounded-lg flex items-center justify-center mb-4">
+              <Target size={20} className="text-terracota" />
+            </div>
+            <h2 className="font-display text-xl mb-3">Misión</h2>
+            <p className="text-noche/70 leading-relaxed">
+              Brindar servicios de alojamiento temporal en apartamentos
+              amoblados y totalmente equipados, ofreciendo comodidad,
+              seguridad, limpieza y atención personalizada que superen las
+              expectativas de nuestros huéspedes. Nos comprometemos a
+              proporcionar una experiencia de hospedaje confiable y de
+              calidad, contribuyendo al bienestar de viajeros nacionales e
+              internacionales mediante un servicio eficiente, cálido y
+              profesional.
+            </p>
+          </div>
+          <div className="bg-hueso border-l-4 border-terracota rounded-r-2xl p-6 shadow-sm">
+            <div className="w-11 h-11 bg-terracota/10 rounded-lg flex items-center justify-center mb-4">
+              <Eye size={20} className="text-terracota" />
+            </div>
+            <h2 className="font-display text-xl mb-3">Visión</h2>
+            <p className="text-noche/70 leading-relaxed">
+              Ser la empresa líder en alojamiento temporal de alta calidad en
+              La Paz, reconocida por la excelencia en el servicio, la
+              confianza, la innovación y el confort que ofrecemos a nuestros
+              huéspedes, expandiendo nuestra presencia con apartamentos
+              cuidadosamente seleccionados y convirtiéndonos en la primera
+              opción para viajeros nacionales e internacionales.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center mb-10">
+          <span className="font-script text-4xl text-terracota block mb-1">Testimonios</span>
+          <h2 className="font-display text-2xl">Lo que dicen nuestros huéspedes</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+          {[
+            { nombre: "Gustavo", ciudad: "Santa Cruz de la Sierra", texto: "Cómodo Dpto" },
+            { nombre: "Cesar Andrés", ciudad: "La Paz", texto: "Totalmente recomendable." },
+            { nombre: "Daniel", ciudad: "Huésped Airbnb", texto: "Excelente host y buen lugar" },
+          ].map((r) => (
+            <div
+              key={r.nombre}
+              className="relative bg-hueso border border-noche/10 rounded-2xl p-6 hover:border-terracota hover:shadow-md transition-all"
+            >
+              <Quote size={32} className="text-oro/20 absolute top-4 right-4" />
+              <div className="flex items-center gap-1 text-oro mb-3">
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+              </div>
+              <p className="text-noche/80 mb-4 relative z-10">&ldquo;{r.texto}&rdquo;</p>
+              <p className="text-sm text-noche/50">{r.nombre} · {r.ciudad}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center py-12 border-t border-noche/10">
+          <p className="text-noche/60 mb-6">
+            ¿Listo para tu próxima estadía en La Paz?
+          </p>
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quisiera reservar un apartamento en La Paz")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-terracota hover:bg-terracota-light transition-colors text-noche px-8 py-4 rounded-full font-medium"
+          >
+            <MessageCircle size={18} />
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
 
       <Footer />
 
