@@ -22,7 +22,7 @@ import ImageWithSkeleton from "../../ImageWithSkeleton";
 type OtroApto = { nombre: string; detalle: string; slug: string | null; foto: string | null };
 
 const otrosApartamentos: OtroApto[] = [
-  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: null, foto: null },
+  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: "garzonier-moderno", foto: "moderno-sala-1" },
   { nombre: "Apto. VIP de Lujo", detalle: "Penthouse de lujo · Sopocachi", slug: "vip-de-lujo", foto: "vip-sala-1" },
   { nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular · Sopocachi", slug: "garzonier-premium", foto: "premium-sala-1" },
 ];
