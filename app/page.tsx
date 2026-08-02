@@ -429,7 +429,7 @@ https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
             <div className="w-11 h-11 border border-terracota/40 rounded-lg flex items-center justify-center shrink-0">
               <Phone size={18} className="text-terracota" />
             </div>
-            <span className="text-noche/80">Reservas: +591 767 570 041</span>
+            <span className="text-noche/80">Reservas: +591 76570041</span>
           </a>
           <a
             href="mailto:wilmerpantoja@gmail.com"
