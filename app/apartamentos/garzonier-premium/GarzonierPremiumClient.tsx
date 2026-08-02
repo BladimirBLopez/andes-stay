@@ -20,8 +20,8 @@ import HeroCarousel from "../../HeroCarousel";
 import ImageWithSkeleton from "../../ImageWithSkeleton";
 
 const otrosApartamentos = [
-  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz", slug: null, foto: null },
-  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: null, foto: null },
+  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz", slug: "elegante-apartamento", foto: "elegante-sala-1" },
+  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: "garzonier-moderno", foto: "moderno-sala-1" },
   { nombre: "Apto. VIP de Lujo", detalle: "Penthouse · Sopocachi", slug: "vip-de-lujo", foto: "vip-sala-1" },
 ];
 

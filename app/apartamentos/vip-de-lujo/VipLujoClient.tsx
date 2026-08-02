@@ -22,8 +22,8 @@ import ImageWithSkeleton from "../../ImageWithSkeleton";
 type OtroApto = { nombre: string; detalle: string; slug: string | null; foto: string | null };
 
 const otrosApartamentos: OtroApto[] = [
-  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz", slug: null, foto: null },
-  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: null, foto: null },
+  { nombre: "Elegante Apartamento", detalle: "Hermosa vista panorámica · La Paz", slug: "elegante-apartamento", foto: "elegante-sala-1" },
+  { nombre: "Garzonier Moderno", detalle: "Flamante, céntrico · Sopocachi", slug: "garzonier-moderno", foto: "moderno-sala-1" },
   { nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular · Sopocachi", slug: "garzonier-premium", foto: "premium-sala-1" },
 ];
 
