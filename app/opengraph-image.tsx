@@ -45,7 +45,7 @@ export default function OGImage() {
             La Paz, Bolivia
           </div>
           <div style={{ fontSize: 58, fontWeight: 700, color: "#f7f4ec", lineHeight: 1.15, maxWidth: 900, display: "flex" }}>
-            VIP Estadías — Alojamientos que te hacen sentir en casa
+            VIP Estadías — Departamentos que te hacen sentir en casa
           </div>
           <div style={{ fontSize: 24, color: "#f7f4ec", opacity: 0.75, marginTop: 24, display: "flex" }}>
             Apartamentos amoblados en Sopocachi
