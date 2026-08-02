@@ -37,7 +37,7 @@ const WHATSAPP_NUMBER = "59176570041";
 const CLOUD_NAME = "dkq95jus0";
 
 const NOMBRE = "Flamante y Moderno Garzonier céntrico en Sopocachi";
-const PAGINA_URL = "https://andes-stay-o6fy.vercel.app/apartamentos/garzonier-moderno";
+const PAGINA_URL = "https://vipestadias.online/apartamentos/garzonier-moderno";
 const MENSAJE_WHATSAPP = `Hola, me interesa reservar el ${NOMBRE}. ¿Está disponible?
 
 ${PAGINA_URL}`;

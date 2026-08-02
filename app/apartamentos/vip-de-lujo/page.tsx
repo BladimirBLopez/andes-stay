@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Apto. VIP de Lujo en Penthouse - Sopocachi | VIP Estadías",
     description:
       "Penthouse de lujo con 3 habitaciones y 3 baños en Sopocachi, La Paz. Ideal para grupos y familias.",
-    url: "https://andes-stay-o6fy.vercel.app/apartamentos/vip-de-lujo",
+    url: "https://vipestadias.online/apartamentos/vip-de-lujo",
     type: "website",
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },

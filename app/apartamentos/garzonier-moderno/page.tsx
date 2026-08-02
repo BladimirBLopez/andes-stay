@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Flamante y Moderno Garzonier céntrico - Sopocachi | VIP Estadías",
     description:
       "Garzonier moderno y confortable en Sopocachi, La Paz. Ideal para 2 huéspedes, ubicación céntrica.",
-    url: "https://andes-stay-o6fy.vercel.app/apartamentos/garzonier-moderno",
+    url: "https://vipestadias.online/apartamentos/garzonier-moderno",
     type: "website",
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },

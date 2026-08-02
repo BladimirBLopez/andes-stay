@@ -382,7 +382,7 @@ export default function Home() {
                       <a
                         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, me interesa reservar el ${apto.nombre}. ¿Está disponible?${apto.slug ? `
 
-https://andes-stay-o6fy.vercel.app/apartamentos/${apto.slug}` : ""}`)}`}
+https://vipestadias.online/apartamentos/${apto.slug}` : ""}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 text-center bg-noche hover:bg-noche/85 transition-colors text-oro text-xs font-semibold uppercase tracking-wide rounded-full py-2.5 shadow-md"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Elegante Apartamento con Vista Panorámica - Sopocachi | VIP Estadías",
     description:
       "Apartamento con 2 habitaciones y 3 camas en Sopocachi, La Paz. Vista panorámica, cocina equipada y ubicación estratégica.",
-    url: "https://andes-stay-o6fy.vercel.app/apartamentos/elegante-apartamento",
+    url: "https://vipestadias.online/apartamentos/elegante-apartamento",
     type: "website",
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
