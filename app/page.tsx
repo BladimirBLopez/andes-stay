@@ -158,7 +158,7 @@ export default function Home() {
         <div className="px-6 py-3 max-w-7xl mx-auto flex items-center justify-between">
           <span className="flex items-center gap-3">
             <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={200} height={60} className="h-10 w-auto" priority />
-            <span className="font-display text-xl tracking-wide leading-none hidden sm:block">
+            <span className="font-display text-base sm:text-xl tracking-wide leading-none">
               VIP ESTADÍAS
             </span>
           </span>
