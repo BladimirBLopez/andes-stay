@@ -156,8 +156,11 @@ export default function Home() {
         }`}
       >
         <div className="px-6 py-3 max-w-7xl mx-auto flex items-center justify-between">
-          <span className="flex items-center">
-            <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={200} height={60} className="h-14 w-auto" priority />
+          <span className="flex items-center gap-3">
+            <Image src="/vip-estadias-logo-icon.png" alt="VIP Estadías" width={200} height={60} className="h-10 w-auto" priority />
+            <span className="font-display text-xl tracking-wide leading-none hidden sm:block">
+              VIP ESTADÍAS
+            </span>
           </span>
           <div className="hidden md:flex items-center gap-8 text-sm text-noche/80">
             <a href="#apartamentos" className="hover:text-terracota transition-colors">{t("nav_apartamentos")}</a>
