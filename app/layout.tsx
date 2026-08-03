@@ -35,6 +35,13 @@ export const metadata: Metadata = {
     title: "VIP Estadías | Departamentos Amoblados en Alquiler en La Paz",
     description:
       "Departamentos amoblados en alquiler en Sopocachi, La Paz, Bolivia. Wifi de alta velocidad, TV Android, gas domiciliario y atención directa por WhatsApp.",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dkq95jus0/image/upload/og-home-1",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 
