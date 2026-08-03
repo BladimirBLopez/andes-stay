@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "Departamentos amoblados en alquiler en Sopocachi, La Paz, Bolivia. Wifi de alta velocidad, TV Android, gas domiciliario y atención directa por WhatsApp.",
     images: [
       {
-        url: "https://res.cloudinary.com/dkq95jus0/image/upload/og-home-1",
+        url: "https://res.cloudinary.com/dkq95jus0/image/upload/f_auto,q_auto/og-home-1",
         width: 1200,
         height: 630,
       },
