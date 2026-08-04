@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://andes-stay-o6fy.vercel.app",
+  siteUrl: process.env.SITE_URL || "https://vipestadias.online",
   generateRobotsTxt: true,
   changefreq: "weekly",
 };
