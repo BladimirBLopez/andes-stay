@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <span className="font-display text-2xl text-hueso block mb-2">VIP Estadías</span>
-          <p className="text-sm">Alojamientos que te hacen sentir en casa.</p>
+          <p className="text-sm">Departamentos que te hacen sentir en casa.</p>
         </div>
         <div>
           <h3 className="text-hueso text-sm uppercase tracking-wide mb-4">Navegación</h3>

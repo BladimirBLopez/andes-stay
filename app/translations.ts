@@ -9,7 +9,6 @@ export const translations = {
     hero_slogan: "Departamentos que te hacen sentir en casa.",
     hero_desc:
       "Apartamentos amoblados y completamente equipados en el corazón de Sopocachi. Internet de alta velocidad, TV Android y cercanía al transporte y al teleférico, para que su estadía se sienta como en casa desde el primer día.",
-    hero_stats: "4.69 · 160 reseñas · 4 años de anfitrión",
     hero_boton: "Reservar ahora",
     servicio_eyebrow: "Nuestra propuesta",
     servicio_titulo: "Confort y ubicación en el corazón de La Paz",
@@ -22,8 +21,6 @@ export const translations = {
     servicio_3_texto: "Reserva y coordinación directa, sin intermediarios.",
     servicio_4_titulo: "Seguridad y privacidad",
     servicio_4_texto: "Zona residencial tranquila, con edificios de acceso controlado.",
-    servicio_5_titulo: "Check-in flexible",
-    servicio_5_texto: "Horarios que se adaptan a tu llegada, coordinados por WhatsApp.",
     servicio_6_titulo: "Ideal para familias y grupos",
     servicio_6_texto: "Espacios amplios y privados para tu estadía.",
     servicio_7_titulo: "Gas domiciliario",
@@ -65,7 +62,6 @@ export const translations = {
     hero_slogan: "Stays that feel like home.",
     hero_desc:
       "Furnished, fully equipped apartments in the heart of Sopocachi. High-speed internet, Android TV, and easy access to transit and the cable car, so your stay feels like home from day one.",
-    hero_stats: "4.69 · 160 reviews · 4 years hosting",
     hero_boton: "Book now",
     servicio_eyebrow: "Why choose us",
     servicio_titulo: "Comfort and location in the heart of La Paz",
@@ -78,8 +74,6 @@ export const translations = {
     servicio_3_texto: "Direct booking and coordination, no middlemen.",
     servicio_4_titulo: "Security and privacy",
     servicio_4_texto: "Quiet residential area, with access-controlled buildings.",
-    servicio_5_titulo: "Flexible check-in",
-    servicio_5_texto: "Schedules that adapt to your arrival, coordinated via WhatsApp.",
     servicio_6_titulo: "Great for families and groups",
     servicio_6_texto: "Spacious, private spaces for your stay.",
     servicio_7_titulo: "In-house gas",

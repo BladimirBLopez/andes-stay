@@ -45,7 +45,7 @@ ${PAGINA_URL}`;
 const categorias = [
   {
     titulo: "Sala",
-    fotos: ["elegante-sala-1", "elegante-sala-2", "elegante-sala-3", "elegante-sala-4", "elegante-sala-5"],
+    fotos: ["elegante-sala-1", "elegante-sala-2", "elegante-sala-3", "elegante-sala-4", "elegante-sala-5", "elegante-fotos-1"],
   },
   {
     titulo: "Cocina",
