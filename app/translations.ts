@@ -9,7 +9,7 @@ export const translations = {
     hero_slogan: "Departamentos que te hacen sentir en casa.",
     hero_desc:
       "Apartamentos amoblados y completamente equipados en el corazón de Sopocachi. Internet de alta velocidad, TV Android y cercanía al transporte y al teleférico, para que su estadía se sienta como en casa desde el primer día.",
-    hero_boton: "Reservar ahora",
+    hero_boton: "Ver departamentos",
     servicio_eyebrow: "Nuestra propuesta",
     servicio_titulo: "Confort y ubicación en el corazón de La Paz",
     servicio_sub: "Cada detalle pensado para que se sienta como en casa: confort, seguridad y atención cercana en cada estadía.",
@@ -62,7 +62,7 @@ export const translations = {
     hero_slogan: "Stays that feel like home.",
     hero_desc:
       "Furnished, fully equipped apartments in the heart of Sopocachi. High-speed internet, Android TV, and easy access to transit and the cable car, so your stay feels like home from day one.",
-    hero_boton: "Book now",
+    hero_boton: "View apartments",
     servicio_eyebrow: "Why choose us",
     servicio_titulo: "Comfort and location in the heart of La Paz",
     servicio_sub: "Every detail designed to make you feel at home: comfort, security, and personal attention throughout your stay.",
