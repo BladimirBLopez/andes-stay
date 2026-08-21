@@ -2,6 +2,7 @@
 
 import { toast } from "sonner";
 import { Share2 } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 export default function ShareButton({
   title,
@@ -10,6 +11,7 @@ export default function ShareButton({
   title: string;
   text?: string;
 }) {
+  const { t } = useLanguage();
   const handleShare = async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
 
@@ -24,9 +26,9 @@ export default function ShareButton({
 
     try {
       await navigator.clipboard.writeText(url);
-      toast.success("Enlace copiado al portapapeles");
+      toast.success(t("enlace_copiado"));
     } catch {
-      toast.error("No se pudo copiar el enlace");
+      toast.error(t("enlace_error"));
     }
   };
 
@@ -36,7 +38,7 @@ export default function ShareButton({
       className="inline-flex items-center gap-2 text-sm text-hueso bg-noche/60 hover:bg-noche/80 backdrop-blur-sm rounded-full px-4 py-2 transition-colors shadow-md"
     >
       <Share2 size={16} />
-      Compartir
+      {t("compartir")}
     </button>
   );
 }

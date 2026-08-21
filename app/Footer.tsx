@@ -1,28 +1,30 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { WhatsappIcon, FacebookIcon, TiktokIcon, ThreadsIcon } from "./SocialIcons";
+import { useLanguage } from "./LanguageContext";
 
 const WHATSAPP_NUMBER = "59176570041";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-noche text-hueso/70 py-14 px-6">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <span className="font-display text-2xl text-hueso block mb-2">VIP Estadías</span>
-          <p className="text-sm">Departamentos que te hacen sentir en casa.</p>
+          <p className="text-sm">{t("footer_slogan")}</p>
         </div>
         <div>
-          <h3 className="text-hueso text-sm uppercase tracking-wide mb-4">Navegación</h3>
+          <h3 className="text-hueso text-sm uppercase tracking-wide mb-4">{t("footer_nav_titulo")}</h3>
           <div className="flex flex-col gap-2 text-sm">
-            <Link href="/#apartamentos" className="hover:text-terracota-light transition-colors">Apartamentos</Link>
-            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">Nosotros</Link>
-            <Link href="/#ubicacion" className="hover:text-terracota-light transition-colors">Ubicación</Link>
-            <Link href="/#faq" className="hover:text-terracota-light transition-colors">Preguntas</Link>
+            <Link href="/#apartamentos" className="hover:text-terracota-light transition-colors">{t("nav_apartamentos")}</Link>
+            <Link href="/sobre-nosotros" className="hover:text-terracota-light transition-colors">{t("nav_nosotros")}</Link>
+            <Link href="/#ubicacion" className="hover:text-terracota-light transition-colors">{t("nav_ubicacion")}</Link>
+            <Link href="/#faq" className="hover:text-terracota-light transition-colors">{t("nav_preguntas")}</Link>
           </div>
         </div>
         <div>
-          <h3 className="text-hueso text-sm uppercase tracking-wide mb-4">Contacto</h3>
+          <h3 className="text-hueso text-sm uppercase tracking-wide mb-4">{t("footer_contacto_titulo")}</h3>
           <div className="flex flex-col gap-2 text-sm">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -66,7 +68,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto border-t border-hueso/10 mt-10 pt-6 text-xs text-hueso/40">
-        © {new Date().getFullYear()} VIP Estadías · La Paz, Bolivia
+        © {new Date().getFullYear()} {t("footer_copy")}
       </div>
     </footer>
   );

@@ -24,6 +24,7 @@ import { useLanguage } from "../../LanguageContext";
 type OtroApto = { nombre: string; detalle: { es: string; en: string }; slug: string | null; foto: string | null };
 
 const otrosApartamentos: OtroApto[] = [
+  { nombre: "Elegante Apartamento", detalle: { es: "Hermosa vista panorámica · La Paz", en: "Beautiful panoramic view · La Paz" }, slug: "elegante-apartamento", foto: "elegante-sala-1" },
   { nombre: "Garzonier Moderno", detalle: { es: "Flamante, céntrico · Sopocachi", en: "Brand new, central · Sopocachi" }, slug: "garzonier-moderno", foto: "moderno-sala-1" },
   { nombre: "Apto. VIP de Lujo", detalle: { es: "Penthouse de lujo · Sopocachi", en: "Luxury penthouse · Sopocachi" }, slug: "vip-de-lujo", foto: "vip-sala-1" },
   { nombre: "Garzonier Premium", detalle: { es: "Con sol y vista espectacular · Sopocachi", en: "Sunny with a spectacular view · Sopocachi" }, slug: "garzonier-premium", foto: "premium-sala-1" },
@@ -32,25 +33,26 @@ const otrosApartamentos: OtroApto[] = [
 const WHATSAPP_NUMBER = "59176570041";
 const CLOUD_NAME = "dkq95jus0";
 
-const NOMBRE = { es: "Elegante Apartamento con Vista Panorámica - Sopocachi", en: "Elegant Apartment with Panoramic View - Sopocachi" };
-const PAGINA_URL = "https://vipestadias.online/apartamentos/elegante-apartamento";
+const NOMBRE = { es: "Moderno Garzonier con Magnífica Vista Panorámica", en: "Modern Studio with Magnificent Panoramic View" };
+const SHORT_NOMBRE = { es: "Garzonier Panorámico", en: "Panoramic Studio" };
+const PAGINA_URL = "https://vipestadias.online/apartamentos/garzonier-panoramico";
 
 const STATS = {
-  es: { huespedes: "3 huéspedes", habitaciones: "2 habitaciones", camas: "3 camas", banos: "2 baños" },
-  en: { huespedes: "3 guests", habitaciones: "2 bedrooms", camas: "3 beds", banos: "2 bathrooms" },
+  es: { huespedes: "2 huéspedes", habitaciones: "1 habitación", camas: "2 camas", banos: "1 baño" },
+  en: { huespedes: "2 guests", habitaciones: "1 bedroom", camas: "2 beds", banos: "1 bathroom" },
 };
 
 const DESCRIPCION = {
   es: [
-    "Elegante apartamento con hermosa vista panorámica en Sopocachi, con dos habitaciones y ambientes amplios pensados para una estadía cómoda en La Paz.",
-    "Cuenta con sala y comedor independientes, cocina equipada y grandes ventanales con vista a la ciudad.",
-    "Ubicado en Sopocachi, una de las zonas más exclusivas y seguras de La Paz, cerca de restaurantes, cafés y servicios.",
+    "Moderno garzonier amplio y confortable, en el que te sentirás como en tu casa, con espectacular vista panorámica, completamente amoblado y equipado.",
+    "Piso alto, soleado e iluminado, ideal para disfrutar de la ciudad de La Paz desde las alturas.",
+    "Cerca a plazas, malls, Multicine, farmacias, restaurantes, la parada del Teleférico Celeste, pubs, discotecas y centros de diversión.",
     "Anfitrionado por Wilmer, con años de experiencia recibiendo huéspedes y coordinando cada detalle de tu estadía.",
   ],
   en: [
-    "Elegant apartment with a beautiful panoramic view in Sopocachi, with two bedrooms and spacious rooms designed for a comfortable stay in La Paz.",
-    "It has an independent living and dining room, an equipped kitchen, and large windows with a city view.",
-    "Located in Sopocachi, one of the most exclusive and safe areas of La Paz, close to restaurants, cafes, and services.",
+    "Modern, spacious, and comfortable studio apartment where you'll feel right at home, with a spectacular panoramic view, fully furnished and equipped.",
+    "High floor, sunny and bright, perfect for enjoying the city of La Paz from above.",
+    "Close to plazas, malls, the Multicine, pharmacies, restaurants, the Teleférico Celeste (cable car) station, pubs, nightclubs, and entertainment centers.",
     "Hosted by Wilmer, with years of experience welcoming guests and coordinating every detail of your stay.",
   ],
 };
@@ -61,39 +63,23 @@ type Categoria = { tituloKey: CategoriaKey; numero?: number; fotos: string[] };
 const categorias: Categoria[] = [
   {
     tituloKey: "cat_sala",
-    fotos: ["elegante-sala-1", "elegante-sala-2", "elegante-sala-3", "elegante-sala-4", "elegante-sala-5", "elegante-fotos-1"],
-  },
-  {
-    tituloKey: "cat_cocina",
-    fotos: ["elegante-cocina-1", "elegante-cocina-2", "elegante-cocina-3", "elegante-cocina-4"],
+    fotos: ["panoramico-salon1", "panoramico-salon2", "panoramico-salon3", "panoramico-salon4"],
   },
   {
     tituloKey: "cat_comedor",
-    fotos: ["elegante-comedor-1", "elegante-comedor-2", "elegante-comedor-3"],
+    fotos: ["panoramico-comedor1", "panoramico-comedor2"],
+  },
+  {
+    tituloKey: "cat_cocina",
+    fotos: ["panoramico-cocina1", "panoramico-cocina2"],
   },
   {
     tituloKey: "cat_habitacion",
-    numero: 1,
-    fotos: ["elegante-hab1-1", "elegante-hab1-2"],
-  },
-  {
-    tituloKey: "cat_habitacion",
-    numero: 2,
-    fotos: ["elegante-hab2-1", "elegante-hab2-2"],
+    fotos: ["panoramico-dormitorio1", "panoramico-dormitorio2", "panoramico-dormitorio3", "panoramico-dormitorio4", "panoramico-dormitorio5"],
   },
   {
     tituloKey: "cat_bano",
-    numero: 1,
-    fotos: ["elegante-bano1-1", "elegante-bano1-2", "elegante-bano1-3"],
-  },
-  {
-    tituloKey: "cat_bano",
-    numero: 2,
-    fotos: ["elegante-bano2-1", "elegante-bano2-2", "elegante-bano2-3"],
-  },
-  {
-    tituloKey: "cat_exterior",
-    fotos: ["elegante-exterior-1", "elegante-exterior-2", "elegante-exterior-3", "elegante-exterior-4", "elegante-exterior-5", "elegante-exterior-6", "elegante-exterior-7", "elegante-exterior-8"],
+    fotos: ["panoramico-bano1", "panoramico-bano2", "panoramico-bano3"],
   },
 ];
 
@@ -101,7 +87,7 @@ function cldUrl(publicId: string) {
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${encodeURIComponent(publicId)}`;
 }
 
-export default function EleganteApartamentoClient() {
+export default function GarzonierPanoramicoClient() {
   const { t, lang } = useLanguage();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -183,7 +169,7 @@ export default function EleganteApartamentoClient() {
           </div>
           <div className="inline-flex items-center gap-1 bg-oro/15 text-noche px-3 py-1.5 rounded-full text-sm font-medium">
             <Star size={14} fill="currentColor" className="text-oro" />
-            4.67 · 3 {t("resenas")}
+            {t("novedad")}
           </div>
         </div>
 
@@ -217,7 +203,7 @@ export default function EleganteApartamentoClient() {
         <div className="pb-16 border-t border-noche/10 pt-16">
           <span className="font-script text-4xl text-terracota block mb-1">{t("descubre")}</span>
           <h2 className="font-display text-2xl mb-6">{t("otros_apartamentos_titulo")}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {otrosApartamentos.map((a) => {
               const cardContent = (
                 <>
@@ -285,10 +271,10 @@ export default function EleganteApartamentoClient() {
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-hueso border-t border-noche/10 px-6 py-4 flex items-center justify-between z-40">
         <div>
-          <div className="font-display text-lg">{lang === "es" ? "Elegante Apartamento" : "Elegant Apartment"}</div>
+          <div className="font-display text-lg">{SHORT_NOMBRE[lang]}</div>
           <div className="text-xs text-noche/60 flex items-center gap-1">
             <Star size={12} fill="currentColor" className="text-oro" />
-            4.67 · 3 {t("resenas")}
+            {t("novedad")}
           </div>
         </div>
         <a

@@ -16,9 +16,10 @@ import CardCarousel from "./CardCarousel";
 import Footer from "./Footer";
 import TrustStats from "./TrustStats";
 import QuoteBanner from "./QuoteBanner";
-import { MessageCircle, Star, MapPin, Menu, X, ChevronDown, Wifi, ShieldCheck, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
+import { MessageCircle, Star, MapPin, Menu, X, Wifi, ShieldCheck, Users, Flame, Tv, Camera, Droplet, Phone, Mail } from "lucide-react";
 import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
+import LangSwitcher from "./LangSwitcher";
 
 const WHATSAPP_NUMBER = "59176570041";
 
@@ -27,6 +28,7 @@ const apartamentos = [
   { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", fotos: ["moderno-sala-1", "moderno-sala-2", "moderno-sala-3"], slug: "garzonier-moderno" },
   { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", fotos: ["premium-sala-1", "premium-sala-2", "premium-sala-3"], slug: "garzonier-premium" },
   { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", fotos: ["vip-sala-1", "vip-sala-2", "vip-sala-3"], slug: "vip-de-lujo" },
+  { id: 5, nombre: "Garzonier Panorámico", detalle: "Vista panorámica espectacular", zona: "La Paz", rating: "Novedad", fotos: ["panoramico-salon1", "panoramico-salon2", "panoramico-salon3"], slug: "garzonier-panoramico" },
 ];
 
 const faqData = {
@@ -48,50 +50,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
-
-// Lista de idiomas disponibles. Para sumar un idioma nuevo: agregar aquí
-// { code: "pt", label: "PT" } y crear las traducciones correspondientes
-// en translations.ts. El dropdown se arma solo a partir de esta lista.
-const LANGUAGES: { code: "es" | "en"; label: string }[] = [
-  { code: "es", label: "ES" },
-  { code: "en", label: "EN" },
-];
-
-function LangSwitcher({ light = false }: { light?: boolean }) {
-  const { lang, setLang } = useLanguage();
-  const [open, setOpen] = useState(false);
-  const textColor = light ? "text-hueso" : "text-noche";
-  const currentLabel = LANGUAGES.find((l) => l.code === lang)?.label ?? lang.toUpperCase();
-  const otherLanguages = LANGUAGES.filter((l) => l.code !== lang);
-
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 text-sm font-medium pb-1 border-b-2 ${open ? "border-terracota" : "border-transparent"} ${textColor}`}
-      >
-        {currentLabel}
-        <ChevronDown size={14} className={open ? "rotate-180 transition-transform" : "transition-transform"} />
-      </button>
-      {open && (
-        <div className="absolute top-full right-0 mt-2 bg-white shadow-lg overflow-hidden z-50 w-max">
-          {otherLanguages.map((l) => (
-            <button
-              key={l.code}
-              onClick={() => {
-                setLang(l.code);
-                setOpen(false);
-              }}
-              className="block w-full px-3 py-1.5 text-xs font-medium text-noche hover:bg-noche/5 text-left"
-            >
-              {l.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function Home() {
   const { t, lang } = useLanguage();
@@ -137,7 +95,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: faqData.es.map((item) => ({
+            mainEntity: faqData[lang].map((item) => ({
               "@type": "Question",
               name: item.q,
               acceptedAnswer: {
@@ -174,7 +132,7 @@ export default function Home() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-noche"
-              aria-label="Abrir menú"
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {menuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
@@ -263,6 +221,9 @@ export default function Home() {
           </h1>
           <p className="text-terracota-light text-lg md:text-xl mb-6">
             {t("hero_slogan")}
+          </p>
+          <p className="hidden md:block text-hueso/80 text-base max-w-xl mb-8 leading-relaxed">
+            {t("hero_desc")}
           </p>
           <a
             href="#apartamentos"

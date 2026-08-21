@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 type Props = {
   paragraphs: string[];
@@ -16,6 +17,7 @@ const CLAMP_CLASSES: Record<number, string> = {
 };
 
 export default function DescripcionExpandible({ paragraphs, clampLines = 4 }: Props) {
+  const { t } = useLanguage();
   const [expanded, setExpanded] = useState(false);
   const clampClass = CLAMP_CLASSES[clampLines] ?? "line-clamp-4";
 
@@ -35,7 +37,7 @@ export default function DescripcionExpandible({ paragraphs, clampLines = 4 }: Pr
         onClick={() => setExpanded(!expanded)}
         className="mt-2 text-sm font-medium text-noche border border-noche/20 rounded-lg px-4 py-2 hover:bg-noche/5 transition-colors"
       >
-        {expanded ? "Mostrar menos" : "Mostrar más"}
+        {expanded ? t("mostrar_menos") : t("mostrar_mas")}
       </button>
     </div>
   );
