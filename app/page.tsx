@@ -28,7 +28,7 @@ const apartamentos = [
   { id: 2, nombre: "Garzonier Moderno", detalle: "Flamante, céntrico", zona: "Sopocachi, La Paz", rating: "5.0 · 3 reseñas", fotos: ["moderno-sala-1", "moderno-sala-2", "moderno-sala-3"], slug: "garzonier-moderno" },
   { id: 3, nombre: "Garzonier Premium", detalle: "Con sol y vista espectacular", zona: "La Paz", rating: "Novedad", fotos: ["premium-sala-1", "premium-sala-2", "premium-sala-3"], slug: "garzonier-premium" },
   { id: 4, nombre: "Apto. VIP de Lujo", detalle: "Penthouse", zona: "Sopocachi, La Paz", rating: "4.5 · 6 reseñas", fotos: ["vip-sala-1", "vip-sala-2", "vip-sala-3"], slug: "vip-de-lujo" },
-  { id: 5, nombre: "Garzonier Panorámico", detalle: "Vista panorámica espectacular", zona: "La Paz", rating: "Novedad", fotos: ["panoramico-salon1", "panoramico-salon2", "panoramico-salon3"], slug: "garzonier-panoramico" },
+  { id: 5, nombre: "Garzonier Panorámico", detalle: "Vista panorámica espectacular", zona: "La Paz", rating: "Novedad", fotos: ["panoramico-salon3", "panoramico-salon1", "panoramico-salon2"], slug: "garzonier-panoramico" },
 ];
 
 const faqData = {
