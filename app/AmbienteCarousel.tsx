@@ -14,18 +14,21 @@ export default function AmbienteCarousel({
   fotos: string[];
   onOpenGallery: (fotos: string[], index: number, titulo?: string) => void;
 }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
-  const [selected, setSelected] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: "start", slidesToScroll: 1 });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelected(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
   if (fotos.length === 0) return null;
@@ -35,70 +38,53 @@ export default function AmbienteCarousel({
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-2xl">{titulo}</h2>
         <span className="text-xs text-noche/50">
-          {selected + 1} / {fotos.length}
+          {fotos.length} {fotos.length === 1 ? "foto" : "fotos"}
         </span>
       </div>
 
-      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-noche/10 group">
-        <div className="overflow-hidden w-full h-full" ref={emblaRef}>
-          <div className="flex h-full">
+      <div className="relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex -ml-3">
             {fotos.map((id, i) => (
               <button
                 key={id}
                 onClick={() => onOpenGallery(fotos, i, titulo)}
-                className="relative flex-[0_0_100%] h-full cursor-zoom-in"
+                className="relative flex-[0_0_44%] sm:flex-[0_0_42%] aspect-[4/3] pl-3 cursor-zoom-in"
               >
-                <ImageWithSkeleton
-                  src={id}
-                  alt={`${titulo} - foto ${i + 1}`}
-                  sizes="(max-width: 768px) 100vw, 700px"
-                />
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-noche/10">
+                  <ImageWithSkeleton
+                    src={id}
+                    alt={`${titulo} - foto ${i + 1}`}
+                    sizes="(max-width: 768px) 50vw, 350px"
+                  />
+                </div>
               </button>
             ))}
           </div>
         </div>
 
-        {fotos.length > 1 && (
-          <>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                emblaApi?.scrollPrev();
-              }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-hueso/90 rounded-full p-2"
-              aria-label="Anterior"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                emblaApi?.scrollNext();
-              }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-hueso/90 rounded-full p-2"
-              aria-label="Siguiente"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </>
+        {canScrollPrev && (
+          <button
+            onClick={() => emblaApi?.scrollPrev()}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-hueso/90 rounded-full p-2 shadow-md z-10"
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={18} />
+          </button>
+        )}
+        {canScrollNext && (
+          <button
+            onClick={() => emblaApi?.scrollNext()}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-hueso/90 rounded-full p-2 shadow-md z-10"
+            aria-label="Siguiente"
+          >
+            <ChevronRight size={18} />
+          </button>
         )}
 
-        <div className="absolute bottom-3 right-3 bg-hueso/90 rounded-full p-2 pointer-events-none">
-          <Expand size={16} />
+        <div className="absolute top-2 right-2 bg-hueso/90 rounded-full p-2 pointer-events-none z-10">
+          <Expand size={14} />
         </div>
-
-        {fotos.length > 1 && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
-            {fotos.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === selected ? "w-4 bg-hueso" : "w-1.5 bg-hueso/50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
