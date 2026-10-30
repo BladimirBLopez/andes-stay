@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Apartamento {
+  id            Int      @id @default(autoincrement())
+  slug          String   @unique
+  nombreEs      String
+  nombreEn      String   @default("")
+  detalleEs     String   @default("")
+  detalleEn     String   @default("")
+  zona          String   @default("Sopocachi, La Paz")
+  rating        String?
+  huespedes     Int      @default(2)
+  habitaciones  Int      @default(1)
+  camas         Int      @default(1)
+  banos         Int      @default(1)
+  descripcionEs String   @default("")
+  descripcionEn String   @default("")
+  activo        Boolean  @default(true)
+  orden         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+  fotos         Foto[]
+}
+
+model Foto {
+  id            Int         @id @default(autoincrement())
+  apartamentoId Int
+  publicId      String
+  categoria     String      @default("sala")
+  numero        Int?
+  orden         Int         @default(0)
+  apartamento   Apartamento @relation(fields: [apartamentoId], references: [id], onDelete: Cascade)
+
+  @@index([apartamentoId])
+}
