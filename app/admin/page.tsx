@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { Pencil, Images, ExternalLink, BedDouble, Bath, Users } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
 const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "";
-const thumb = (id: string) =>
-  `https://res.cloudinary.com/${cloud}/image/upload/f_auto,q_auto,w_240,h_240,c_fill/${encodeURI(id)}`;
+const portada = (id: string) =>
+  `https://res.cloudinary.com/${cloud}/image/upload/f_auto,q_auto,w_800,h_450,c_fill,g_auto/${encodeURI(id)}`;
 
 export default async function AdminHome() {
   const aptos = await prisma.apartamento.findMany({
-    orderBy: { orden: "asc" },
+    orderBy: [{ orden: "asc" }, { id: "asc" }],
     include: {
       _count: { select: { fotos: true } },
       fotos: { orderBy: [{ orden: "asc" }, { id: "asc" }], take: 1 },
@@ -18,56 +19,68 @@ export default async function AdminHome() {
   const totalFotos = aptos.reduce((s, a) => s + a._count.fotos, 0);
   const activos = aptos.filter((a) => a.activo).length;
 
+  const stats: [number, string][] = [
+    [aptos.length, "Total"],
+    [activos, "Publicados"],
+    [aptos.length - activos, "Ocultos"],
+    [totalFotos, "Fotos"],
+  ];
+
   return (
-    <main className="px-5 py-8 max-w-2xl mx-auto">
-      <h1 className="font-display text-4xl text-noche">Apartamentos</h1>
-      <div className="grid grid-cols-3 gap-3 mt-5 mb-6">
-        {[
-          [aptos.length, "Total"],
-          [activos, "Activos"],
-          [totalFotos, "Fotos"],
-        ].map(([n, l]) => (
-          <div key={l} className="bg-white border border-noche/10 rounded-xl py-3 text-center">
-            <p className="font-display text-3xl text-oro leading-none">{n}</p>
-            <p className="text-xs text-noche/60 mt-1">{l}</p>
+    <main className="px-5 pt-6 max-w-2xl mx-auto">
+      <p className="text-xs uppercase tracking-[0.2em] text-noche/50">Hola, Wilmer</p>
+      <h1 className="font-display text-3xl text-noche mb-5">Tus apartamentos</h1>
+
+      <div className="grid grid-cols-4 gap-2 mb-6">
+        {stats.map(([n, l]) => (
+          <div key={l} className="bg-white rounded-2xl py-3 text-center shadow-sm">
+            <p className="font-display text-2xl text-noche leading-none">{n}</p>
+            <p className="text-[10px] uppercase tracking-wide text-noche/50 mt-1.5">{l}</p>
           </div>
         ))}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         {aptos.map((a) => (
-          <div key={a.id} className="bg-white border border-noche/10 rounded-2xl p-3 flex gap-3 shadow-sm">
-            {a.fotos[0] ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={thumb(a.fotos[0].publicId)} alt={a.nombreEs} className="w-24 h-24 rounded-xl object-cover bg-noche/5 shrink-0" />
-            ) : (
-              <div className="w-24 h-24 rounded-xl bg-noche/5 shrink-0" />
-            )}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-2">
-                <h2 className="font-display text-xl text-noche leading-tight">{a.nombreEs}</h2>
-                <span
-                  className={`text-[11px] px-2 py-0.5 rounded-full shrink-0 ${
-                    a.activo ? "bg-salvia/20 text-salvia" : "bg-noche/10 text-noche/60"
-                  }`}
-                >
-                  {a.activo ? "Activo" : "Oculto"}
-                </span>
-              </div>
+          <article key={a.id} className="bg-white rounded-3xl overflow-hidden shadow-sm">
+            <div className="relative aspect-[16/9] bg-noche/10">
+              {a.fotos[0] && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={portada(a.fotos[0].publicId)} alt={a.nombreEs} className="absolute inset-0 w-full h-full object-cover" />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-noche/70 via-transparent to-transparent" />
+              <span
+                className={`absolute top-3 left-3 text-[11px] font-medium px-3 py-1 rounded-full backdrop-blur ${
+                  a.activo ? "bg-salvia text-white" : "bg-noche/70 text-hueso"
+                }`}
+              >
+                {a.activo ? "● Publicado" : "○ Oculto"}
+              </span>
+              <span className="absolute top-3 right-3 text-[11px] bg-noche/70 text-hueso px-3 py-1 rounded-full backdrop-blur">
+                {a._count.fotos} fotos
+              </span>
+              <h2 className="absolute bottom-3 left-4 right-4 font-display text-2xl text-hueso leading-tight">{a.nombreEs}</h2>
+            </div>
+            <div className="p-4">
               <p className="text-sm text-noche/60 truncate">{a.detalleEs} · {a.zona}</p>
-              <p className="text-xs text-noche/50 mt-1">
-                {a.huespedes} huéspedes · {a.habitaciones} hab · {a.banos} baños · {a._count.fotos} fotos
-              </p>
-              <div className="flex gap-2 mt-2">
-                <Link href={`/admin/apartamentos/${a.id}`} className="text-sm bg-noche text-hueso rounded-lg px-4 py-1.5">
-                  Editar
+              <div className="flex gap-4 text-xs text-noche/60 mt-2">
+                <span className="flex items-center gap-1"><Users size={13} /> {a.huespedes}</span>
+                <span className="flex items-center gap-1"><BedDouble size={13} /> {a.habitaciones}</span>
+                <span className="flex items-center gap-1"><Bath size={13} /> {a.banos}</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2 mt-4">
+                <Link href={`/admin/apartamentos/${a.id}`} className="flex items-center justify-center gap-1.5 bg-noche text-hueso rounded-xl py-2.5 text-sm font-medium">
+                  <Pencil size={14} /> Editar
                 </Link>
-                <Link href={`/admin/apartamentos/${a.id}/fotos`} className="text-sm border border-noche/20 text-noche rounded-lg px-4 py-1.5">
-                  Fotos
+                <Link href={`/admin/apartamentos/${a.id}/fotos`} className="flex items-center justify-center gap-1.5 bg-oro/15 text-noche rounded-xl py-2.5 text-sm font-medium">
+                  <Images size={14} /> Fotos
                 </Link>
+                <a href={`/apartamentos/${a.slug}`} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-1.5 border border-noche/15 text-noche rounded-xl py-2.5 text-sm font-medium">
+                  <ExternalLink size={14} /> Ver
+                </a>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </main>
