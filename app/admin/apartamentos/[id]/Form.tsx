@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Apto = {
   id: number;
@@ -25,12 +25,12 @@ function Seccion({ titulo, children }: { titulo: string; children: React.ReactNo
   );
 }
 
-function Campo({ label, ayuda, children }: { label: string; ayuda?: string; children: React.ReactNode }) {
+function Campo({ label, ayuda, error, children }: { label: string; ayuda?: string; error?: string; children: React.ReactNode }) {
   return (
     <label className="block">
       <span className="text-sm font-medium text-noche/80">{label}</span>
       {children}
-      {ayuda && <span className="block text-xs text-noche/50 mt-1">{ayuda}</span>}
+      {error ? <span className="block text-xs text-red-600 mt-1">{error}</span> : ayuda && <span className="block text-xs text-noche/50 mt-1">{ayuda}</span>}
     </label>
   );
 }
@@ -63,6 +63,23 @@ export default function FormApto({ initial }: { initial: Apto }) {
   const [enManual, setEnManual] = useState(false);
   const [estado, setEstado] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const [guardado, setGuardado] = useState<Apto>(initial);
+  const [intento, setIntento] = useState(false);
+  const sucio = JSON.stringify(f) !== JSON.stringify(guardado);
+  const errores: Partial<Record<keyof Apto, string>> = {};
+  if (!f.nombreEs.trim()) errores.nombreEs = "El nombre es obligatorio";
+  if (!f.tituloEs.trim()) errores.tituloEs = "El título es obligatorio";
+  if (f.huespedes < 1) errores.huespedes = "Mínimo 1";
+  if (f.habitaciones < 0) errores.habitaciones = "No puede ser negativo";
+  if (f.camas < 0) errores.camas = "No puede ser negativo";
+  if (f.banos < 0) errores.banos = "No puede ser negativo";
+  const hayErrores = Object.keys(errores).length > 0;
+  useEffect(() => {
+    if (!sucio) return;
+    const h = (e: BeforeUnloadEvent) => e.preventDefault();
+    window.addEventListener("beforeunload", h);
+    return () => window.removeEventListener("beforeunload", h);
+  }, [sucio]);
 
   function set<K extends keyof Apto>(k: K, v: Apto[K]) {
     setF((p) => ({ ...p, [k]: v }));
@@ -86,12 +103,17 @@ export default function FormApto({ initial }: { initial: Apto }) {
   }
 
   async function guardar() {
+    setIntento(true);
+    if (hayErrores) {
+      setEstado("Revisa los campos en rojo");
+      return;
+    }
     setGuardando(true);
     setEstado("Guardando...");
     let datos = f;
     let aviso = "";
     const cambioEs = (["nombreEs", "tituloEs", "detalleEs", "descripcionEs"] as const).some(
-      (k) => f[k] !== initial[k]
+      (k) => f[k] !== guardado[k]
     );
     if (cambioEs && !enManual) {
       const r = await pedirTraduccion(f);
@@ -106,6 +128,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
     setGuardando(false);
     if (res.ok) {
       setF(datos);
+      setGuardado(datos);
       setEstado(`Guardado ✓${aviso}`);
     } else {
       setEstado(`Error ${res.status}`);
@@ -113,12 +136,12 @@ export default function FormApto({ initial }: { initial: Apto }) {
   }
 
   return (
-    <div className="space-y-5 pb-28">
+    <div className="space-y-5 pb-44">
       <Seccion titulo="Información">
-        <Campo label="Nombre" ayuda="Se muestra en la tarjeta del sitio">
+        <Campo label="Nombre" ayuda="Se muestra en la tarjeta del sitio" error={intento ? errores.nombreEs : undefined}>
           <input className={campo} value={f.nombreEs} onChange={(e) => set("nombreEs", e.target.value)} />
         </Campo>
-        <Campo label="Título de la página" ayuda="Título largo, también aparece en Google">
+        <Campo label="Título de la página" ayuda="Título largo, también aparece en Google" error={intento ? errores.tituloEs : undefined}>
           <input className={campo} value={f.tituloEs} onChange={(e) => set("tituloEs", e.target.value)} />
         </Campo>
         <Campo label="Frase corta" ayuda="Debajo del nombre en la tarjeta">
@@ -142,7 +165,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
             ["camas", "Camas"],
             ["banos", "Baños"],
           ] as const).map(([k, label]) => (
-            <Campo key={k} label={label}>
+            <Campo key={k} label={label} error={intento ? errores[k] : undefined}>
               <input
                 type="number"
                 inputMode="numeric"
@@ -222,9 +245,9 @@ export default function FormApto({ initial }: { initial: Apto }) {
         </div>
       </details>
 
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-noche/10 p-4">
+      <div className="fixed inset-x-0 bottom-[calc(3.9rem+env(safe-area-inset-bottom))] z-40 bg-white/95 backdrop-blur border-t border-noche/10 px-4 py-3">
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          <span className="text-sm text-noche/70">{estado}</span>
+          <span className="text-sm text-noche/70 flex items-center gap-2">{sucio && <span className="w-2 h-2 rounded-full bg-oro shrink-0" />}{estado || (sucio ? "Cambios sin guardar" : "Todo guardado")}</span>
           <button
             onClick={guardar}
             disabled={guardando}
