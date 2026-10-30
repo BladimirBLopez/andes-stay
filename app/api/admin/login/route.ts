@@ -11,3 +11,14 @@ export async function POST(req: Request) {
   await crearSesion();
   return NextResponse.json({ ok: true });
 }
+
+export async function GET() {
+  const p = process.env.ADMIN_PASSWORD;
+  return NextResponse.json({
+    tieneAdminPassword: !!p,
+    largoAdminPassword: p ? p.length : 0,
+    largoSinEspacios: p ? p.trim().length : 0,
+    tieneJwtSecret: !!process.env.JWT_SECRET,
+    tieneDatabaseUrl: !!process.env.DATABASE_URL,
+  });
+}
