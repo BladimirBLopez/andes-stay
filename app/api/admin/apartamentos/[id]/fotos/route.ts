@@ -45,3 +45,16 @@ export async function DELETE(req: Request, { params }: Ctx) {
   await prisma.foto.deleteMany({ where: { id: Number(fotoId), apartamentoId } });
   return NextResponse.json({ ok: true });
 }
+
+export async function PUT(req: Request, { params }: Ctx) {
+  const apartamentoId = Number((await params).id);
+  const { ids } = await req.json().catch(() => ({}));
+  if (!Array.isArray(ids)) return NextResponse.json({ error: "Falta ids" }, { status: 400 });
+  const existentes = await prisma.foto.findMany({ where: { apartamentoId }, select: { id: true } });
+  const validos = new Set(existentes.map((f) => f.id));
+  const lista = ids.map(Number).filter((id) => validos.has(id));
+  await prisma.$transaction(
+    lista.map((id, idx) => prisma.foto.update({ where: { id }, data: { orden: idx + 1 } }))
+  );
+  return NextResponse.json({ ok: true });
+}
