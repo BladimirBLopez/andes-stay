@@ -22,7 +22,8 @@ export default function LoginAdmin() {
       router.push("/admin");
       router.refresh();
     } else {
-      setError("Clave incorrecta");
+      const d = await res.json().catch(() => ({}));
+      setError(d.error ? `${d.error} (${res.status})` : `Error ${res.status}`);
       setCargando(false);
     }
   }
