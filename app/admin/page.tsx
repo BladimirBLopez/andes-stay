@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import NuevoApto from "./NuevoApto";
 import { Pencil, Images, ExternalLink, BedDouble, Bath, Users } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -39,6 +40,8 @@ export default async function AdminHome() {
           </div>
         ))}
       </div>
+
+      <NuevoApto />
 
       <div className="space-y-5">
         {aptos.map((a) => (

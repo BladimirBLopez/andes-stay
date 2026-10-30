@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import FormApto from "./Form";
+import BorrarApto from "./BorrarApto";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,9 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
           orden: a.orden,
         }}
       />
+      <div className="mt-2 mb-40">
+        <BorrarApto id={a.id} nombre={a.nombreEs} />
+      </div>
     </main>
   );
 }

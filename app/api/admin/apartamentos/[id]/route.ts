@@ -25,3 +25,13 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     return NextResponse.json({ error: "No se pudo guardar" }, { status: 500 });
   }
 }
+
+export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  try {
+    await prisma.apartamento.delete({ where: { id: Number(id) } });
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json({ error: "No se pudo borrar" }, { status: 500 });
+  }
+}
