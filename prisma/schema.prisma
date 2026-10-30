@@ -12,6 +12,8 @@ model Apartamento {
   slug          String   @unique
   nombreEs      String
   nombreEn      String   @default("")
+  tituloEs      String   @default("")
+  tituloEn      String   @default("")
   detalleEs     String   @default("")
   detalleEn     String   @default("")
   zona          String   @default("Sopocachi, La Paz")
