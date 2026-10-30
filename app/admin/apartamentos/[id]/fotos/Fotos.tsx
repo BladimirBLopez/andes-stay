@@ -71,11 +71,11 @@ export default function Fotos({
     router.refresh();
   }
 
-  const campo = "border border-gray-300 rounded-lg px-3 py-2 text-base bg-white";
+  const campo = "border border-noche/20 rounded-lg px-3 py-2 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
 
   return (
     <div className="space-y-5">
-      <div className="bg-white border border-gray-200 rounded-xl p-4 space-y-3">
+      <div className="bg-white border border-noche/10 rounded-xl p-4 space-y-3">
         <p className="text-sm font-medium">Subir fotos nuevas</p>
         <div className="flex gap-2">
           <select value={cat} onChange={(e) => setCat(e.target.value)} className={`${campo} flex-1`}>
@@ -99,16 +99,16 @@ export default function Fotos({
           onChange={(e) => subir(e.target.files)}
           className="block w-full text-sm"
         />
-        {msg && <p className="text-sm text-gray-700">{msg}</p>}
+        {msg && <p className="text-sm text-noche/70">{msg}</p>}
       </div>
 
       <div className="grid grid-cols-2 gap-3">
         {fotos.map((f, i) => (
-          <div key={f.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div key={f.id} className="bg-white border border-noche/10 rounded-xl overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={thumb(cloud, f.publicId)} alt={f.publicId} loading="lazy" className="w-full h-32 object-cover bg-gray-100" />
             <div className="p-2 space-y-2">
-              <p className="text-xs text-gray-600 truncate">
+              <p className="text-xs text-noche/60 truncate">
                 {f.categoria}{f.numero ? ` ${f.numero}` : ""} · {f.publicId}
               </p>
               <div className="flex items-center justify-between">
@@ -116,12 +116,12 @@ export default function Fotos({
                   <button
                     disabled={i === 0}
                     onClick={() => accion("PATCH", { fotoId: f.id, dir: "up" })}
-                    className="px-3 py-1 border border-gray-300 rounded disabled:opacity-30"
+                    className="px-3 py-1 border border-noche/20 rounded disabled:opacity-30"
                   >↑</button>
                   <button
                     disabled={i === fotos.length - 1}
                     onClick={() => accion("PATCH", { fotoId: f.id, dir: "down" })}
-                    className="px-3 py-1 border border-gray-300 rounded disabled:opacity-30"
+                    className="px-3 py-1 border border-noche/20 rounded disabled:opacity-30"
                   >↓</button>
                 </div>
                 <button

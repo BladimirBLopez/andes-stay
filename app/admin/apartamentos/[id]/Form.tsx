@@ -56,13 +56,13 @@ export default function FormApto({ initial }: { initial: Apto }) {
     setEstado(res.ok ? "Guardado ✓" : `Error ${res.status}`);
   }
 
-  const campo = "w-full border border-gray-300 rounded-lg px-3 py-2 text-base bg-white";
+  const campo = "w-full border border-noche/20 rounded-lg px-3 py-2 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
 
   return (
     <div className="space-y-4 pb-24">
       {TEXTOS.map(([k, label, largo]) => (
         <label key={k} className="block">
-          <span className="text-sm text-gray-700">{label}</span>
+          <span className="text-sm text-noche/70">{label}</span>
           {largo ? (
             <textarea
               rows={8}
@@ -83,7 +83,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
       <div className="grid grid-cols-2 gap-3">
         {NUMEROS.map(([k, label]) => (
           <label key={k} className="block">
-            <span className="text-sm text-gray-700">{label}</span>
+            <span className="text-sm text-noche/70">{label}</span>
             <input
               type="number"
               className={campo}
@@ -104,12 +104,12 @@ export default function FormApto({ initial }: { initial: Apto }) {
         <span>Activo (visible en el sitio)</span>
       </label>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 flex items-center justify-between gap-3 max-w-2xl mx-auto">
-        <span className="text-sm text-gray-700">{estado}</span>
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-noche/10 p-4 flex items-center justify-between gap-3 max-w-2xl mx-auto">
+        <span className="text-sm text-noche/70">{estado}</span>
         <button
           onClick={guardar}
           disabled={guardando}
-          className="bg-black text-white rounded-lg px-6 py-3 font-medium disabled:opacity-50"
+          className="bg-noche text-hueso rounded-lg px-6 py-3 font-medium disabled:opacity-50"
         >
           {guardando ? "Guardando..." : "Guardar"}
         </button>
