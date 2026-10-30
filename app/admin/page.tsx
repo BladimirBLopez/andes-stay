@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +27,7 @@ export default async function AdminHome() {
           <div key={a.id} className="bg-white border border-gray-200 rounded-xl p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h2 className="font-semibold">{a.nombreEs}</h2>
+                <Link href={`/admin/apartamentos/${a.id}`} className="font-semibold underline">{a.nombreEs}</Link>
                 <p className="text-sm text-gray-600">{a.detalleEs} · {a.zona}</p>
                 <p className="text-xs text-gray-500 mt-1">
                   {a.huespedes} huéspedes · {a.habitaciones} hab · {a.banos} baños · {a._count.fotos} fotos
