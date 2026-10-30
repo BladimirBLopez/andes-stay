@@ -1,0 +1,47 @@
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+
+type Ctx = { params: Promise<{ id: string }> };
+
+export async function POST(req: Request, { params }: Ctx) {
+  const apartamentoId = Number((await params).id);
+  const b = await req.json().catch(() => ({}));
+  if (!b.publicId || typeof b.publicId !== "string") {
+    return NextResponse.json({ error: "Falta publicId" }, { status: 400 });
+  }
+  const max = await prisma.foto.aggregate({ where: { apartamentoId }, _max: { orden: true } });
+  await prisma.foto.create({
+    data: {
+      apartamentoId,
+      publicId: b.publicId,
+      categoria: typeof b.categoria === "string" ? b.categoria : "sala",
+      numero: b.numero ? Number(b.numero) : null,
+      orden: (max._max.orden ?? 0) + 1,
+    },
+  });
+  return NextResponse.json({ ok: true });
+}
+
+export async function PATCH(req: Request, { params }: Ctx) {
+  const apartamentoId = Number((await params).id);
+  const { fotoId, dir } = await req.json().catch(() => ({}));
+  const fotos = await prisma.foto.findMany({
+    where: { apartamentoId },
+    orderBy: [{ orden: "asc" }, { id: "asc" }],
+  });
+  const i = fotos.findIndex((f) => f.id === Number(fotoId));
+  const j = dir === "up" ? i - 1 : i + 1;
+  if (i < 0 || j < 0 || j >= fotos.length) return NextResponse.json({ ok: true });
+  [fotos[i], fotos[j]] = [fotos[j], fotos[i]];
+  await prisma.$transaction(
+    fotos.map((f, idx) => prisma.foto.update({ where: { id: f.id }, data: { orden: idx + 1 } }))
+  );
+  return NextResponse.json({ ok: true });
+}
+
+export async function DELETE(req: Request, { params }: Ctx) {
+  const apartamentoId = Number((await params).id);
+  const { fotoId } = await req.json().catch(() => ({}));
+  await prisma.foto.deleteMany({ where: { id: Number(fotoId), apartamentoId } });
+  return NextResponse.json({ ok: true });
+}
