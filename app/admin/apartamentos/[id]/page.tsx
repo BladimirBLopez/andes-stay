@@ -14,7 +14,7 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
     <main className="px-5 py-8 max-w-2xl mx-auto">
       <Link href="/admin" className="text-sm underline">← Volver</Link>
       <h1 className="font-display text-4xl mt-3">{a.nombreEs}</h1>
-      <Link href={`/admin/apartamentos/${a.id}/fotos`} className="inline-block text-sm underline mb-5">Administrar fotos →</Link>
+      <Link href={`/admin/apartamentos/${a.id}/fotos`} className="inline-block mt-3 mb-6 text-sm bg-noche text-hueso rounded-lg px-4 py-2">Administrar fotos →</Link>
       <FormApto
         initial={{
           id: a.id,
