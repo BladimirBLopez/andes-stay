@@ -56,7 +56,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
     setEstado(res.ok ? "Guardado ✓" : `Error ${res.status}`);
   }
 
-  const campo = "w-full border border-noche/20 rounded-lg px-3 py-2 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
+  const campo = "w-full border border-noche/20 rounded-lg px-3 py-2 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
 
   return (
     <div className="space-y-4 pb-24">
