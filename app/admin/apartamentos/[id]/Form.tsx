@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { falla } from "@/lib/mensajes";
 
 type Apto = {
   id: number;
@@ -77,14 +78,14 @@ export default function FormApto({ initial }: { initial: Apto }) {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
-    });
+    }).catch(() => null);
     setGuardando(false);
-    if (res.ok) {
+    if (res && res.ok) {
       setF(datos);
       setGuardado(datos);
       toast.success("Cambios guardados");
     } else {
-      toast.error("No se pudo guardar, intenta de nuevo");
+      falla(res, "No se pudo guardar, intenta de nuevo");
     }
   }
 

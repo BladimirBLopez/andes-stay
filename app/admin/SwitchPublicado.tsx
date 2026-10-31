@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as Switch from "@radix-ui/react-switch";
 import { toast } from "sonner";
+import { falla } from "@/lib/mensajes";
 
 export default function SwitchPublicado({ id, activo }: { id: number; activo: boolean }) {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function SwitchPublicado({ id, activo }: { id: number; activo: bo
     setCargando(false);
     if (!res || !res.ok) {
       setOn(!v);
-      toast.error("No se pudo cambiar el estado");
+      falla(res, "No se pudo cambiar el estado");
       return;
     }
     toast.success(v ? "Publicado en el sitio" : "Oculto del sitio");

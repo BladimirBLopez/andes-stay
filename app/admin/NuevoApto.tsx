@@ -22,7 +22,7 @@ export default function NuevoApto() {
     }).catch(() => null);
     const d = res ? await res.json().catch(() => ({})) : {};
     setCargando(false);
-    if (!res || !res.ok) return setError(d.error ?? "No se pudo crear");
+    if (!res || !res.ok) return setError(!res ? "Sin conexión. Revisa tu internet" : res.status === 401 ? "Tu sesión venció. Entra de nuevo al login" : d.error ?? "No se pudo crear");
     router.push(`/admin/apartamentos/${d.id}`);
   }
 

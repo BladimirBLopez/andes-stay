@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import { falla } from "@/lib/mensajes";
 import Confirmar from "../../Confirmar";
 
 export default function BorrarApto({ id, nombre }: { id: number; nombre: string }) {
@@ -17,7 +18,7 @@ export default function BorrarApto({ id, nombre }: { id: number; nombre: string 
     if (!res || !res.ok) {
       setCargando(false);
       setAbierto(false);
-      toast.error("No se pudo borrar");
+      falla(res, "No se pudo borrar");
       return;
     }
     toast.success("Apartamento borrado");
