@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Fotos from "./Fotos";
+import AptoHeader from "../AptoHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -15,9 +16,7 @@ export default async function FotosApto({ params }: { params: Promise<{ id: stri
 
   return (
     <main className="px-5 py-8 max-w-2xl mx-auto">
-      <Link href={`/admin/apartamentos/${a.id}`} className="text-sm underline">← Volver</Link>
-      <h1 className="font-display text-4xl mt-3 mb-1">Fotos · {a.nombreEs}</h1>
-      <p className="text-sm text-noche/60 mb-5">{a.fotos.length} fotos</p>
+      <AptoHeader id={a.id} nombre={a.nombreEs} activo={a.activo} fotos={a.fotos.length} />
       <Fotos
         apartamentoId={a.id}
         cloud={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? ""}
