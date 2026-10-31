@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import FormApto from "./Form";
 import AptoHeader from "./AptoHeader";
 import BorrarApto from "./BorrarApto";
+import AccionesApto from "./AccionesApto";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
   return (
     <main className="px-5 py-8 max-w-2xl mx-auto">
       <AptoHeader id={a.id} nombre={a.nombreEs} activo={a.activo} fotos={a._count.fotos} />
+      <AccionesApto id={a.id} slug={a.slug} nombre={a.nombreEs} activo={a.activo} />
       <FormApto
         initial={{
           id: a.id,
