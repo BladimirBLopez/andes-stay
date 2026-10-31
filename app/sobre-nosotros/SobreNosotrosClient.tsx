@@ -7,7 +7,7 @@ import ImageWithSkeleton from "../ImageWithSkeleton";
 import LangSwitcher from "../LangSwitcher";
 import { useLanguage } from "../LanguageContext";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { useWhatsapp } from "@/app/AjustesContext";
 
 const testimonios = [
   { nombre: "Gustavo", ciudad: "Santa Cruz de la Sierra", texto: "Cómodo Dpto" },
@@ -17,6 +17,7 @@ const testimonios = [
 
 export default function SobreNosotrosClient() {
   const { t, lang } = useLanguage();
+  const WHATSAPP_NUMBER = useWhatsapp();
   const whatsappMsg =
     lang === "es"
       ? "Hola, quisiera reservar un apartamento en La Paz"

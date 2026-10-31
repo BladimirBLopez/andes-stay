@@ -22,7 +22,7 @@ import LangSwitcher from "../../LangSwitcher";
 import { useLanguage } from "../../LanguageContext";
 import type { Apto, Otro } from "../../../lib/apartamentos";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { useWhatsapp } from "@/app/AjustesContext";
 const CLOUD_NAME = "dkq95jus0";
 const ORDEN = ["sala", "cocina", "comedor", "habitacion", "bano", "exterior", "lavado", "mas_fotos"];
 
@@ -55,6 +55,7 @@ const plural = (n: number, s: string, p: string) => `${n} ${n === 1 ? s : p}`;
 
 export default function ApartamentoClient({ apto, otros }: { apto: Apto; otros: Otro[] }) {
   const { t, lang } = useLanguage();
+  const WHATSAPP_NUMBER = useWhatsapp();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [activeGallery, setActiveGallery] = useState<string[]>([]);

@@ -21,7 +21,7 @@ import { FacebookIcon, WhatsappIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 import LangSwitcher from "./LangSwitcher";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { useWhatsapp } from "@/app/AjustesContext";
 
 export type HomeApto = { id: number; nombre: string; nombreEn: string; detalle: string; detalleEn: string; zona: string; rating: string | null; fotos: string[]; slug: string };
 
@@ -47,6 +47,7 @@ const fadeUp = {
 
 export default function HomeClient({ apartamentos: aptosProp }: { apartamentos: HomeApto[] }) {
   const { t, lang } = useLanguage();
+  const WHATSAPP_NUMBER = useWhatsapp();
   const apartamentos = aptosProp.map((a) => ({
     ...a,
     nombre: lang === "en" && a.nombreEn.trim() ? a.nombreEn : a.nombre,

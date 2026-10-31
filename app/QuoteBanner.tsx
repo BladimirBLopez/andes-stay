@@ -6,10 +6,11 @@ import { CldImage } from "next-cloudinary";
 import { MessageCircle } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { useWhatsapp } from "@/app/AjustesContext";
 
 export default function QuoteBanner() {
   const { t, lang } = useLanguage();
+  const WHATSAPP_NUMBER = useWhatsapp();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

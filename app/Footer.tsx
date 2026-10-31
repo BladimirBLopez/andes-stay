@@ -3,10 +3,11 @@ import { Mail } from "lucide-react";
 import { WhatsappIcon, FacebookIcon, TiktokIcon, ThreadsIcon } from "./SocialIcons";
 import { useLanguage } from "./LanguageContext";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { useWhatsapp } from "@/app/AjustesContext";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const WHATSAPP_NUMBER = useWhatsapp();
   return (
     <footer className="bg-noche text-hueso/70 py-14 px-6">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
