@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { refrescar } from "@/lib/refrescar";
 
 type Ctx = { params: Promise<{ id: string }> };
 
@@ -19,7 +20,7 @@ export async function POST(req: Request, { params }: Ctx) {
       orden: (max._max.orden ?? 0) + 1,
     },
   });
-  return NextResponse.json({ ok: true });
+  return refrescar({ ok: true });
 }
 
 export async function PATCH(req: Request, { params }: Ctx) {
@@ -31,19 +32,19 @@ export async function PATCH(req: Request, { params }: Ctx) {
   });
   const i = fotos.findIndex((f) => f.id === Number(fotoId));
   const j = dir === "up" ? i - 1 : i + 1;
-  if (i < 0 || j < 0 || j >= fotos.length) return NextResponse.json({ ok: true });
+  if (i < 0 || j < 0 || j >= fotos.length) return refrescar({ ok: true });
   [fotos[i], fotos[j]] = [fotos[j], fotos[i]];
   await prisma.$transaction(
     fotos.map((f, idx) => prisma.foto.update({ where: { id: f.id }, data: { orden: idx + 1 } }))
   );
-  return NextResponse.json({ ok: true });
+  return refrescar({ ok: true });
 }
 
 export async function DELETE(req: Request, { params }: Ctx) {
   const apartamentoId = Number((await params).id);
   const { fotoId } = await req.json().catch(() => ({}));
   await prisma.foto.deleteMany({ where: { id: Number(fotoId), apartamentoId } });
-  return NextResponse.json({ ok: true });
+  return refrescar({ ok: true });
 }
 
 export async function PUT(req: Request, { params }: Ctx) {
@@ -56,5 +57,5 @@ export async function PUT(req: Request, { params }: Ctx) {
   await prisma.$transaction(
     lista.map((id, idx) => prisma.foto.update({ where: { id }, data: { orden: idx + 1 } }))
   );
-  return NextResponse.json({ ok: true });
+  return refrescar({ ok: true });
 }

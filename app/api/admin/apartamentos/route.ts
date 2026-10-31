@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { refrescar } from "@/lib/refrescar";
 
 function slugify(s: string) {
   return s
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
         orden: (max._max.orden ?? 0) + 1,
       },
     });
-    return NextResponse.json({ ok: true, id: a.id });
+    return refrescar({ ok: true, id: a.id });
   } catch {
     return NextResponse.json({ error: "No se pudo crear" }, { status: 500 });
   }

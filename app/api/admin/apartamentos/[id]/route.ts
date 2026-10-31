@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { refrescar } from "@/lib/refrescar";
 
 const TEXTOS = ["nombreEs", "nombreEn", "tituloEs", "tituloEn", "detalleEs", "detalleEn", "zona", "descripcionEs", "descripcionEn"];
 const NUMEROS = ["huespedes", "habitaciones", "camas", "banos", "orden"];
@@ -20,7 +21,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       where: { id: Number(id) },
       data: data as Prisma.ApartamentoUpdateInput,
     });
-    return NextResponse.json({ ok: true });
+    return refrescar({ ok: true });
   } catch {
     return NextResponse.json({ error: "No se pudo guardar" }, { status: 500 });
   }
@@ -30,7 +31,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   const { id } = await params;
   try {
     await prisma.apartamento.delete({ where: { id: Number(id) } });
-    return NextResponse.json({ ok: true });
+    return refrescar({ ok: true });
   } catch {
     return NextResponse.json({ error: "No se pudo borrar" }, { status: 500 });
   }
