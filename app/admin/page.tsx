@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import NuevoApto from "./NuevoApto";
+import SwitchPublicado from "./SwitchPublicado";
 import { Pencil, Images, ExternalLink, BedDouble, Bath, Users } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -71,7 +72,8 @@ export default async function AdminHome() {
                 <span className="flex items-center gap-1"><BedDouble size={13} /> {a.habitaciones}</span>
                 <span className="flex items-center gap-1"><Bath size={13} /> {a.banos}</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 mt-4">
+              <SwitchPublicado id={a.id} activo={a.activo} />
+              <div className="grid grid-cols-3 gap-2 mt-3">
                 <Link href={`/admin/apartamentos/${a.id}`} className="flex items-center justify-center gap-1.5 bg-noche text-hueso rounded-xl py-2.5 text-sm font-medium">
                   <Pencil size={14} /> Editar
                 </Link>

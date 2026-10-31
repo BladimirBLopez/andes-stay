@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { haySesion } from "@/lib/auth";
 import BottomNav from "./BottomNav";
+import { Toaster } from "sonner";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const logueado = await haySesion();
@@ -22,6 +23,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       </header>
       {children}
       <BottomNav />
+      <Toaster position="top-center" richColors />
     </div>
   );
 }
