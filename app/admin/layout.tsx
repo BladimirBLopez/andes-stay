@@ -1,8 +1,11 @@
+import type { Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { haySesion } from "@/lib/auth";
 import BottomNav from "./BottomNav";
 import { Toaster } from "sonner";
+
+export const viewport: Viewport = { themeColor: "#121212" };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const logueado = await haySesion();
