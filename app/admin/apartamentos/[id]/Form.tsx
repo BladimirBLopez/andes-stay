@@ -144,21 +144,23 @@ export default function FormApto({ initial }: { initial: Apto }) {
       </Seccion>
 
       <Seccion titulo="Publicación">
-        <div className="flex items-center justify-between gap-3">
+        <div className={`flex items-center justify-between gap-3 rounded-xl p-3 ${f.activo ? "bg-salvia/10" : "bg-noche/5"}`}>
           <div>
-            <p className="font-medium text-noche">{f.activo ? "Visible en el sitio" : "Oculto"}</p>
-            <p className="text-xs text-noche/50">Si lo ocultas, no aparece en la web</p>
+            <p className={`font-medium ${f.activo ? "text-salvia" : "text-noche/70"}`}>{f.activo ? "● Publicado en el sitio" : "○ Oculto"}</p>
+            <p className="text-xs text-noche/50">{f.activo ? "Los huéspedes lo ven en la web" : "No aparece en la web hasta que lo publiques"}</p>
           </div>
           <button
             type="button"
+            role="switch"
+            aria-checked={f.activo}
             onClick={() => set("activo", !f.activo)}
-            className={`w-14 h-8 rounded-full p-1 transition-colors ${f.activo ? "bg-oro" : "bg-noche/20"}`}
+            className={`w-14 h-8 rounded-full p-1 transition-colors shrink-0 ${f.activo ? "bg-salvia" : "bg-noche/20"}`}
             aria-label="Cambiar visibilidad"
           >
             <span className={`block w-6 h-6 bg-white rounded-full transition-transform ${f.activo ? "translate-x-6" : ""}`} />
           </button>
         </div>
-        <Campo label="Posición en la lista" ayuda="1 aparece primero">
+        <Campo label="Posición en la lista" ayuda="Número menor aparece primero en la lista del sitio (1 = primero)">
           <input
             type="number"
             inputMode="numeric"
