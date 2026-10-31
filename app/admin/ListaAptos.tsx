@@ -3,7 +3,7 @@
 import { useMemo, useState, type ComponentProps } from "react";
 import Link from "next/link";
 import SwitchPublicado from "./SwitchPublicado";
-import { Pencil, Images, ExternalLink, BedDouble, Bath, Users, Search, X } from "lucide-react";
+import { Pencil, Images, ExternalLink, BedDouble, Bath, Users, Search, X, CheckCircle2, AlertTriangle } from "lucide-react";
 
 const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "";
 const portada = (id: string) =>
@@ -15,6 +15,7 @@ type Apto = {
   slug: string;
   nombreEs: string;
   detalleEs: string | null;
+  descripcionEs: string | null;
   zona: string | null;
   huespedes: number;
   habitaciones: number;
@@ -35,9 +36,38 @@ type Orden = (typeof ORDENES)[number][0];
 const norm = (s: string) =>
   s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
+function faltan(a: Apto): string[] {
+  const f: string[] = [];
+  if (!a.descripcionEs?.trim()) f.push("descripción");
+  if (a.nFotos === 0) f.push("fotos");
+  if (!a.detalleEs?.trim()) f.push("frase corta");
+  return f;
+}
+
+function Completitud({ a }: { a: Apto }) {
+  const f = faltan(a);
+  const pct = Math.round(((3 - f.length) / 3) * 100);
+  const listo = f.length === 0;
+  return (
+    <div className="mt-3">
+      <div className="flex items-center justify-between text-xs mb-1.5">
+        <span className={`flex items-center gap-1 font-medium ${listo ? "text-salvia" : "text-noche/70"}`}>
+          {listo ? <CheckCircle2 size={13} /> : <AlertTriangle size={13} className="text-oro" />}
+          {pct}% completo
+        </span>
+        {!listo && <span className="text-noche/50 truncate ml-2">Falta: {f.join(", ")}</span>}
+      </div>
+      <div className="h-1.5 rounded-full bg-noche/10 overflow-hidden">
+        <div className={`h-full rounded-full ${listo ? "bg-salvia" : "bg-oro"}`} style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
+
 export default function ListaAptos({ aptos }: { aptos: Apto[] }) {
   const [q, setQ] = useState("");
   const [orden, setOrden] = useState<Orden>("manual");
+  const incompletos = aptos.filter((a) => faltan(a).length > 0);
 
   const lista = useMemo(() => {
     const t = norm(q.trim());
@@ -52,6 +82,26 @@ export default function ListaAptos({ aptos }: { aptos: Apto[] }) {
 
   return (
     <>
+      {incompletos.length > 0 && (
+        <div className="bg-oro/10 border border-oro/30 rounded-2xl p-4 mb-4">
+          <p className="text-sm font-medium text-noche flex items-center gap-2 mb-2">
+            <AlertTriangle size={15} className="text-oro" />
+            {incompletos.length} {incompletos.length === 1 ? "apartamento por completar" : "apartamentos por completar"}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {incompletos.map((a) => (
+              <Link
+                key={a.id}
+                href={`/admin/apartamentos/${a.id}`}
+                className="text-xs bg-white rounded-full px-3 py-1.5 shadow-sm text-noche"
+              >
+                {a.nombreEs} · falta {faltan(a).join(", ")}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="relative mb-3">
         <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-noche/40" />
         <input
@@ -117,6 +167,7 @@ export default function ListaAptos({ aptos }: { aptos: Apto[] }) {
                 <span className="flex items-center gap-1"><BedDouble size={13} /> {a.habitaciones}</span>
                 <span className="flex items-center gap-1"><Bath size={13} /> {a.banos}</span>
               </div>
+              <Completitud a={a} />
               <SwitchPublicado id={a.id} activo={a.activo} />
               <div className="grid grid-cols-3 gap-2 mt-3">
                 <Link href={`/admin/apartamentos/${a.id}`} className="flex items-center justify-center gap-1.5 bg-noche text-hueso rounded-xl py-2.5 text-sm font-medium">

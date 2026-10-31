@@ -44,6 +44,7 @@ export default async function AdminHome() {
           slug: a.slug,
           nombreEs: a.nombreEs,
           detalleEs: a.detalleEs,
+          descripcionEs: a.descripcionEs,
           zona: a.zona,
           huespedes: a.huespedes,
           habitaciones: a.habitaciones,
