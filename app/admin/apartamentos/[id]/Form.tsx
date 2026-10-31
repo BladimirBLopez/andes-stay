@@ -119,22 +119,21 @@ export default function FormApto({ initial }: { initial: Apto }) {
             ["camas", "Camas"],
             ["banos", "Baños"],
           ] as const).map(([k, label]) => (
-            <Campo key={k} label={label} error={intento ? errores[k] : undefined}>
-              <input
-                type="number"
-                inputMode="numeric"
-                min={0}
-                className={campo}
-                value={f[k]}
-                onChange={(e) => set(k, Number(e.target.value))}
-              />
-            </Campo>
+            <div key={k} className="rounded-xl border border-noche/15 p-3">
+              <span className="text-sm font-medium text-noche/80">{label}</span>
+              <div className="flex items-center justify-between mt-2">
+                <button type="button" aria-label={`Menos ${label}`} onClick={() => set(k, Math.max(k === "huespedes" ? 1 : 0, f[k] - 1))} className="w-11 h-11 rounded-full bg-noche/5 text-xl active:bg-noche/10">−</button>
+                <span className="font-display text-3xl text-noche">{f[k]}</span>
+                <button type="button" aria-label={`Más ${label}`} onClick={() => set(k, f[k] + 1)} className="w-11 h-11 rounded-full bg-noche text-hueso text-xl">+</button>
+              </div>
+              {intento && errores[k] && <span className="block text-xs text-red-600 mt-1">{errores[k]}</span>}
+            </div>
           ))}
         </div>
       </Seccion>
 
       <Seccion titulo="Descripción">
-        <Campo label="Texto" ayuda="Deja una línea en blanco entre párrafos">
+        <Campo label="Texto" ayuda={`Deja una línea en blanco entre párrafos · ${f.descripcionEs.length} caracteres`}>
           <textarea
             rows={10}
             className={campo}
