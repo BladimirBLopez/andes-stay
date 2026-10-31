@@ -7,6 +7,8 @@ import BorrarApto from "./BorrarApto";
 import AccionesApto from "./AccionesApto";
 import AmenidadesApto from "./Amenidades";
 import { getAmenidades } from "@/lib/amenidades";
+import InfoApto from "./InfoApto";
+import { getInfo } from "@/lib/info";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +20,7 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
   });
   if (!a) notFound();
   const amenidades = await getAmenidades(a.id);
+  const info = await getInfo(a.id);
 
   return (
     <main className="px-5 py-8 max-w-2xl mx-auto">
@@ -44,6 +47,7 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
           orden: a.orden,
         }}
       />
+      <InfoApto id={a.id} inicial={info} />
       <AmenidadesApto id={a.id} inicial={amenidades} />
       <div className="mt-2 mb-40">
         <BorrarApto id={a.id} nombre={a.nombreEs} />
