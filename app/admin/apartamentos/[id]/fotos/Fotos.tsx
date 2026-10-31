@@ -12,6 +12,8 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy, arrayMove, useSortable } from "@dnd-kit/sortable";
 import { GripVertical, Trash2, ImagePlus } from "lucide-react";
+import { toast } from "sonner";
+import Confirmar from "../../../Confirmar";
 
 type Foto = { id: number; publicId: string; categoria: string; numero: number | null };
 
@@ -103,6 +105,8 @@ export default function Fotos({
   const [cat, setCat] = useState("sala");
   const [num, setNum] = useState("");
   const [msg, setMsg] = useState("");
+  const [porQuitar, setPorQuitar] = useState<Foto | null>(null);
+  const [quitando, setQuitando] = useState(false);
   const [subiendo, setSubiendo] = useState(false);
   const api = `/api/admin/apartamentos/${apartamentoId}/fotos`;
 
@@ -127,16 +131,18 @@ export default function Fotos({
       body: JSON.stringify({ ids: nuevo.map((f) => f.id) }),
     }).catch(() => null);
     if (res && res.ok) {
-      setMsg("Orden guardado ✓");
+      setMsg("");
+      toast.success("Orden guardado");
     } else {
-      setMsg("No se pudo guardar el orden");
+      setMsg("");
+      toast.error("No se pudo guardar el orden");
       setItems(fotos);
     }
     router.refresh();
   }
 
   async function quitar(f: Foto) {
-    if (!confirm("¿Quitar esta foto del apartamento?")) return;
+    setQuitando(true);
     const antes = items;
     setItems(items.filter((x) => x.id !== f.id));
     const res = await fetch(api, {
@@ -145,11 +151,13 @@ export default function Fotos({
       body: JSON.stringify({ fotoId: f.id }),
     }).catch(() => null);
     if (!res || !res.ok) {
-      setMsg("No se pudo quitar la foto");
+      toast.error("No se pudo quitar la foto");
       setItems(antes);
     } else {
-      setMsg("Foto quitada ✓");
+      toast.success("Foto quitada");
     }
+    setQuitando(false);
+    setPorQuitar(null);
     router.refresh();
   }
 
@@ -240,11 +248,21 @@ export default function Fotos({
         <SortableContext items={items.map((f) => f.id)} strategy={rectSortingStrategy}>
           <div className="grid grid-cols-2 gap-3">
             {items.map((f, i) => (
-              <Item key={f.id} f={f} pos={i + 1} cloud={cloud} onDelete={quitar} />
+              <Item key={f.id} f={f} pos={i + 1} cloud={cloud} onDelete={setPorQuitar} />
             ))}
           </div>
         </SortableContext>
       </DndContext>
+
+      <Confirmar
+        open={porQuitar !== null}
+        onOpenChange={(v) => !v && setPorQuitar(null)}
+        titulo="¿Quitar esta foto?"
+        descripcion="Se quita del apartamento. La imagen queda guardada en Cloudinary."
+        confirmarTexto="Sí, quitar"
+        cargando={quitando}
+        onConfirm={() => porQuitar && quitar(porQuitar)}
+      />
     </div>
   );
 }

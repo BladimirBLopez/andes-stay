@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 type Apto = {
   id: number;
@@ -65,7 +66,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
   async function guardar() {
     setIntento(true);
     if (hayErrores) {
-      setEstado("Revisa los campos en rojo");
+      toast.error("Revisa los campos en rojo");
       return;
     }
     setGuardando(true);
@@ -81,9 +82,9 @@ export default function FormApto({ initial }: { initial: Apto }) {
     if (res.ok) {
       setF(datos);
       setGuardado(datos);
-      setEstado(`Guardado ✓${aviso}`);
+      toast.success("Cambios guardados");
     } else {
-      setEstado(`Error ${res.status}`);
+      toast.error("No se pudo guardar, intenta de nuevo");
     }
   }
 
