@@ -8,6 +8,8 @@ import AccionesApto from "./AccionesApto";
 import AmenidadesApto from "./Amenidades";
 import { getAmenidades } from "@/lib/amenidades";
 import InfoApto from "./InfoApto";
+import Listo from "./Listo";
+import { infoVacia } from "@/lib/infoCatalogo";
 import { getInfo } from "@/lib/info";
 
 export const dynamic = "force-dynamic";
@@ -21,11 +23,19 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
   if (!a) notFound();
   const amenidades = await getAmenidades(a.id);
   const info = await getInfo(a.id);
+  const items = [
+    { ok: a._count.fotos >= 5, label: "5 fotos o más" },
+    { ok: a.descripcionEs.trim().length > 0, label: "Descripción" },
+    { ok: a.detalleEs.trim().length > 0, label: "Frase corta" },
+    { ok: Array.isArray(amenidades) ? amenidades.length > 0 : Boolean(amenidades), label: "Amenidades" },
+    { ok: !infoVacia(info), label: "Reglas y cómo llegar" },
+  ];
 
   return (
     <main className="px-5 py-8 max-w-2xl mx-auto">
       <AptoHeader id={a.id} nombre={a.nombreEs} activo={a.activo} fotos={a._count.fotos} />
       <AccionesApto id={a.id} slug={a.slug} nombre={a.nombreEs} activo={a.activo} />
+      <Listo items={items} />
       <FormApto
         initial={{
           id: a.id,
@@ -47,8 +57,8 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
           orden: a.orden,
         }}
       />
-      <InfoApto id={a.id} inicial={info} />
       <AmenidadesApto id={a.id} inicial={amenidades} />
+      <InfoApto id={a.id} inicial={info} />
       <div className="mt-2 mb-40">
         <BorrarApto id={a.id} nombre={a.nombreEs} />
       </div>

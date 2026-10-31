@@ -91,6 +91,34 @@ export default function FormApto({ initial }: { initial: Apto }) {
 
   return (
     <div className="space-y-5 pb-44">
+      <Seccion titulo="Publicación">
+        <div className={`flex items-center justify-between gap-3 rounded-xl p-3 ${f.activo ? "bg-salvia/10" : "bg-noche/5"}`}>
+          <div>
+            <p className={`font-medium ${f.activo ? "text-salvia" : "text-noche/70"}`}>{f.activo ? "● Publicado en el sitio" : "○ Oculto"}</p>
+            <p className="text-xs text-noche/50">{f.activo ? "Los huéspedes lo ven en la web" : "No aparece en la web hasta que lo publiques"}</p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={f.activo}
+            onClick={() => set("activo", !f.activo)}
+            className={`w-14 h-8 rounded-full p-1 transition-colors shrink-0 ${f.activo ? "bg-salvia" : "bg-noche/20"}`}
+            aria-label="Cambiar visibilidad"
+          >
+            <span className={`block w-6 h-6 bg-white rounded-full transition-transform ${f.activo ? "translate-x-6" : ""}`} />
+          </button>
+        </div>
+        <Campo label="Posición en la lista" ayuda="Número menor aparece primero en la lista del sitio (1 = primero)">
+          <input
+            type="number"
+            inputMode="numeric"
+            className={campo}
+            value={f.orden}
+            onChange={(e) => set("orden", Number(e.target.value))}
+          />
+        </Campo>
+      </Seccion>
+
       <Seccion titulo="Información">
         <Campo label="Nombre" ayuda="Se muestra en la tarjeta del sitio" error={intento ? errores.nombreEs : undefined}>
           <input className={campo} value={f.nombreEs} onChange={(e) => set("nombreEs", e.target.value)} />
@@ -142,35 +170,6 @@ export default function FormApto({ initial }: { initial: Apto }) {
           />
         </Campo>
       </Seccion>
-
-      <Seccion titulo="Publicación">
-        <div className={`flex items-center justify-between gap-3 rounded-xl p-3 ${f.activo ? "bg-salvia/10" : "bg-noche/5"}`}>
-          <div>
-            <p className={`font-medium ${f.activo ? "text-salvia" : "text-noche/70"}`}>{f.activo ? "● Publicado en el sitio" : "○ Oculto"}</p>
-            <p className="text-xs text-noche/50">{f.activo ? "Los huéspedes lo ven en la web" : "No aparece en la web hasta que lo publiques"}</p>
-          </div>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={f.activo}
-            onClick={() => set("activo", !f.activo)}
-            className={`w-14 h-8 rounded-full p-1 transition-colors shrink-0 ${f.activo ? "bg-salvia" : "bg-noche/20"}`}
-            aria-label="Cambiar visibilidad"
-          >
-            <span className={`block w-6 h-6 bg-white rounded-full transition-transform ${f.activo ? "translate-x-6" : ""}`} />
-          </button>
-        </div>
-        <Campo label="Posición en la lista" ayuda="Número menor aparece primero en la lista del sitio (1 = primero)">
-          <input
-            type="number"
-            inputMode="numeric"
-            className={campo}
-            value={f.orden}
-            onChange={(e) => set("orden", Number(e.target.value))}
-          />
-        </Campo>
-      </Seccion>
-
 
       <div className="fixed inset-x-0 bottom-[calc(3.9rem+env(safe-area-inset-bottom))] z-40 bg-white/95 backdrop-blur border-t border-noche/10 px-4 py-3">
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
