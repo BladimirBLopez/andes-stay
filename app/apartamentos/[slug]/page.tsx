@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getApartamento, getOtros } from "../../../lib/apartamentos";
 import { getAmenidadesPorSlug } from "../../../lib/amenidades";
-import { getInfoPorSlug } from "../../../lib/info";
 import ApartamentoClient from "./ApartamentoClient";
 
 export const revalidate = 60;
@@ -44,6 +43,5 @@ export default async function Page({ params }: Props) {
   if (!apto) notFound();
   const otros = await getOtros(slug);
   const amenidades = await getAmenidadesPorSlug(slug);
-  const info = await getInfoPorSlug(slug);
-  return <ApartamentoClient apto={apto} otros={otros} amenidades={amenidades} info={info} />;
+  return <ApartamentoClient apto={apto} otros={otros} amenidades={amenidades} />;
 }

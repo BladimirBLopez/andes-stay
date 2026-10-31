@@ -10,8 +10,7 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/plugins/counter.css";
 import Share from "yet-another-react-lightbox/plugins/share";
-import { ArrowLeft, Star, Home, Users, BedDouble, Bath, Clock, MapPin } from "lucide-react";
-import { infoVacia, type Info } from "../../../lib/infoCatalogo";
+import { ArrowLeft, Star, Home, Users, BedDouble, Bath } from "lucide-react";
 import { CATALOGO } from "../../../lib/amenidadesCatalogo";
 import { ICONOS } from "../../amenidadesIconos";
 import ShareButton from "../../ShareButton";
@@ -56,7 +55,7 @@ function agrupar(fotos: Apto["fotos"]) {
 
 const plural = (n: number, s: string, p: string) => `${n} ${n === 1 ? s : p}`;
 
-export default function ApartamentoClient({ apto, otros, amenidades: amenidadesSel, info }: { apto: Apto; otros: Otro[]; amenidades: string[]; info: Info }) {
+export default function ApartamentoClient({ apto, otros, amenidades: amenidadesSel }: { apto: Apto; otros: Otro[]; amenidades: string[] }) {
   const { t, lang } = useLanguage();
   const WHATSAPP_NUMBER = useWhatsapp();
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -189,35 +188,6 @@ export default function ApartamentoClient({ apto, otros, amenidades: amenidadesS
           captions={{ descriptionTextAlign: "start" }}
           counter={{ container: { style: { top: 0, bottom: "unset" } } }}
         />
-
-        {!infoVacia(info) && (
-          <div className="pb-16 border-t border-noche/10 pt-16">
-            <h2 className="font-display text-2xl mb-6">{lang === "en" ? "Useful information" : "Información útil"}</h2>
-            <ul className="space-y-3 text-noche/80">
-              {info.entrada && (
-                <li className="flex items-center gap-3"><Clock size={18} className="text-oro shrink-0" />{lang === "en" ? "Check-in" : "Entrada"}: {info.entrada}</li>
-              )}
-              {info.salida && (
-                <li className="flex items-center gap-3"><Clock size={18} className="text-oro shrink-0" />{lang === "en" ? "Check-out" : "Salida"}: {info.salida}</li>
-              )}
-              {info.mascotas && (
-                <li>{lang === "en" ? "Pets" : "Mascotas"}: {info.mascotas === "si" ? (lang === "en" ? "Allowed" : "Permitidas") : (lang === "en" ? "Not allowed" : "No permitidas")}</li>
-              )}
-              {info.fiestas && (
-                <li>{lang === "en" ? "Parties" : "Fiestas"}: {info.fiestas === "si" ? (lang === "en" ? "Allowed" : "Permitidas") : (lang === "en" ? "Not allowed" : "No permitidas")}</li>
-              )}
-              {info.nota && <li>{info.nota}</li>}
-              {info.direccion && (
-                <li className="flex items-center gap-3"><MapPin size={18} className="text-oro shrink-0" />{info.direccion}</li>
-              )}
-            </ul>
-            {info.mapa && (
-              <a href={info.mapa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full bg-noche text-hueso text-sm">
-                <MapPin size={16} />{lang === "en" ? "How to get there" : "Cómo llegar"}
-              </a>
-            )}
-          </div>
-        )}
 
         {otros.length > 0 && (
           <div className="pb-16 border-t border-noche/10 pt-16">
