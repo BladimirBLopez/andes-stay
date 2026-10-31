@@ -10,7 +10,9 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/plugins/counter.css";
 import Share from "yet-another-react-lightbox/plugins/share";
-import { ArrowLeft, Star, Wifi, Home, ChefHat, Users, BedDouble, Bath } from "lucide-react";
+import { ArrowLeft, Star, Home, Users, BedDouble, Bath } from "lucide-react";
+import { CATALOGO } from "../../../lib/amenidadesCatalogo";
+import { ICONOS } from "../../amenidadesIconos";
 import ShareButton from "../../ShareButton";
 import DescripcionExpandible from "../../DescripcionExpandible";
 import Amenidades from "../../Amenidades";
@@ -53,7 +55,7 @@ function agrupar(fotos: Apto["fotos"]) {
 
 const plural = (n: number, s: string, p: string) => `${n} ${n === 1 ? s : p}`;
 
-export default function ApartamentoClient({ apto, otros }: { apto: Apto; otros: Otro[] }) {
+export default function ApartamentoClient({ apto, otros, amenidades: amenidadesSel }: { apto: Apto; otros: Otro[]; amenidades: string[] }) {
   const { t, lang } = useLanguage();
   const WHATSAPP_NUMBER = useWhatsapp();
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -89,11 +91,10 @@ export default function ApartamentoClient({ apto, otros }: { apto: Apto; otros: 
     .map((p) => p.trim())
     .filter(Boolean);
 
-  const amenidades = [
-    { icon: Wifi, label: t("amenidad_wifi") },
-    { icon: ChefHat, label: t("amenidad_cocina") },
-    { icon: Home, label: t("amenidad_servicios") },
-  ];
+  const amenidades = CATALOGO.filter((c) => amenidadesSel.includes(c.k)).map((c) => ({
+    icon: ICONOS[c.k] ?? Home,
+    label: lang === "en" ? c.en : c.es,
+  }));
 
   const categoriasTraducidas = agrupar(apto.fotos).map((g) => {
     const base = t(`cat_${g.cat}` as CategoriaKey);

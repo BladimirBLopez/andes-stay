@@ -1,0 +1,30 @@
+import {
+  Wifi,
+  Tv,
+  Flame,
+  ChefHat,
+  Home,
+  WashingMachine,
+  Thermometer,
+  ArrowUpDown,
+  Sun,
+  Mountain,
+  Car,
+  ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
+
+export const ICONOS: Record<string, LucideIcon> = {
+  wifi: Wifi,
+  tv: Tv,
+  gas: Flame,
+  cocina: ChefHat,
+  servicios: Home,
+  lavadora: WashingMachine,
+  calefaccion: Thermometer,
+  ascensor: ArrowUpDown,
+  terraza: Sun,
+  vista: Mountain,
+  estacionamiento: Car,
+  seguridad: ShieldCheck,
+};
