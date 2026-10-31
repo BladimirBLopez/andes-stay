@@ -4,6 +4,8 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { LanguageProvider } from "./LanguageContext";
+import { AjustesProvider } from "./AjustesContext";
+import { getWhatsapp } from "@/lib/ajustes";
 import SmoothScroll from "./SmoothScroll";
 
 const cormorant = Cormorant_Garamond({
@@ -49,9 +51,10 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const whatsapp = await getWhatsapp();
   return (
     <html lang="es">
       <body className={`${cormorant.variable} ${manrope.variable} ${alexBrush.variable} antialiased`}>
@@ -76,7 +79,7 @@ export default function RootLayout({
                 latitude: -16.5075,
                 longitude: -68.1256,
               },
-              telephone: "+59176570041",
+              telephone: `+${whatsapp}`,
               sameAs: [
                 "https://www.facebook.com/share/1BR7wMazM7/",
                 "https://www.tiktok.com/@wilmer.pantoja",
@@ -86,7 +89,9 @@ export default function RootLayout({
           }}
         />
         <LanguageProvider>
-          <SmoothScroll>{children}</SmoothScroll>
+          <AjustesProvider whatsapp={whatsapp}>
+            <SmoothScroll>{children}</SmoothScroll>
+          </AjustesProvider>
         </LanguageProvider>
         <Toaster position="bottom-center" />
         <Analytics />
