@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { falla } from "@/lib/mensajes";
 import {
   DndContext,
   closestCenter,
@@ -135,7 +136,7 @@ export default function Fotos({
       toast.success("Orden guardado");
     } else {
       setMsg("");
-      toast.error("No se pudo guardar el orden");
+      falla(res, "No se pudo guardar el orden");
       setItems(fotos);
     }
     router.refresh();
@@ -151,7 +152,7 @@ export default function Fotos({
       body: JSON.stringify({ fotoId: f.id }),
     }).catch(() => null);
     if (!res || !res.ok) {
-      toast.error("No se pudo quitar la foto");
+      falla(res, "No se pudo quitar la foto");
       setItems(antes);
     } else {
       toast.success("Foto quitada");
@@ -171,7 +172,7 @@ export default function Fotos({
       const s = await fetch("/api/admin/cloudinary-sign", { method: "POST" })
         .then((r) => r.json())
         .catch(() => ({}));
-      if (!s.signature) { error = "No se pudo firmar la subida"; break; }
+      if (!s.signature) { error = "No se pudo firmar la subida (revisa tu internet o entra de nuevo al login)"; break; }
       const fd = new FormData();
       fd.append("file", file);
       fd.append("api_key", s.apiKey);
@@ -188,8 +189,8 @@ export default function Fotos({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ publicId: j.public_id, categoria: cat, numero: num ? Number(num) : null }),
-      });
-      if (!reg.ok) { error = "No se pudo guardar la foto en la base"; break; }
+      }).catch(() => null);
+      if (!reg || !reg.ok) { error = reg ? "No se pudo guardar la foto en la base" : "Sin conexión al guardar la foto"; break; }
       ok++;
     }
     setSubiendo(false);
