@@ -35,32 +35,8 @@ function Campo({ label, ayuda, error, children }: { label: string; ayuda?: strin
   );
 }
 
-async function pedirTraduccion(f: Apto) {
-  const res = await fetch("/api/admin/traducir", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      nombre: f.nombreEs,
-      titulo: f.tituloEs,
-      detalle: f.detalleEs,
-      descripcion: f.descripcionEs,
-    }),
-  });
-  const d = await res.json().catch(() => ({}));
-  if (!res.ok) return { error: (d.error as string) ?? `Error ${res.status}` };
-  return {
-    en: {
-      nombreEn: d.nombre as string,
-      tituloEn: d.titulo as string,
-      detalleEn: d.detalle as string,
-      descripcionEn: d.descripcion as string,
-    },
-  };
-}
-
 export default function FormApto({ initial }: { initial: Apto }) {
   const [f, setF] = useState<Apto>(initial);
-  const [enManual, setEnManual] = useState(false);
   const [estado, setEstado] = useState("");
   const [guardando, setGuardando] = useState(false);
   const [guardado, setGuardado] = useState<Apto>(initial);
@@ -86,22 +62,6 @@ export default function FormApto({ initial }: { initial: Apto }) {
     setEstado("");
   }
 
-  function setEn<K extends keyof Apto>(k: K, v: Apto[K]) {
-    setEnManual(true);
-    set(k, v);
-  }
-
-  async function traducirAhora() {
-    setGuardando(true);
-    setEstado("Traduciendo...");
-    const r = await pedirTraduccion(f);
-    setGuardando(false);
-    if (r.error) return setEstado(r.error);
-    setEnManual(false);
-    setF((p) => ({ ...p, ...r.en }));
-    setEstado("Traducido ✓ revisa y guarda");
-  }
-
   async function guardar() {
     setIntento(true);
     if (hayErrores) {
@@ -110,16 +70,8 @@ export default function FormApto({ initial }: { initial: Apto }) {
     }
     setGuardando(true);
     setEstado("Guardando...");
-    let datos = f;
-    let aviso = "";
-    const cambioEs = (["nombreEs", "tituloEs", "detalleEs", "descripcionEs"] as const).some(
-      (k) => f[k] !== guardado[k]
-    );
-    if (cambioEs && !enManual) {
-      const r = await pedirTraduccion(f);
-      if (r.en) datos = { ...f, ...r.en };
-      else aviso = ` (sin traducir: ${r.error})`;
-    }
+    const datos = f;
+    const aviso = "";
     const res = await fetch(`/api/admin/apartamentos/${f.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -216,34 +168,6 @@ export default function FormApto({ initial }: { initial: Apto }) {
         </Campo>
       </Seccion>
 
-      <details className="bg-white border border-noche/10 rounded-2xl p-4 shadow-sm">
-        <summary className="font-display text-2xl text-noche cursor-pointer">Versión en inglés</summary>
-        <div className="space-y-4 mt-4">
-          <p className="text-sm text-noche/60">
-            Se traduce sola al guardar cuando cambias el español. Solo toca esto si quieres corregir algo a mano.
-          </p>
-          <Campo label="Nombre (EN)">
-            <input className={campo} value={f.nombreEn} onChange={(e) => setEn("nombreEn", e.target.value)} />
-          </Campo>
-          <Campo label="Título (EN)">
-            <input className={campo} value={f.tituloEn} onChange={(e) => setEn("tituloEn", e.target.value)} />
-          </Campo>
-          <Campo label="Frase corta (EN)">
-            <input className={campo} value={f.detalleEn} onChange={(e) => setEn("detalleEn", e.target.value)} />
-          </Campo>
-          <Campo label="Descripción (EN)">
-            <textarea rows={8} className={campo} value={f.descripcionEn} onChange={(e) => setEn("descripcionEn", e.target.value)} />
-          </Campo>
-          <button
-            type="button"
-            onClick={traducirAhora}
-            disabled={guardando}
-            className="text-sm border border-noche/20 rounded-lg px-4 py-2 disabled:opacity-50"
-          >
-            Traducir del español ahora
-          </button>
-        </div>
-      </details>
 
       <div className="fixed inset-x-0 bottom-[calc(3.9rem+env(safe-area-inset-bottom))] z-40 bg-white/95 backdrop-blur border-t border-noche/10 px-4 py-3">
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
