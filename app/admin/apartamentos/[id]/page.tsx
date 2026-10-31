@@ -36,6 +36,11 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
       <AptoHeader id={a.id} nombre={a.nombreEs} activo={a.activo} fotos={a._count.fotos} />
       <AccionesApto id={a.id} slug={a.slug} nombre={a.nombreEs} activo={a.activo} />
       <Listo items={items} />
+      <nav className="flex gap-2 overflow-x-auto -mx-5 px-5 pb-3 mb-2 [scrollbar-width:none]">
+        {[["publicacion", "Publicación"], ["informacion", "Información"], ["capacidad", "Capacidad"], ["descripcion", "Descripción"], ["amenidades", "Amenidades"], ["reglas", "Reglas"]].map(([h, t]) => (
+          <a key={h} href={`#${h}`} className="shrink-0 text-sm px-4 py-2 rounded-full bg-white border border-noche/10 text-noche/70 shadow-sm">{t}</a>
+        ))}
+      </nav>
       <FormApto
         initial={{
           id: a.id,
@@ -57,9 +62,11 @@ export default async function EditarApto({ params }: { params: Promise<{ id: str
           orden: a.orden,
         }}
       />
-      <AmenidadesApto id={a.id} inicial={amenidades} />
-      <InfoApto id={a.id} inicial={info} />
-      <div className="mt-2 mb-40">
+      <div className="space-y-5 mt-5">
+        <AmenidadesApto id={a.id} inicial={amenidades} />
+        <InfoApto id={a.id} inicial={info} />
+      </div>
+      <div className="mt-8 mb-40">
         <BorrarApto id={a.id} nombre={a.nombreEs} />
       </div>
     </main>

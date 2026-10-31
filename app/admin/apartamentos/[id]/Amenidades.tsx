@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
+import { Seccion, BotonGuardar } from "./ui";
 import { toast } from "sonner";
 import { falla } from "@/lib/mensajes";
 import { CATALOGO } from "@/lib/amenidadesCatalogo";
@@ -34,9 +35,7 @@ export default function AmenidadesApto({ id, inicial }: { id: number; inicial: s
   }
 
   return (
-    <section className="bg-white border border-noche/10 rounded-2xl p-4 space-y-4 shadow-sm mb-5">
-      <h2 className="font-display text-2xl text-noche">Amenidades</h2>
-      <p className="text-xs text-noche/50 -mt-2">Toca para activar o quitar. Se muestran en la página del apartamento.</p>
+    <Seccion id="amenidades" titulo="Amenidades" sub="Toca para activar o quitar. Se muestran en la página del apartamento." icono={<Sparkles size={18} />} sucio={sucio}>
       <div className="flex flex-wrap gap-2">
         {CATALOGO.map((c) => {
           const on = sel.includes(c.k);
@@ -55,14 +54,7 @@ export default function AmenidadesApto({ id, inicial }: { id: number; inicial: s
           );
         })}
       </div>
-      <button
-        type="button"
-        onClick={guardar}
-        disabled={!sucio || cargando}
-        className="w-full bg-oro/15 text-noche rounded-xl py-3 text-sm font-medium disabled:opacity-40"
-      >
-        {cargando ? "Guardando..." : sucio ? "Guardar amenidades" : "Amenidades guardadas"}
-      </button>
-    </section>
+      <BotonGuardar onClick={guardar} sucio={sucio} cargando={cargando} texto="Guardar amenidades" ok="Amenidades guardadas" />
+    </Seccion>
   );
 }

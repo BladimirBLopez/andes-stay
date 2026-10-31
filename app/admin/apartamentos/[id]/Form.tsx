@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { falla } from "@/lib/mensajes";
+import { Eye, Home, Users, FileText } from "lucide-react";
+import { campo, Campo, Seccion } from "./ui";
 
 type Apto = {
   id: number;
@@ -14,28 +16,6 @@ type Apto = {
   descripcionEs: string; descripcionEn: string;
   activo: boolean; orden: number;
 };
-
-const campo =
-  "w-full border border-noche/20 rounded-lg px-3 py-2.5 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
-
-function Seccion({ titulo, children }: { titulo: string; children: React.ReactNode }) {
-  return (
-    <section className="bg-white border border-noche/10 rounded-2xl p-4 space-y-4 shadow-sm">
-      <h2 className="font-display text-2xl text-noche">{titulo}</h2>
-      {children}
-    </section>
-  );
-}
-
-function Campo({ label, ayuda, error, children }: { label: string; ayuda?: string; error?: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="text-sm font-medium text-noche/80">{label}</span>
-      {children}
-      {error ? <span className="block text-xs text-red-600 mt-1">{error}</span> : ayuda && <span className="block text-xs text-noche/50 mt-1">{ayuda}</span>}
-    </label>
-  );
-}
 
 export default function FormApto({ initial }: { initial: Apto }) {
   const [f, setF] = useState<Apto>(initial);
@@ -90,8 +70,8 @@ export default function FormApto({ initial }: { initial: Apto }) {
   }
 
   return (
-    <div className="space-y-5 pb-44">
-      <Seccion titulo="Publicación">
+    <div className="space-y-5">
+      <Seccion id="publicacion" titulo="Publicación" sub="Define si los huéspedes ven este apartamento" icono={<Eye size={18} />}>
         <div className={`flex items-center justify-between gap-3 rounded-xl p-3 ${f.activo ? "bg-salvia/10" : "bg-noche/5"}`}>
           <div>
             <p className={`font-medium ${f.activo ? "text-salvia" : "text-noche/70"}`}>{f.activo ? "● Publicado en el sitio" : "○ Oculto"}</p>
@@ -119,7 +99,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
         </Campo>
       </Seccion>
 
-      <Seccion titulo="Información">
+      <Seccion id="informacion" titulo="Información" sub="Lo que ven los huéspedes en la tarjeta" icono={<Home size={18} />}>
         <Campo label="Nombre" ayuda="Se muestra en la tarjeta del sitio" error={intento ? errores.nombreEs : undefined}>
           <input className={campo} value={f.nombreEs} onChange={(e) => set("nombreEs", e.target.value)} />
         </Campo>
@@ -139,7 +119,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
         </div>
       </Seccion>
 
-      <Seccion titulo="Capacidad">
+      <Seccion id="capacidad" titulo="Capacidad" sub="Huéspedes y distribución" icono={<Users size={18} />}>
         <div className="grid grid-cols-2 gap-3">
           {([
             ["huespedes", "Huéspedes"],
@@ -160,7 +140,7 @@ export default function FormApto({ initial }: { initial: Apto }) {
         </div>
       </Seccion>
 
-      <Seccion titulo="Descripción">
+      <Seccion id="descripcion" titulo="Descripción" sub="El texto largo de la página" icono={<FileText size={18} />}>
         <Campo label="Texto" ayuda={`Deja una línea en blanco entre párrafos · ${f.descripcionEs.length} caracteres`}>
           <textarea
             rows={10}

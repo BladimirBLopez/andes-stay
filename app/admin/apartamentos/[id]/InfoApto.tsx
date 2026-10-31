@@ -5,19 +5,8 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { falla } from "@/lib/mensajes";
 import type { Info } from "@/lib/infoCatalogo";
-
-const campo =
-  "w-full border border-noche/20 rounded-xl px-3 py-2.5 text-base bg-white focus:outline-none focus:border-oro focus:ring-1 focus:ring-oro";
-
-function Campo({ label, ayuda, children }: { label: string; ayuda?: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="text-sm font-medium text-noche/80">{label}</span>
-      {children}
-      {ayuda && <span className="block text-xs text-noche/50 mt-1">{ayuda}</span>}
-    </label>
-  );
-}
+import { MapPin } from "lucide-react";
+import { campo, Campo, Seccion, BotonGuardar } from "./ui";
 
 export default function InfoApto({ id, inicial }: { id: number; inicial: Info }) {
   const router = useRouter();
@@ -57,9 +46,7 @@ export default function InfoApto({ id, inicial }: { id: number; inicial: Info })
   );
 
   return (
-    <section className="bg-white border border-noche/10 rounded-2xl p-4 space-y-4 shadow-sm mb-5">
-      <h2 className="font-display text-2xl text-noche">Reglas y cómo llegar</h2>
-      <p className="text-xs text-noche/50 -mt-2">Solo se muestra en el sitio lo que llenes.</p>
+    <Seccion id="reglas" titulo="Reglas y cómo llegar" sub="Entrada, salida, reglas y dirección. Por ahora solo se guarda aquí; no se muestra en el sitio." icono={<MapPin size={18} />} sucio={sucio}>
 
       <div className="grid grid-cols-2 gap-3">
         <Campo label="Hora de entrada">
@@ -98,14 +85,7 @@ export default function InfoApto({ id, inicial }: { id: number; inicial: Info })
         />
       </Campo>
 
-      <button
-        type="button"
-        onClick={guardar}
-        disabled={!sucio || cargando}
-        className="w-full bg-oro/15 text-noche rounded-xl py-3 text-sm font-medium disabled:opacity-40"
-      >
-        {cargando ? "Guardando..." : sucio ? "Guardar información" : "Información guardada"}
-      </button>
-    </section>
+      <BotonGuardar onClick={guardar} sucio={sucio} cargando={cargando} texto="Guardar información" ok="Información guardada" />
+    </Seccion>
   );
 }
