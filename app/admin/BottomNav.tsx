@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, Globe, LogOut } from "lucide-react";
+import { LayoutGrid, Globe, LogOut, Settings } from "lucide-react";
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const inicio = pathname.startsWith("/admin");
+  const enAjustes = pathname.startsWith("/admin/ajustes");
+  const inicio = pathname.startsWith("/admin") && !enAjustes;
   const base = "flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-medium";
 
   return (
@@ -15,6 +16,10 @@ export default function BottomNav() {
         <Link href="/admin" className={`${base} ${inicio ? "text-oro" : "text-hueso/60"}`}>
           <LayoutGrid size={20} />
           Apartamentos
+        </Link>
+        <Link href="/admin/ajustes" className={`${base} ${enAjustes ? "text-oro" : "text-hueso/60"}`}>
+          <Settings size={20} />
+          Ajustes
         </Link>
         <a href="/" target="_blank" rel="noreferrer" className={`${base} text-hueso/60`}>
           <Globe size={20} />

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Home, MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "59176570041";
+import { getWhatsapp } from "@/lib/ajustes";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const WHATSAPP_NUMBER = await getWhatsapp();
   return (
     <main className="min-h-[80svh] flex flex-col items-center justify-center text-center px-6 bg-noche text-hueso">
       <p className="uppercase tracking-[0.2em] text-sm text-terracota-light mb-4">
